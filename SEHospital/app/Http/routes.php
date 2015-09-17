@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@getIndex');
+
+Route::get('appointment','AppointmentController@getIndex');
