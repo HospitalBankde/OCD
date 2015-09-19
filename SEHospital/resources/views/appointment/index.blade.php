@@ -14,6 +14,12 @@
 @section('script')
     {!! Html::script('bootstrap-select/js/bootstrap-select.js') !!}
     {!! Html::style('bootstrap-select/css/bootstrap-select.css') !!}
+    <script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+    {{--<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>--}}
+    <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    {{--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />--}}
+    <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 @endsection
 
 @section('content')
@@ -72,6 +78,23 @@
             <button type="button" class="btn btn-default" style="background-color: #265a88; color: lightgray">
                 ต่อไป
             </button>
+
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker1').datetimepicker();
+                    });
+                </script>
+
+
         </div>
 
 
