@@ -14,15 +14,18 @@
 @section('script')
     {!! Html::script('bootstrap-select/js/bootstrap-select.js') !!}
     {!! Html::style('bootstrap-select/css/bootstrap-select.css') !!}
-    <script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
-    {{--<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>--}}
-    <script type="text/javascript" src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-    {{--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />--}}
-    <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    {{--{!! Html::style('external/jquery/jquery.js') !!}--}}
+    {!! Html::style('jquery-ui/jquery-ui.min.css') !!}
+    {!! Html::script('jquery-ui/jquery-ui.min.js') !!}
 @endsection
 
 @section('content')
+
+    <script>
+        $(function() {
+            $( "#date" ).datepicker();
+        });
+    </script>
 
     <div class="container">
 
@@ -79,20 +82,9 @@
                 ต่อไป
             </button>
 
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
+            <br><br>
+            <input type="text" name="date" id="date" value="กรุณาเลือกวันนัดแพทย์" style="color: #B0BEC5;" readonly>
 
-                <script type="text/javascript">
-                    $(function () {
-                        $('#datetimepicker1').datetimepicker();
-                    });
-                </script>
 
 
         </div>
@@ -102,15 +94,5 @@
     </div>
 @endsection
 
-@section('script-jquery')
-    <script>
-        $(document).ready(function () {
-            $('selectpicker').selectpicker({
-                liveSearch: true,
-                maxOptions: 1
-            });
-        });
-    </script>
-@endsection
 
 @stop

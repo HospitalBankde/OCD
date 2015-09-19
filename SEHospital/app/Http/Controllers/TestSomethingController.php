@@ -7,7 +7,9 @@
  */
 
 namespace App\Http\Controllers;
-use App\Http\Models;
+
+
+
 use App\Models\Patient;
 
 class TestSomethingController extends Controller {
@@ -15,8 +17,11 @@ class TestSomethingController extends Controller {
 
     public function getIndex() {
 
-        $patients = Patient::all();
 
+        $patients = Patient::all();
+        foreach($patients as $patient){
+            echo $patient->pat_name ;
+        }
         return view('testview')->with([
             'patients' => $patients
         ]);

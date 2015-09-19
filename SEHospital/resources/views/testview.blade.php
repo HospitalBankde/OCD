@@ -13,7 +13,7 @@
 
 @section('content')
     @foreach($patients as $patient)
-        {{--<p>This is user {{$patient['pat_name']}} </p>--}}
+        <p>This is user {{$patient->pat_name}} </p>
     @endforeach
 @endsection
 
