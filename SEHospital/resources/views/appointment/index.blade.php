@@ -35,37 +35,25 @@
         <div class="col-md-6 col-md-offset-1">
             <h2>1.เลือกจากสาขาวิชาที่เชี่ยวชาญ</h2>
             <!-- Single button -->
-            {{--<div class="btn-group">--}}
-                {{--<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                    {{--<span class="selection"> กรุณาเลือกสาขาวิชาที่เชี่ยวชาญ </span> <span class="caret"></span>--}}
-                    {{--<span class="selection"> test </span>--}}
-                {{--</button>--}}
-                {{--<ul class="dropdown-menu" role="menu">--}}
-                    {{--<li><a href="#">กรุณาเลือกสาขาวิชาที่เชี่ยวชาญ</a></li>--}}
-                    {{--<li><a href="#">กุมารเวชศาสตร์</a></li>--}}
-                    {{--<li><a href="#">จักษุวิทยา</a></li>--}}
-                    {{--<li role="separator" class="divider"></li>--}}
-                    {{--<li><a href="#">จิตเวชศาสตร์</a></li>--}}
-                    {{--<li><a href="#">ทันตกรรม</a></li>--}}
-                    {{--<li><a href="#">ประสาทวิทยา</a></li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-            {{--<div class="checkbox">--}}
-                {{--<label>--}}
-                    {{--<input type="checkbox"> ระบุชื่อแพทย์ด้วยตนเอง--}}
-                {{--</label>--}}
-            {{--</div>--}}
-            <select class="selectpicker">
-                <optgroup label="Picnic">
-                    <option>Mustard</option>
-                    <option>Ketchup</option>
-                    <option>Relish</option>
-                </optgroup>
-                <optgroup label="Camping">
-                    <option>Tent</option>
-                    <option>Flashlight</option>
-                    <option>Toilet Paper</option>
-                </optgroup>
+            <select class="selectpicker" name="select_dept" id="select_dept">
+                <?php
+                    $depts = DB::select('SELECT dep_name, dep_id FROM department');
+                    foreach ($depts as $dept) {
+                        echo "<option value=" . $dept->dep_id . ">" . $dept->dep_name . "</option>";
+                    }
+                ?>
+            </select>
+            <br><br><br>
+            <h2>2.เลือกรายชื่อแพทย์ในสาขา <?php echo "test"; ?></h2>
+            <select class="selectpicker" name="select_doc" id="select_doc">
+                <option>Any Doctor</option>
+                <?php
+                    //if 
+                    $doctors = DB::select('SELECT doc_name, doc_surname FROM doctor');
+                    foreach ($doctors as $doctor) {
+                        echo "<option>" . $doctor->doc_name . "</option>";
+                    }
+                ?>
             </select>
             <br>
             <br>
@@ -82,7 +70,7 @@
 @section('script-jquery')
     <script>
         $(document).ready(function () {
-            $('selectpicker').selectpicker({
+            $('select_dept').select_dept({
                 liveSearch: true,
                 maxOptions: 1
             });
