@@ -15,6 +15,12 @@
     @foreach($patients as $patient)
         <p>This is user {{$patient->pat_name}} </p>
     @endforeach
+
+    {!!Form::open(array('url'=>'justposttest')) !!}
+    {!! Form::text('email','example@gmail.com') !!}
+    {!! Form::submit('click here',array('novalidate'=>'novalidate')) !!}
+    {!! Form::close() !!}
+
 @endsection
 
 @stop

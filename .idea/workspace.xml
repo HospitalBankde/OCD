@@ -2,433 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0030d06a-0d24-459e-87ff-bbdadc57b9ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SEHospital/app/Models/Appointment.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SEHospital/app/Models/Department.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SEHospital/app/Models/Doctor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SEHospital/app/Models/DoctorSchedule.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SEHospital/app/Models/MedicalRecord.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SEHospital/app/Models/PatientInfo.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/CONTRIBUTING.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/Gruntfile.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker-standalone.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/component.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/composer.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/ChangeLog.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/ContributorsGuide.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/Events.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/Extras.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/FAQ.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/Functions.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/Installing.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/Options.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/Version 4 Changelog.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/Version 4 Contributors guide.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/docs/index.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/mkdocs.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/src/less/_bootstrap-datetimepicker.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/src/less/bootstrap-datetimepicker-build.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/src/nuget/Bootstrap.v3.Datetimepicker.CSS.nuspec" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/src/nuget/Bootstrap.v3.Datetimepicker.nuspec" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/src/nuget/NuGet.exe" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/src/nuget/install.ps1" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/src/sass/_bootstrap-datetimepicker.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build.scss" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/eonasdan-bootstrap-datetimepicker/tasks/bump_version.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/MIT-LICENSE.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/dist/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/dist/jquery.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/dist/jquery.min.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/ajax.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/ajax/jsonp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/ajax/load.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/ajax/parseJSON.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/ajax/parseXML.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/ajax/script.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/ajax/var/nonce.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/ajax/var/rquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/ajax/xhr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/attributes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/attributes/attr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/attributes/classes.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/attributes/prop.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/attributes/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/attributes/val.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/callbacks.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/core.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/core/access.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/core/init.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/core/parseHTML.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/core/ready.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/core/var/rsingleTag.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/addGetHookIf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/curCSS.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/defaultDisplay.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/hiddenVisibleSelectors.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/swap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/var/cssExpand.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/var/getStyles.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/var/isHidden.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/var/rmargin.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/css/var/rnumnonpx.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/data.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/data/Data.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/data/accepts.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/data/var/data_priv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/data/var/data_user.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/deferred.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/deprecated.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/dimensions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/effects.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/effects/Tween.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/effects/animatedSelector.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/event.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/event/ajax.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/event/alias.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/event/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/exports/amd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/exports/global.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/intro.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/manipulation.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/manipulation/_evalUrl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/manipulation/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/manipulation/var/rcheckableType.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/offset.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/outro.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/queue.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/queue/delay.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/selector-native.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/selector-sizzle.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/selector.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/serialize.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/sizzle/dist/sizzle.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/sizzle/dist/sizzle.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/sizzle/dist/sizzle.min.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/traversing.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/traversing/findFilter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/traversing/var/rneedsContext.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/arr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/class2type.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/concat.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/hasOwn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/indexOf.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/pnum.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/push.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/rnotwhite.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/slice.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/strundefined.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/support.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/var/toString.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/jquery/src/wrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/builds/moment-timezone-with-data.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/builds/moment-timezone-with-data.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/builds/moment-timezone.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/changelog.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/composer.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/data/meta/latest.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/data/packed/latest.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/data/unpacked/latest.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/moment-timezone-utils.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment-timezone/moment-timezone.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/CHANGELOG.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/af.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ar-ma.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ar-sa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ar-tn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/az.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/be.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/bg.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/bn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/bo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/br.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/bs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/cs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/cv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/cy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/da.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/de-at.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/de.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/el.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/en-au.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/en-ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/en-gb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/eo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/es.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/et.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/eu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/fa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/fi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/fo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/fr-ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/fr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/fy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/gl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/he.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/hi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/hr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/hu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/hy-am.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/id.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/is.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/it.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ja.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/jv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ka.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/km.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ko.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/lb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/lt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/lv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/me.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/mk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/mr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ms-my.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ms.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/my.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/nb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ne.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/nl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/nn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/pl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/pt-br.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/pt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ro.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ru.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/si.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/sk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/sl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/sq.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/sr-cyrl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/sr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/sv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/ta.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/th.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/tl-ph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/tr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/tzl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/tzm-latn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/tzm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/uk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/uz.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/vi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/zh-cn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/locale/zh-tw.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/min/locales.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/min/locales.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/min/moment-with-locales.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/min/moment-with-locales.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/min/moment.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/min/tests.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/moment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/check-overflow.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/date-from-array.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/from-anything.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/from-array.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/from-object.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/from-string-and-array.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/from-string-and-format.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/from-string.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/local.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/parsing-flags.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/utc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/create/valid.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/abs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/add-subtract.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/as.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/bubble.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/constructor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/create.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/duration.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/get.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/humanize.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/iso-string.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/duration/prototype.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/format/format.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/calendar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/constructor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/en.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/formats.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/invalid.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/lists.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/locale.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/locales.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/ordinal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/pre-post-format.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/prototype.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/relative.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/locale/set.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/add-subtract.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/calendar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/clone.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/compare.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/constructor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/diff.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/format.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/from.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/get-set.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/locale.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/min-max.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/moment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/prototype.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/start-end-of.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/to-type.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/to.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/moment/valid.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/parse/regex.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/parse/token.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/aliases.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/constants.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/day-of-month.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/day-of-week.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/day-of-year.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/hour.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/millisecond.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/minute.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/month.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/offset.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/quarter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/second.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/timestamp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/timezone.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/units.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/week-year.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/week.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/units/year.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/abs-ceil.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/abs-floor.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/compare-arrays.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/defaults.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/deprecate.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/extend.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/has-own-prop.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/hooks.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/is-array.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/is-date.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/map.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/to-int.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/lib/utils/zero-fill.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/af.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ar-ma.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ar-sa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ar-tn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/az.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/be.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/bg.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/bn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/bo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/br.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/bs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/cs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/cv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/cy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/da.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/de-at.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/de.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/el.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/en-au.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/en-ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/en-gb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/eo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/es.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/et.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/eu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/fa.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/fi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/fo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/fr-ca.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/fr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/fy.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/gl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/he.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/hi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/hr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/hu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/hy-am.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/id.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/is.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/it.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ja.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/jv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ka.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/km.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ko.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/lb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/lt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/lv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/me.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/mk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ml.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/mr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ms-my.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ms.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/my.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/nb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ne.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/nl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/nn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/pl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/pt-br.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/pt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ro.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ru.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/si.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/sk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/sl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/sq.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/sr-cyrl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/sr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/sv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/ta.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/th.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/tl-ph.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/tr.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/tzl.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/tzm-latn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/tzm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/uk.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/uz.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/vi.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/zh-cn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/locale/zh-tw.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/src/moment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/templates/amd-named.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/templates/amd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/templates/globals.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/templates/locale-header.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/SEHospital/public/bower_components/moment/templates/test-header.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/SEHospital/app/Http/Models/Patient.php" afterPath="$PROJECT_DIR$/SEHospital/app/Models/Patient.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/app/Http/Kernel.php" afterPath="$PROJECT_DIR$/SEHospital/app/Http/Kernel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/app/Http/Controllers/TestSomethingController.php" afterPath="$PROJECT_DIR$/SEHospital/app/Http/Controllers/TestSomethingController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/config/database.php" afterPath="$PROJECT_DIR$/SEHospital/config/database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/app/Http/Middleware/VerifyCsrfToken.php" afterPath="$PROJECT_DIR$/SEHospital/app/Http/Middleware/VerifyCsrfToken.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/config/app.php" afterPath="$PROJECT_DIR$/SEHospital/config/app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/composer.json" afterPath="$PROJECT_DIR$/SEHospital/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/composer.lock" afterPath="$PROJECT_DIR$/SEHospital/composer.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/resources/views/layout/default.blade.php" afterPath="$PROJECT_DIR$/SEHospital/resources/views/layout/default.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php" afterPath="$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/app/Http/routes.php" afterPath="$PROJECT_DIR$/SEHospital/app/Http/routes.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/resources/views/testview.blade.php" afterPath="$PROJECT_DIR$/SEHospital/resources/views/testview.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -449,27 +30,91 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DatabaseView">
+    <option name="FLATTEN" value="false" />
+    <option name="GROUP_BY_TYPE" value="true" />
+    <option name="SORT_CHILDREN" value="false" />
+    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DbRootNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="SEHospital" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php">
+      <file leaf-file-name="testview.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/testview.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6706408" vertical-offset="825" max-vertical-offset="1545">
-              <caret line="85" column="104" selection-start-line="85" selection-start-column="104" selection-end-line="85" selection-end-column="104" />
+            <state vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="465">
+              <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="default.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/layout/default.blade.php">
+      <file leaf-file-name="VerifyCsrfToken.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Middleware/VerifyCsrfToken.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="465">
-              <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+            <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="360">
+              <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestSomethingController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/TestSomethingController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.4166665" vertical-offset="32" max-vertical-offset="525">
+              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+              <folding>
+                <element signature="e#125#148#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Kernel.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Kernel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.72286373" vertical-offset="152" max-vertical-offset="630">
+              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SEHospital/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="870">
+              <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/home/index.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="285" max-vertical-offset="1365">
+              <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="240">
+              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -484,9 +129,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/SEHospital/resources/views/home/home.blade.php" />
-        <option value="$PROJECT_DIR$/SEHospital/composer.json" />
         <option value="$PROJECT_DIR$/SEHospital/bootstrap/app.php" />
-        <option value="$PROJECT_DIR$/SEHospital/config/app.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/SEHospital/public/css/custom.css" />
         <option value="$PROJECT_DIR$/SEHospital/resources/views/appointment/AppointmentController.php" />
@@ -494,12 +137,9 @@
         <option value="$PROJECT_DIR$/SEHospital/app/Http/Controllers/AppointmentController.php" />
         <option value="$PROJECT_DIR$/SEHospital/public/js/appointment.js" />
         <option value="$PROJECT_DIR$/SEHospital/app/User.php" />
-        <option value="$PROJECT_DIR$/SEHospital/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Http/Models/Patient.php" />
         <option value="$PROJECT_DIR$/SEHospital/config/database.php" />
         <option value="$PROJECT_DIR$/SEHospital/.env" />
-        <option value="$PROJECT_DIR$/SEHospital/resources/views/testview.blade.php" />
-        <option value="$PROJECT_DIR$/SEHospital/app/Http/Controllers/TestSomethingController.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Models/Patient.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Models/Appointment.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Models/Department.php" />
@@ -507,8 +147,15 @@
         <option value="$PROJECT_DIR$/SEHospital/app/Models/DoctorSchedule.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Models/PatientInfo.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Models/MedicalRecord.php" />
-        <option value="$PROJECT_DIR$/SEHospital/resources/views/layout/default.blade.php" />
         <option value="$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php" />
+        <option value="$PROJECT_DIR$/SEHospital/composer.json" />
+        <option value="$PROJECT_DIR$/SEHospital/config/app.php" />
+        <option value="$PROJECT_DIR$/SEHospital/app/Http/routes.php" />
+        <option value="$PROJECT_DIR$/SEHospital/resources/views/layout/default.blade.php" />
+        <option value="$PROJECT_DIR$/SEHospital/resources/views/testview.blade.php" />
+        <option value="$PROJECT_DIR$/SEHospital/app/Http/Controllers/TestSomethingController.php" />
+        <option value="$PROJECT_DIR$/SEHospital/app/Http/Middleware/VerifyCsrfToken.php" />
+        <option value="$PROJECT_DIR$/SEHospital/app/Http/Kernel.php" />
       </list>
     </option>
   </component>
@@ -517,8 +164,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
+    <option name="x" value="530" />
     <option name="y" value="23" />
-    <option name="width" value="1029" />
+    <option name="width" value="910" />
     <option name="height" value="792" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -639,6 +287,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEHospital" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEHospital" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEHospital" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vendor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -806,18 +484,45 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEHospital" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEHospital" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SEHospital" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Middleware" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="options.lastSelected" value="editing.templates" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
+    <property name="recentsLimit" value="5" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -826,12 +531,40 @@
       <recent name="$PROJECT_DIR$/SEHospital/app/Http/Controllers" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.testview.blade.php">
+    <configuration default="false" name="illuminate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$/SEHospital/vendor/illuminate" />
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SEHospital on server" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" temporary="true" scope="Directory" path="$PROJECT_DIR$" server_id="e777db22-d0a3-4a9c-8688-5411d6044a87" server_name="MAMP Apache">
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="testview.blade.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:8888/SEHospital/resources/views/testview.blade.php">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application">
+      <method />
+    </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -839,9 +572,6 @@
     </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -853,7 +583,30 @@
       <envs />
       <method />
     </configuration>
-    <list size="0" />
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="e777db22-d0a3-4a9c-8688-5411d6044a87" server_name="MAMP Apache">
+      <method />
+    </configuration>
+    <configuration default="false" name="SEHospital" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner directory="$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="BehatDebugRunner" />
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="BehatDebugRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Behat.SEHospital" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.illuminate" />
+      <item index="2" class="java.lang.String" itemvalue="PHPUnit on Server.SEHospital on server" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.testview.blade.php" />
+    </list>
+    <recent_temporary>
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.testview.blade.php" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit on Server.SEHospital on server" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.illuminate" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -869,26 +622,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1029" height="792" extended-state="0" />
+    <frame x="530" y="23" width="910" height="792" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.256238" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32918397" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328125" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2750243" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328125" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23186813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32918397" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328125" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -910,9 +663,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38377193" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.328125" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -937,20 +690,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/AppointmentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="240">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="285">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1815">
@@ -1084,13 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/vendor/phpunit/phpunit/src/Util/TestDox/ResultPrinter/HTML.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1185">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SEHospital/bootstrap/app.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3355705" vertical-offset="18" max-vertical-offset="915">
@@ -1098,38 +830,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06521739" vertical-offset="0" max-vertical-offset="870">
-          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/vendor/illuminate/html/HtmlFacade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="484">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/vendor/illuminate/html/HtmlServiceProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1095">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SEHospital/public/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="909" max-vertical-offset="1380">
           <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/public/js/appointment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
-          <caret line="0" column="34" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1144,27 +848,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17883755" vertical-offset="0" max-vertical-offset="671">
-          <caret line="17" column="42" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20119224" vertical-offset="0" max-vertical-offset="671">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/AppointmentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08941878" vertical-offset="0" max-vertical-offset="671">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1189,27 +872,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/testview.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.067064084" vertical-offset="0" max-vertical-offset="671">
-          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8122206" vertical-offset="2410" max-vertical-offset="3105">
-          <caret line="197" column="56" selection-start-line="197" selection-start-column="56" selection-end-line="197" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SEHospital/config/auth.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="240" max-vertical-offset="1095">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1220,18 +886,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/TestSomethingController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3353204" vertical-offset="0" max-vertical-offset="671">
-          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SEHospital/app/Models/Patient.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="315">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="13" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1239,9 +897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="345">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="17" selection-end-column="1" />
-          <folding>
-            <element signature="e#6#89#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1249,7 +904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="270">
           <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1257,9 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="345">
           <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
-          <folding>
-            <element signature="e#6#89#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1267,7 +918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26825634" vertical-offset="0" max-vertical-offset="671">
           <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1275,9 +925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3800298" vertical-offset="0" max-vertical-offset="671">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#88#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1285,30 +932,129 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22354695" vertical-offset="0" max-vertical-offset="671">
           <caret line="15" column="64" selection-start-line="15" selection-start-column="64" selection-end-line="15" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/public/js/appointment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
+          <caret line="0" column="34" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/93cfe7b1/0710ef9b-b2c3-4f9b-b207-fc1210103fcf/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="695">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4470939" vertical-offset="0" max-vertical-offset="1650">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/AppointmentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3529413" vertical-offset="0" max-vertical-offset="240">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13856813" vertical-offset="0" max-vertical-offset="433">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="870">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4803695" vertical-offset="2657" max-vertical-offset="3105">
+          <caret line="191" column="14" selection-start-line="191" selection-start-column="14" selection-end-line="191" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/home/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7213115" vertical-offset="0" max-vertical-offset="1365">
-          <caret line="77" column="8" selection-start-line="77" selection-start-column="8" selection-end-line="79" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="285" max-vertical-offset="1365">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="240">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.291667" vertical-offset="887" max-vertical-offset="1845">
+          <caret line="78" column="23" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Middleware/Authenticate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5011547" vertical-offset="323" max-vertical-offset="780">
+          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/layout/default.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0" vertical-offset="0" max-vertical-offset="465">
-          <caret line="24" column="7" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.34642032" vertical-offset="0" max-vertical-offset="450">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/testview.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6706408" vertical-offset="825" max-vertical-offset="1545">
-          <caret line="85" column="104" selection-start-line="85" selection-start-column="104" selection-end-line="85" selection-end-column="104" />
+        <state vertical-scroll-proportion="-11.875" vertical-offset="0" max-vertical-offset="465">
+          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Middleware/VerifyCsrfToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0" vertical-offset="0" max-vertical-offset="360">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/TestSomethingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.4166665" vertical-offset="32" max-vertical-offset="525">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding>
+            <element signature="e#125#148#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Kernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72286373" vertical-offset="152" max-vertical-offset="630">
+          <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
           <folding />
         </state>
       </provider>

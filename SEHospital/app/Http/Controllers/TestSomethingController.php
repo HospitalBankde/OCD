@@ -11,12 +11,13 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Patient;
+use Illuminate\Support\Facades\Input;
+
 
 class TestSomethingController extends Controller {
 
 
     public function getIndex() {
-
 
         $patients = Patient::all();
         foreach($patients as $patient){
@@ -24,6 +25,11 @@ class TestSomethingController extends Controller {
         }
         return view('testview')->with([
             'patients' => $patients
+
         ]);
+    }
+    public function postTest() {
+        $email = Input::get('email');
+        return "You just type: " . $email;
     }
 }

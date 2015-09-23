@@ -16,3 +16,5 @@ Route::get('/','HomeController@getIndex');
 Route::get('appointment','AppointmentController@getIndex');
 
 Route::get('test','TestSomethingController@getIndex');
+
+Route::post('justposttest','TestSomethingController@postTest');

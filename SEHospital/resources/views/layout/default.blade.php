@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <!-- Inculde javascript and css library -->
     {!! Html::style('css/bootstrap.min.css') !!}
     {!! Html::script('js/jquery-2.1.1.min.js') !!}

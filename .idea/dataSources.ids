@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - @localhost" uuid="0710ef9b-b2c3-4f9b-b207-fc1210103fcf">
+    <database-info product="MySQL" version="5.5.42" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="SEHospital"/>
+    <table name="appointment" schema="" catalog="SEHospital" type="TABLE">
+      <column name="app_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="doc_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pat_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="dep_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="app_time" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12" remarks="ZGQtbW0teXl5eSzguYDguIrguYnguLI="/>
+      <column name="app_sym" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="app_id"/>
+    </table>
+    <table name="department" schema="" catalog="SEHospital" type="TABLE">
+      <column name="dep_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="dep_name" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="dep_id"/>
+    </table>
+    <table name="doctor" schema="" catalog="SEHospital" type="TABLE">
+      <column name="doc_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="doc_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="doc_surname" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="doc_password" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="doc_SSN" sqlType="VARCHAR" precision="13" scale="0" nullable="false" jdbcType="12"/>
+      <column name="dep_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="doc_email" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="doc_tel" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="doc_id"/>
+    </table>
+    <table name="doctor_schedule" schema="" catalog="SEHospital" type="TABLE">
+      <column name="doc_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="relative_day" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="morning_num" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="afternoon_num" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+    </table>
+    <table name="medical_record" schema="" catalog="SEHospital" type="TABLE">
+      <column name="med_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="doc_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pat_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="sym_id" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12" remarks="ZS5nLiBJQ0QxMCxEUkc="/>
+      <primary-key name="PRIMARY" columns="med_id"/>
+    </table>
+    <table name="medical_record2" schema="" catalog="SEHospital" type="TABLE">
+      <column name="med_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="drug_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="drug_desc" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="drug_num" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+    </table>
+    <table name="nurse" schema="" catalog="SEHospital" type="TABLE">
+      <column name="nurse_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nurse_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nurse_surname" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nurse_password" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nurse_SSN" sqlType="VARCHAR" precision="13" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nurse_email" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nurse_tel" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="nurse_id"/>
+    </table>
+    <table name="patient" schema="" catalog="SEHospital" type="TABLE">
+      <column name="pat_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pat_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pat_surname" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pat_SSN" sqlType="VARCHAR" precision="13" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pat_tel" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="pat_email" sqlType="VARCHAR" precision="30" scale="0" nullable="true" jdbcType="12"/>
+      <column name="pat_password" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="pat_id"/>
+    </table>
+    <table name="patient_info" schema="" catalog="SEHospital" type="TABLE">
+      <column name="pat_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pat_weight" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pat_height" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pat_temp" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="pat_hr" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="nurse_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="pat_id"/>
+    </table>
+    <table name="pharmacist" schema="" catalog="SEHospital" type="TABLE">
+      <column name="phar_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="phar_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phar_surname" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phar_password" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phar_SSN" sqlType="VARCHAR" precision="13" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phar_email" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phar_tel" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+    </table>
+    <table name="pharmacy_record" schema="" catalog="SEHospital" type="TABLE">
+      <column name="pat_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <column name="drug_name" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="drug_desc" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="drug_num" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+    </table>
+  </data-source>
+</component>
