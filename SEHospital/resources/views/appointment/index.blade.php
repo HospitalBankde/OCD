@@ -82,18 +82,5 @@
     </div>
 @endsection
 
-<<<<<<< HEAD
-=======
-@section('script-jquery')
-    <script>
-        $(document).ready(function () {
-            $('select_dept').select_dept({
-                liveSearch: true,
-                maxOptions: 1
-            });
-        });
-    </script>
-@endsection
->>>>>>> 7b9e3dabd8cf1900d4635f36c2d1654ea42a9cf2
 
 @stop
