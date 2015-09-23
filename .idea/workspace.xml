@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0030d06a-0d24-459e-87ff-bbdadc57b9ee" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php" afterPath="$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/config/app.php" afterPath="$PROJECT_DIR$/SEHospital/config/app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SEHospital/public/js/appointment.js" afterPath="$PROJECT_DIR$/SEHospital/public/js/appointment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SEHospital.iws" />
@@ -63,7 +64,7 @@
       <file leaf-file-name="TestSomethingController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/TestSomethingController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="32" max-vertical-offset="525">
+            <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="525">
               <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
               <folding>
                 <element signature="e#125#148#0#PHP" expanded="true" />
@@ -82,15 +83,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.86587185" vertical-offset="694" max-vertical-offset="1365">
+            <state vertical-scroll-proportion="-24.208334" vertical-offset="694" max-vertical-offset="1365">
               <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
               <folding>
-                <marker date="1442996363000" expanded="true" signature="1619:1658" placeholder="SELECT dep_n..department..." />
-                <marker date="1442996363000" expanded="true" signature="2179:2219" placeholder="SELECT doc_n..doctor..." />
+                <marker date="1442996998000" expanded="true" signature="1619:1658" placeholder="SELECT dep_n..department..." />
+                <marker date="1442996998000" expanded="true" signature="2179:2219" placeholder="SELECT doc_n..doctor..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appointment.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SEHospital/public/js/appointment.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SEHospital/bootstrap/app.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.0" vertical-offset="0" max-vertical-offset="780">
+              <caret line="41" column="2" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SEHospital/config/app.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.804769" vertical-offset="750" max-vertical-offset="3105">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -130,7 +161,6 @@
         <option value="$PROJECT_DIR$/SEHospital/resources/views/appointment/AppointmentController.php" />
         <option value="$PROJECT_DIR$/SEHospital/resources/views/home/index.blade.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Http/Controllers/AppointmentController.php" />
-        <option value="$PROJECT_DIR$/SEHospital/public/js/appointment.js" />
         <option value="$PROJECT_DIR$/SEHospital/app/User.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Http/Models/Patient.php" />
         <option value="$PROJECT_DIR$/SEHospital/config/database.php" />
@@ -143,7 +173,6 @@
         <option value="$PROJECT_DIR$/SEHospital/app/Models/PatientInfo.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Models/MedicalRecord.php" />
         <option value="$PROJECT_DIR$/SEHospital/composer.json" />
-        <option value="$PROJECT_DIR$/SEHospital/config/app.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/SEHospital/resources/views/layout/default.blade.php" />
         <option value="$PROJECT_DIR$/SEHospital/resources/views/testview.blade.php" />
@@ -151,6 +180,8 @@
         <option value="$PROJECT_DIR$/SEHospital/app/Http/Middleware/VerifyCsrfToken.php" />
         <option value="$PROJECT_DIR$/SEHospital/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php" />
+        <option value="$PROJECT_DIR$/SEHospital/public/js/appointment.js" />
+        <option value="$PROJECT_DIR$/SEHospital/config/app.php" />
       </list>
     </option>
   </component>
@@ -159,9 +190,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="530" />
+    <option name="x" value="256" />
     <option name="y" value="23" />
-    <option name="width" value="910" />
+    <option name="width" value="1184" />
     <option name="height" value="792" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -209,6 +240,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -533,7 +565,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -582,17 +613,20 @@
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
     <configuration default="true" type="com.intellij.database.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
       <option name="VM_PARAMETERS" value="" />
       <option name="USER_CFG_CLASS" />
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
     <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
       <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="e777db22-d0a3-4a9c-8688-5411d6044a87" server_name="MAMP Apache">
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -602,9 +636,6 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="e777db22-d0a3-4a9c-8688-5411d6044a87" server_name="MAMP Apache">
       <method />
     </configuration>
     <configuration default="false" name="SEHospital" type="PhpBehatConfigurationType" factoryName="Behat">
@@ -643,7 +674,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="530" y="23" width="910" height="792" extended-state="0" />
+    <frame x="256" y="23" width="1184" height="792" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -652,7 +683,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.256238" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23186813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17820945" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328125" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -684,9 +715,9 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38377193" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.328125" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -844,13 +875,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/bootstrap/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3355705" vertical-offset="18" max-vertical-offset="915">
-          <caret line="41" column="2" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SEHospital/public/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="909" max-vertical-offset="1380">
@@ -956,13 +980,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/public/js/appointment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="135">
-          <caret line="0" column="34" selection-start-line="0" selection-start-column="34" selection-end-line="0" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://db-console:/93cfe7b1/0710ef9b-b2c3-4f9b-b207-fc1210103fcf/">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="695">
@@ -988,14 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="270" max-vertical-offset="870">
           <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4803695" vertical-offset="2657" max-vertical-offset="3105">
-          <caret line="191" column="14" selection-start-line="191" selection-start-column="14" selection-end-line="191" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1045,16 +1054,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/TestSomethingController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="32" max-vertical-offset="525">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-          <folding>
-            <element signature="e#125#148#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Kernel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="630">
@@ -1067,18 +1066,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4918033" vertical-offset="0" max-vertical-offset="671">
           <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/app/Http/Controllers/TestSomethingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.75" vertical-offset="0" max-vertical-offset="525">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding>
+            <element signature="e#125#148#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SEHospital/resources/views/appointment/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.86587185" vertical-offset="694" max-vertical-offset="1365">
+        <state vertical-scroll-proportion="-24.208334" vertical-offset="694" max-vertical-offset="1365">
           <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
           <folding>
-            <marker date="1442996363000" expanded="true" signature="1619:1658" placeholder="SELECT dep_n..department..." />
-            <marker date="1442996363000" expanded="true" signature="2179:2219" placeholder="SELECT doc_n..doctor..." />
+            <marker date="1442996998000" expanded="true" signature="1619:1658" placeholder="SELECT dep_n..department..." />
+            <marker date="1442996998000" expanded="true" signature="2179:2219" placeholder="SELECT doc_n..doctor..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/public/js/appointment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="695">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/bootstrap/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.0" vertical-offset="0" max-vertical-offset="780">
+          <caret line="41" column="2" selection-start-line="41" selection-start-column="2" selection-end-line="41" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SEHospital/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.804769" vertical-offset="750" max-vertical-offset="3105">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -1,4 +1,0 @@
-$('.selectpicker').selectpicker();
-
-
-//Not working!
