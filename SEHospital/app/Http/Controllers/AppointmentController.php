@@ -7,10 +7,15 @@
  */
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Response;
 
 class AppointmentController extends Controller{
 
     public function getIndex() {
         return view('appointment.index');
+    }
+
+    public function getDoctorList($id) {
+    	return  response()->json(['id',$id]);
     }
 }

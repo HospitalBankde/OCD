@@ -12,6 +12,7 @@
 @endsection
 
 @section('script')
+    {!! Html::script('js/appointment.js') !!}
     {!! Html::script('bootstrap-select/js/bootstrap-select.js') !!}
     {!! Html::style('bootstrap-select/css/bootstrap-select.css') !!}
     {{--{!! Html::style('external/jquery/jquery.js') !!}--}}
