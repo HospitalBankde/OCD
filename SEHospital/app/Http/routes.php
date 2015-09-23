@@ -14,7 +14,6 @@
 Route::get('/','HomeController@getIndex');
 
 Route::get('appointment','AppointmentController@getIndex');
-Route::get('doctorList/{id}', 'AppointmentController@getDoctorList');
+Route::get('doctorList', 'AppointmentController@getDoctorList');
 Route::get('test','TestSomethingController@getIndex');
-
 Route::post('justposttest','TestSomethingController@postTest');

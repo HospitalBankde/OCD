@@ -42,28 +42,23 @@
         </div>
 
         <h1 class="page-header">ค้นหารายชื่อแพทย์</h1>
-        <div class="col-md-6 col-md-offset-1">
-            <h2>1.เลือกจากสาขาวิชาที่เชี่ยวชาญ</h2>
-            <!-- Single button -->
-            <select class="selectpicker" name="select_dept" id="select_dept">
-                <?php
-                    $depts = DB::select('SELECT dep_name, dep_id FROM department');
-                    foreach ($depts as $dept) {
-                        echo "<option value=" . $dept->dep_id . ">" . $dept->dep_name . "</option>";
-                    }
-                ?>
+        <div class="col-md-8 col-md-offset-1">
+
+            <h2 style="color: #666666">1.เลือกจากสาขาวิชาที่เชี่ยวชาญ</h2>
+
+            <select class="selectpicker" name="select_dept" id="select_dept" >
+                @foreach($depts as $dept)
+                    <option value="{{$dept->dep_id}}">{{$dept->dep_name}}</option>
+                @endforeach
             </select>
+
             <br><br><br>
-            <h2>2.เลือกรายชื่อแพทย์ในสาขา <?php echo "test"; ?></h2>
-            <select class="selectpicker" name="select_doc" id="select_doc">
-                <option>Any Doctor</option>
-                <?php
-                    //if 
-                    $doctors = DB::select('SELECT doc_name, doc_surname FROM doctor');
-                    foreach ($doctors as $doctor) {
-                        echo "<option>" . $doctor->doc_name . "</option>";
-                    }
-                ?>
+
+            <h2 style="color: #666666">2.เลือกรายชื่อแพทย์ในสาขา <h4 id="dept_label" style="color: #31b0d5"></h4></h2>
+
+            <select class="selectpicker" name="select_doc" id="select_doc" disabled="true" >
+                <option value="">Any Doctor</option>
+
             </select>
             <br>
             <br>
