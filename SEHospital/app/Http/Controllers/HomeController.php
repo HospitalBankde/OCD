@@ -16,4 +16,7 @@ class HomeController extends Controller{
 
         return view('home.index');
     }
+    public function getRegister() {
+        return view('home.register');
+    }
 }

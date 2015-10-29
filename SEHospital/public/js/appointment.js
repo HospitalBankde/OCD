@@ -12,7 +12,7 @@ $(document).ready(function()
                     var select = document.getElementById('select_doc');
                     select.options.length = 0;
 
-                    // Default
+                    // Create for
                     var opt = document.createElement('option');
                     opt.value = "";
                     opt.appendChild(document.createTextNode("Any Doctor"));

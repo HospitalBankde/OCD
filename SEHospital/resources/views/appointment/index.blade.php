@@ -38,7 +38,7 @@
                     <li role="presentation"><a href="contact"><span class="fa fa-envelope-o" aria-hidden="true"></span> ติดต่อ</a></li>
                 </ul>
             </nav>
-            <h3 class="text-muted">iHospital</h3>
+            <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
         </div>
 
         <h1 class="page-header">ค้นหารายชื่อแพทย์</h1>

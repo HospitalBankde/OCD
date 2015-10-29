@@ -23,13 +23,15 @@
                     <li role="presentation"><a href="contact"><span class="fa fa-envelope-o" aria-hidden="true"></span> ติดต่อ</a></li>
                 </ul>
             </nav>
-            <h3 class="text-muted">iHospital</h3>
+            <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
         </div>
 
         <div class="jumbotron" >
             <h1>สิ่งเดียวที่เปลี่ยนไป <br> คือทุกสิ่ง</h1>
             <p class="lead">สมัครบัญชีผู้ใช้วันนี้ เพื่อรับบริการชั้นหนึ่ง!</p>
-            <p><a class="btn btn-lg btn-success" href="#" role="button" data-toggle="modal" data-target="#myModal">สมัครบัญชี</a></p>
+            {{--<p><a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="modal" data-target="#myModal">สมัครบัญชี</a></p>--}}
+            <p><a class="btn btn-primary btn-lg" href="/register" role="button">สมัครบัญชี</a></p>
+            <p><a class="btn btn-sm" href="/" role="button">เข้าสู่ระบบ</a></p>
         </div>
 
         <div class="row marketing">
