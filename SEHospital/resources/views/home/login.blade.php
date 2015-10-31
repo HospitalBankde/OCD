@@ -44,6 +44,8 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary">Log in</button>
+                         &nbsp;&nbsp;&nbsp;หรือ
+                        <a role="button" class="btn btn-link" href="/register">สมัครบัญชีใหม่</a>
                     </div>
                 </div>
             </form>

@@ -25,5 +25,7 @@ Route::post('/','HomeController@postRegister');
 
 Route::get('login','HomeController@getLogin');
 
+Route::get('schedule','DoctorController@index');
+
 Route::get('test','TestSomethingController@getIndex');
 Route::post('justposttest','TestSomethingController@postTest');

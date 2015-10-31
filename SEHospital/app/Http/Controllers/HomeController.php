@@ -21,6 +21,9 @@ class HomeController extends Controller{
     public function getLogin() {
         return view('home.login');
     }
+    public function getLoginOfficer() {
+        return view('home.loginOfficer');
+    }
     public function postRegister() {
     	return view('home.index');
     }
