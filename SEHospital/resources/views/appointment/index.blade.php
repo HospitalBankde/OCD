@@ -43,31 +43,32 @@
 
         <h1 class="page-header">ค้นหารายชื่อแพทย์</h1>
         <div class="col-md-8 col-md-offset-1">
+            <form id="doc_select_form" onsubmit="return validate_doctor_search()" method="get">
+                <h2 style="color: #666666">1.เลือกจากสาขาวิชาที่เชี่ยวชาญ</h2>
 
-            <h2 style="color: #666666">1.เลือกจากสาขาวิชาที่เชี่ยวชาญ</h2>
+                <select class="selectpicker" name="select_dept" id="select_dept" >
+                    <option value="-1">Select Department</option>
+                    @foreach($depts as $dept)
+                        <option value="{{$dept->dep_id}}">{{$dept->dep_name}}</option>
+                    @endforeach
+                </select>
 
-            <select class="selectpicker" name="select_dept" id="select_dept" >
-                @foreach($depts as $dept)
-                    <option value="{{$dept->dep_id}}">{{$dept->dep_name}}</option>
-                @endforeach
-            </select>
+                <br><br><br>
 
-            <br><br><br>
+                <h2 style="color: #666666">2.เลือกรายชื่อแพทย์ในสาขา <h4 id="dept_label" style="color: #31b0d5"></h4></h2>
 
-            <h2 style="color: #666666">2.เลือกรายชื่อแพทย์ในสาขา <h4 id="dept_label" style="color: #31b0d5"></h4></h2>
+                <select class="selectpicker" name="select_doc" id="select_doc" disabled="true" >
+                    <option value="">Any Doctor</option>
 
-            <select class="selectpicker" name="select_doc" id="select_doc" disabled="true" >
-                <option value="">Any Doctor</option>
-
-            </select>
-            <br>
-            <br>
-            <button type="button" class="btn btn-default" style="background-color: #265a88; color: lightgray">
-                ต่อไป
-            </button>
-
-            <br><br>
-            <input type="text" name="date" id="date" value="กรุณาเลือกวันนัดแพทย์" style="color: #B0BEC5;" readonly>
+                </select>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-default" style="background-color: #265a88; color: lightgray">
+                    ต่อไป
+                </button>
+            </form>
+        <br><br>
+        <input type="text" name="date" id="date" value="กรุณาเลือกวันนัดแพทย์" style="color: #B0BEC5;" readonly>
 
 
 

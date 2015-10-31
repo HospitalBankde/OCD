@@ -1,7 +1,27 @@
+function validate_doctor_search() {
+    var x = document.getElementById('select_dept').value;
+    if (x == null || x == "" || x === "-1") {
+        alert("Please select department");
+        return false;
+    }
+}
+
 $(document).ready(function()
 {
     $("#select_dept").change(function(){
-        $.ajax(
+        if (document.getElementById('select_dept').value === "-1"){
+            var select = document.getElementById('select_doc');
+            select.options.length = 0;
+            var opt = document.createElement('option');
+            opt.value = "-1";
+            opt.appendChild(document.createTextNode("Any Doctor"));
+            $('#select_doc').append(opt);
+            document.getElementById('select_doc').disabled = true;
+            document.getElementById('dept_label').innerHTML = "";
+            $('#select_doc').selectpicker('refresh');
+        }
+        else{
+            $.ajax(
             {
                 url: 'doctorList',
                 type: 'GET',
@@ -14,7 +34,7 @@ $(document).ready(function()
 
                     // Create for
                     var opt = document.createElement('option');
-                    opt.value = "";
+                    opt.value = "-1";
                     opt.appendChild(document.createTextNode("Any Doctor"));
                     $('#select_doc').append(opt);
 
@@ -36,6 +56,6 @@ $(document).ready(function()
                     $('#select_doc').selectpicker('refresh');
                 }
             });
+        }
     });
-
 });
