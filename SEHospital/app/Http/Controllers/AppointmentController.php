@@ -31,8 +31,6 @@ class AppointmentController extends Controller{
         
         // $doc = Doctor::where('doc_id','=',$doc_id)->select('doc_id','doc_name','doc_surname');
         // $doc_schedule = DoctorSchedule::where('doc_id','=',$doc_id)->select('day_id','schedule');
-        // $doc_appointment_count = DoctorAppointmentCount::where('doc_id','=',$doc_id)->select('date_id', 'morning_count', 'afternoon_count');
-
 
 
         return view('appointment.time');

@@ -13,6 +13,6 @@ class Appointment extends Model {
     protected $table = 'appointment';
     public $timestamps = false;
     protected $fillable = [
-        'app_id', 'doc_id','pat_id','dep_id','app_time','app_sym'
+        'app_id', 'doc_id','pat_id','dep_id','app_date','app_reserve_date','app_reserve_time','app_sym'
     ];
 }
