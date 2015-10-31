@@ -14,24 +14,13 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation"><a href="appointment"><span class="fa fa-user-md" aria-hidden="true"></span> นัดแพทย์</a></li>
-                    <li role="presentation"><a href="about"><span class="fa fa-info" aria-hidden="true"></span> เกี่ยวกับเรา</a></li>
-                    <li role="presentation"><a href="contact"><span class="fa fa-envelope-o" aria-hidden="true"></span> ติดต่อ</a></li>
-                </ul>
-            </nav>
-            <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
-        </div>
 
         <div class="jumbotron" >
-            <h1>สิ่งเดียวที่เปลี่ยนไป <br> คือทุกสิ่ง</h1>
+            <h1>สวัสดี</h1>
             <p class="lead">สมัครบัญชีผู้ใช้วันนี้ เพื่อรับบริการชั้นหนึ่ง!</p>
-            {{--<p><a class="btn btn-primary btn-lg" href="#" role="button" data-toggle="modal" data-target="#myModal">สมัครบัญชี</a></p>--}}
-            <p><a class="btn btn-primary btn-lg" href="/register" role="button">สมัครบัญชี</a></p>
-            <p><a class="btn btn-sm" href="/" role="button">เข้าสู่ระบบ</a></p>
+            <a class="btn btn-primary btn-lg" href="register" role="button">สมัครบัญชี</a>
+            <br>
+            <a class="btn btn-link" style="font-size: medium" href="login" role="button">เข้าสู่ระบบ</a>
         </div>
 
         <div class="row marketing">
@@ -77,11 +66,6 @@
                 </div>
             </div>
         </div>
-        <footer class="footer">
-            <p>© Company 2014</p>
-        </footer>
-
-    </div>
 
 @endsection
 

@@ -16,9 +16,28 @@
 
 </head>
 <body class="custom" style="background-color: #fefefe">
-
     <!-- Content for each page -->
-    @yield('content')
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="/appointment"><span class="fa fa-user-md" aria-hidden="true"></span> นัดแพทย์</a></li>
+                    <li role="presentation"><a href="/about"><span class="fa fa-info" aria-hidden="true"></span> เกี่ยวกับเรา</a></li>
+                    <li role="presentation"><a href="/contact"><span class="fa fa-envelope-o" aria-hidden="true"></span> ติดต่อ</a></li>
+                </ul>
+            </nav>
+            <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
+            <a style="float: right;" href="/login">เข้าสู่ระบบ</a>
+        </div>
+
+
+        @yield('content')
+
+        <br><br><br>
+        <footer class="footer">
+            <p>© iHospital, 2015</p>
+        </footer>
+    </div>
 
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--}}
 </body>

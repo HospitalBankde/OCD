@@ -13,11 +13,13 @@ class HomeController extends Controller{
 
 
     public function getIndex() {
-
         return view('home.index');
     }
     public function getRegister() {
         return view('home.register');
+    }
+    public function getLogin() {
+        return view('home.login');
     }
     public function postRegister() {
     	return view('home.index');

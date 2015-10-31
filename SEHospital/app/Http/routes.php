@@ -13,12 +13,17 @@
 
 Route::get('/','HomeController@getIndex');
 
+
 Route::get('appointment','AppointmentController@getIndex');
 Route::get('appointment/time','AppointmentController@getPageTime');
+Route::get('doctorList', 'AppointmentController@getDoctorList');
+
 
 Route::get('register','HomeController@getRegister');
 Route::post('/','HomeController@postRegister');
-Route::get('doctorList', 'AppointmentController@getDoctorList');
+
+
+Route::get('login','HomeController@getLogin');
 
 Route::get('test','TestSomethingController@getIndex');
 Route::post('justposttest','TestSomethingController@postTest');

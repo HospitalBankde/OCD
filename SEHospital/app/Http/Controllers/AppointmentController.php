@@ -33,9 +33,19 @@ class AppointmentController extends Controller{
         // $doc_schedule = DoctorSchedule::where('doc_id','=',$doc_id)->select('day_id','schedule');
         // $doc_appointment_count = DoctorAppointmentCount::where('doc_id','=',$doc_id)->select('date_id', 'morning_count', 'afternoon_count');
 
+        $select_dep = Input::get('select_dep');
+        $select_doc = Input::get('select_doc');
+        $doctor = Doctor::where('doc_id','=',$select_doc)->select('doc_name','doc_surname')->first();
+        $doc_name = $doctor->doc_name;
+        $doc_surname = $doctor->doc_surname;
 
-
-        return view('appointment.time');
+        return view('appointment.time')->with([
+                'select_doc' => $select_doc,
+                'select_dep' => $select_dep,
+                'doc_name' => $doc_name,
+                'doc_surname' => $doc_surname
+            ]
+        );
     }
 
     public function getDoctorList() {

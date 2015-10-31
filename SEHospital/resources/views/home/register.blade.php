@@ -15,28 +15,12 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation"><a href="appointment"><span class="fa fa-user-md" aria-hidden="true"></span> นัดแพทย์</a></li>
-                    <li role="presentation"><a href="about"><span class="fa fa-info" aria-hidden="true"></span> เกี่ยวกับเรา</a></li>
-                    <li role="presentation"><a href="contact"><span class="fa fa-envelope-o" aria-hidden="true"></span> ติดต่อ</a></li>
-                </ul>
-            </nav>
-            <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
-            <a style="float: right;" href="/">เข้าสู่ระบบ</a>
-        </div>
-
         <div class="row">
             <div class="col-md-6">
-
+                <h2>สมัครบัญชีใหม่</h2>
+                <br>
                 <form class="form-horizontal" action="/appointment" method="POST" onsubmit="return validate_register_form(this);">
                     <fieldset>
-                        <div id="legend">
-                            {{--<legend class="">Register</legend>--}}
-                            <h2 class="page-header">สมัครบัญชีใหม่</h2>
-                        </div>
                         <div class="control-group">
                             <label class="control-label" for="firstname">ชื่อ</label>
                             <div class="controls">
@@ -99,7 +83,6 @@
 
             </div>
         </div>
-    </div>
 @endsection
 
 @stop

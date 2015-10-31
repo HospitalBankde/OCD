@@ -1,9 +1,9 @@
 /**
- * Created by PhpStorm.
- * User: AunN
- * Date: 9/18/15 AD
- * Time: 1:40 AM
- */
+* Created by PhpStorm.
+* User: AunN
+* Date: 9/18/15 AD
+* Time: 1:40 AM
+*/
 
 @extends('layout.default')
 
@@ -18,34 +18,21 @@
     {{--{!! Html::style('external/jquery/jquery.js') !!}--}}
     {!! Html::style('jquery-ui/jquery-ui.min.css') !!}
     {!! Html::script('jquery-ui/jquery-ui.min.js') !!}
-@endsection
-
-@section('content')
-
     <script>
         $(function() {
             $( "#date" ).datepicker();
         });
     </script>
+@endsection
 
-    <div class="container">
+@section('content')
 
-        <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation"><a href="appointment"><span class="fa fa-user-md" aria-hidden="true"></span> นัดแพทย์</a></li>
-                    <li role="presentation"><a href="about"><span class="fa fa-info" aria-hidden="true"></span> เกี่ยวกับเรา</a></li>
-                    <li role="presentation"><a href="contact"><span class="fa fa-envelope-o" aria-hidden="true"></span> ติดต่อ</a></li>
-                </ul>
-            </nav>
-            <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
-        </div>
-
-        <h1 class="page-header">ค้นหารายชื่อแพทย์</h1>
+    <div class="row">
         <div class="col-md-8 col-md-offset-1">
+            <h2>ค้นหารายชื่อแพทย์</h2>
+            <br>
             <form  action="appointment/time" id="doc_select_form" onsubmit="return validate_doctor_search()" method="get">
-                <h2 style="color: #666666">1.เลือกจากสาขาวิชาที่เชี่ยวชาญ</h2>
-
+                <h3 style="color: #666666">1.เลือกจากสาขาวิชาที่เชี่ยวชาญ</h3>
                 <select class="selectpicker" name="select_dept" id="select_dept" >
                     <option value="-1">Select Department</option>
                     @foreach($depts as $dept)
@@ -55,7 +42,7 @@
 
                 <br><br><br>
 
-                <h2 style="color: #666666">2.เลือกรายชื่อแพทย์ในสาขา <h4 id="dept_label" style="color: #31b0d5"></h4></h2>
+                <h3 style="color: #666666">2.เลือกรายชื่อแพทย์ในสาขา <h4 id="dept_label" style="color: #31b0d5"></h4></h3>
 
                 <select class="selectpicker" name="select_doc" id="select_doc" disabled="true" >
                     <option value="">Any Doctor</option>
@@ -64,19 +51,18 @@
                 <br>
                 <br>
                 <button type="submit" class="btn btn-default" style="background-color: #265a88; color: lightgray">
-                    ต่อไป
+                    เลือกเวลาพบแพทย์
                 </button>
             </form>
-        <br><br>
-        <input type="text" name="date" id="date" value="กรุณาเลือกวันนัดแพทย์" style="color: #B0BEC5;" readonly>
-
-
-
+            <br><br>
         </div>
-
-
-
     </div>
+
+
+    {{--</div>--}}
+
+
+
 @endsection
 
 
