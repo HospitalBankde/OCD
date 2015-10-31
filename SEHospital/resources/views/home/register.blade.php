@@ -11,6 +11,7 @@
 @endsection
 
 @section('script')
+    {!! Html::script('js/register.js') !!}
 @endsection
 
 @section('content')
@@ -24,30 +25,50 @@
                 </ul>
             </nav>
             <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
+            <a style="float: right;" href="/">เข้าสู่ระบบ</a>
         </div>
 
         <div class="row">
             <div class="col-md-6">
 
-                <form class="form-horizontal" action="" method="POST">
+                <form class="form-horizontal" action="/appointment" method="POST" onsubmit="return validate_register_form(this);">
                     <fieldset>
                         <div id="legend">
                             {{--<legend class="">Register</legend>--}}
                             <h2 class="page-header">สมัครบัญชีใหม่</h2>
                         </div>
                         <div class="control-group">
-                            <label class="control-label" for="username">Username</label>
+                            <label class="control-label" for="firstname">ชื่อ</label>
                             <div class="controls">
-                                <input type="text" id="username" name="username" placeholder="" class="form-control input-lg">
-                                <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+                                <input type="text" id="firstname" name="firstname" placeholder="" class="form-control input-lg">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="lastname">นามสกุล</label>
+                            <div class="controls">
+                                <input type="text" id="lastname" name="lastname" placeholder="" class="form-control input-lg">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="ssn">รหัสบัตรประชาชน</label>
+                            <div class="controls">
+                                <input type="text" id="ssn" name="ssn" placeholder="" class="form-control input-lg">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="tel">เบอร์โทรศัพท์</label>
+                            <div class="controls">
+                                <input type="text" id="tel" name="tel" placeholder="" class="form-control input-lg">
                             </div>
                         </div>
 
                         <div class="control-group">
                             <label class="control-label" for="email">E-mail</label>
                             <div class="controls">
-                                <input type="email" id="email" name="email" placeholder="" class="form-control input-lg">
-                                <p class="help-block">Please provide your E-mail</p>
+                                <input type="email" id="email" name="email" placeholder="" class="form-control input-lg">                                
+                                <p class="help-block">Email นี้จะใช้ในการเข้าสู่ระบบ</p>
                             </div>
                         </div>
 
