@@ -8,11 +8,11 @@
 
 namespace App\Models;
 
-class DoctorSchedule extends Model {
+class DoctorAppointmentCount extends Model {
 
-    protected $table = 'doctor_schedule';
+    protected $table = 'doctor_appointment';
     public $timestamps = false;
     protected $fillable = [
-        'doc_id', 'weekday_id', 'schedule'
+        'doc_id', 'date', 'month', 'year', 'morning_count', 'afternoon_count'
     ];
 }

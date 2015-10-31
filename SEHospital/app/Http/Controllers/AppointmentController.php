@@ -27,16 +27,21 @@ class AppointmentController extends Controller{
         //     return 'No dep_id sent';
         // }
         // $doc_id = Input::get('doc_id');
+        // $today = getdate();
         
         // $doc = Doctor::where('doc_id','=',$doc_id)->select('doc_id','doc_name','doc_surname');
-        // $doc = DoctorSchedule::where('doc_id','=',$doc_id)->select();
+        // $doc_schedule = DoctorSchedule::where('doc_id','=',$doc_id)->select('day_id','schedule');
+        // $doc_appointment_count = DoctorAppointmentCount::where('doc_id','=',$doc_id)->select('date_id', 'morning_count', 'afternoon_count');
+
+
+
         return view('appointment.time');
     }
 
     public function getDoctorList() {
         $dep_id = Input::get('dep_id');
         if(isset($dep_id)){
-            //$doctors = Doctor::where('dep_id','=',$dep_id)->select('doc_id','doc_name','doc_surname')->get();
+            $doctors = Doctor::where('dep_id','=',$dep_id)->select('doc_id','doc_name','doc_surname')->get();
             $docs = array();
 
             foreach($doctors as $doctor ) {
