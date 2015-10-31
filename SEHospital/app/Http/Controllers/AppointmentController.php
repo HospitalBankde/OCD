@@ -21,10 +21,22 @@ class AppointmentController extends Controller{
         );
     }
 
+    public function getPageTime() {
+        // $dep_id = Input::get('dep_id');
+        // if ($dep_id == null || $dep_id == "" || $dep_id === "-1") {
+        //     return 'No dep_id sent';
+        // }
+        // $doc_id = Input::get('doc_id');
+        
+        // $doc = Doctor::where('doc_id','=',$doc_id)->select('doc_id','doc_name','doc_surname');
+        // $doc = DoctorSchedule::where('doc_id','=',$doc_id)->select();
+        return view('appointment.time');
+    }
+
     public function getDoctorList() {
         $dep_id = Input::get('dep_id');
         if(isset($dep_id)){
-            $doctors = Doctor::where('dep_id','=',$dep_id)->select('doc_id','doc_name','doc_surname')->get();
+            //$doctors = Doctor::where('dep_id','=',$dep_id)->select('doc_id','doc_name','doc_surname')->get();
             $docs = array();
 
             foreach($doctors as $doctor ) {

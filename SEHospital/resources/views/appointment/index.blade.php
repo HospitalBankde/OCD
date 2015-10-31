@@ -43,7 +43,7 @@
 
         <h1 class="page-header">ค้นหารายชื่อแพทย์</h1>
         <div class="col-md-8 col-md-offset-1">
-            <form id="doc_select_form" onsubmit="return validate_doctor_search()" method="get">
+            <form  action="appointment/time" id="doc_select_form" onsubmit="return validate_doctor_search()" method="get">
                 <h2 style="color: #666666">1.เลือกจากสาขาวิชาที่เชี่ยวชาญ</h2>
 
                 <select class="selectpicker" name="select_dept" id="select_dept" >
