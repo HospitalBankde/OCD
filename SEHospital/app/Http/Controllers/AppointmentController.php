@@ -36,29 +36,38 @@ class AppointmentController extends Controller{
 
         $doctor = Doctor::where('doc_id','=',$select_doc)
                         ->select('doc_name','doc_surname')->first();
-        $doc_schedule = Doctor_Schedule::where('doc_id','=',$select_doc)
+        $doc_schedule = Doctor_Schedule::where('doc_id','=', $select_doc)
                         ->select('weekday_id','morning','afternoon')
                         ->orderBy('weekday_id', 'asc')
                         ->get();
 
-        $nextMonth = date('Y-m-d', strtotime("+1 months"));
+        $nextMonth = date('Y-m-d', strtotime("+31 days"));
 
-        $appointment = Appointment::where('doc_id','=',$select_doc)
-                        ->where('app_date','>',$today)
-                        ->where('app_date','<', $nextMonth )
-                        ->select('app_date', 'app_time')
+        $appointment = Appointment::where('doc_id','=', $select_doc)
+                        ->where('app_date','>', date("Y-m-d") )
+                        ->where('app_date','<', $nextMonth)
+                        ->select(DB::raw('count(*) as count, app_date, app_time'))
+                        ->groupBy('app_date', 'app_time')
                         ->get();
 
-        for ($i = 0; $i < 33; $i++) {
+        $availday = array();
+
+        for ($i = 0; $i < 31; $i++) {
             $tempDate = $todayDate + $i;
             $tempWeekday = ($todayWeekday + $i) % 7;
 
             if ( ! isset($doc_schedule[6])) {
                 return "doc_id " . $select_doc . " error, please contact the admin";
             }
-            // if ($doc_schedule[$tempWeekday] == '00') {
-            //     break;
-            // }
+
+            //Add the condition check here. Here I only checked the schedule.
+            //More to add: appointment being full, add time to array to check in time.blade
+            if ($doc_schedule[$tempWeekday]->morning == 0 && $doc_schedule[$tempWeekday]->afternoon == 0) {
+                array_push($availday, 0);
+                continue;
+            }
+
+            array_push($availday, 1);
         }
 
         $doc_name = $doctor->doc_name;
@@ -68,7 +77,8 @@ class AppointmentController extends Controller{
                 'select_doc' => $select_doc,
                 'select_dep' => $select_dep,
                 'doc_name' => $doc_name,
-                'doc_surname' => $doc_surname
+                'doc_surname' => $doc_surname,
+                'availday' => $availday
             ]
         );
     }
