@@ -6,6 +6,7 @@
  * Time: 1:01 AM
  */
 namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
 
 class PatientInfo extends Model {
 
