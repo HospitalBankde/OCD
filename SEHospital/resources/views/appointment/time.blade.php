@@ -12,34 +12,13 @@
 @endsection
 
 @section('script')
+    {!! Html::script('js/time_appointment.js') !!}
     {!! Html::style('jquery-ui/jquery-ui.min.css') !!}
     {!! Html::script('jquery-ui/jquery-ui.min.js') !!}
-    <script>
-        $(function() {
-            $( "#date" ).datepicker({
-                minDate:"+2D",
-                maxDate:"+1M +2D",
-                numberOfMonths:2,
-                onSelect: function(dateText) {
-                    document.getElementById('helpBlock').innerHTML = "วันที่เลือก : " + dateText ;
-                }
-            });
-            $( "#date" ).datepicker('option','beforeShowDay',function(date){
-                var td = date.getDay();
-                var ret = [(date.getDay() != 0 && date.getDay() != 6 && date.getDay() != 2 && date.getDay() != 4),'',
-                    (td != 'Sat' && td != 'Sun' && td != 'Tue' && td != 'Thu')?'':'only on workday'];
-                return ret;
-            });
-        });
-        function updateSelectedDate(date) {
-            document.getElementById('helpBlock').innerHTML = date ;
-        }
-    </script>
     <style type="text/css">
         .ui-datepicker {
             background: #ffffff;
             border: 1px solid #555;
-
         }
         .ui-widget-header {
             background: none;
@@ -50,6 +29,9 @@
 
 @section('content')
 
+    <input id="select_doc" type="hidden" value="{{ $select_doc }}"/>
+    <input id="select_dep" type="hidden" value="{{ $select_dep }}"/>
+
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
             <h2>เลือกเวลาพบแพทย์</h2>
@@ -58,7 +40,7 @@
             <div id="date" aria-describedby="helpBlock" ></div>
             <span id="helpBlock" class="help-block">กรุณาเลือกวัน</span>
             <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> เช้า
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" disabled> เช้า
             </label>
             <label class="radio-inline">
                 <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" disabled> บ่าย

@@ -17,6 +17,8 @@ Route::get('/','HomeController@getIndex');
 Route::get('appointment','AppointmentController@getIndex');
 Route::get('appointment/time','AppointmentController@getPageTime');
 Route::get('doctorList', 'AppointmentController@getDoctorList');
+Route::get('doctorDay', 'AppointmentController@getDoctorDay');
+Route::get('doctorTime', 'AppointmentController@getDoctorTime');
 
 
 Route::get('register','HomeController@getRegister');

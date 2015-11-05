@@ -29,6 +29,24 @@ class AppointmentController extends Controller{
         if ($select_dep == null || $select_dep == "" || $select_dep === "-1") {
             return 'No dep_id sent';
         }
+
+        $select_doc = Input::get('select_doc');
+        $doctor = Doctor::where('doc_id','=',$select_doc)
+                        ->select('doc_name','doc_surname')->first();
+
+        $doc_name = $doctor->doc_name;
+        $doc_surname = $doctor->doc_surname;
+
+        return view('appointment.time')->with([
+                'select_doc' => $select_doc,
+                'select_dep' => $select_dep,
+                'doc_name' => $doc_name,
+                'doc_surname' => $doc_surname,
+            ]
+        );
+    }
+
+    public function getDoctorDay() {
         $select_doc = Input::get('select_doc');
         $today = getdate();
         $todayDate = $today['mday'];
@@ -60,27 +78,32 @@ class AppointmentController extends Controller{
                 return "doc_id " . $select_doc . " error, please contact the admin";
             }
 
-            //Add the condition check here. Here I only checked the schedule.
-            //More to add: appointment being full, add time to array to check in time.blade
+            //Add the condition check here. Right now, I only checked the schedule.
+            //More to add: appointment being full
+
             if ($doc_schedule[$tempWeekday]->morning == 0 && $doc_schedule[$tempWeekday]->afternoon == 0) {
                 array_push($availday, 0);
                 continue;
             }
-
             array_push($availday, 1);
         }
 
-        $doc_name = $doctor->doc_name;
-        $doc_surname = $doctor->doc_surname;
+        return response()->json(['availday' => $availday]);
+    }
 
-        return view('appointment.time')->with([
-                'select_doc' => $select_doc,
-                'select_dep' => $select_dep,
-                'doc_name' => $doc_name,
-                'doc_surname' => $doc_surname,
-                'availday' => $availday
-            ]
-        );
+    public function getDoctorTime() {
+        $select_doc = Input::get('select_doc');
+        $select_date = Input::get('select_date');
+        $date = date("j-m-Y", strtotime($select_date)); 
+        $weekday = date("w", strtotime($date));
+        $availtime = array();
+
+        $doc_schedule = Doctor_Schedule::where('doc_id','=', $select_doc)
+                        ->where('weekday_id','=', $weekday)
+                        ->select('morning','afternoon')
+                        ->first();
+
+        return response()->json(['doc_schedule' => $doc_schedule]);
     }
 
     public function getDoctorList() {
