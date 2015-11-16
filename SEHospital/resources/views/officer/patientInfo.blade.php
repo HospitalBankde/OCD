@@ -1,9 +1,3 @@
-/**
- * Created by PhpStorm.
- * User: AunN
- * Date: 10/27/15 AD
- * Time: 5:32 PM
- */
 @extends('layout.default')
 
 @section('title')
@@ -11,7 +5,7 @@
 @endsection
 
 @section('script')
-
+    {!! Html::script('js/patientInfo.js') !!}
 @endsection
 
 @section('content')
@@ -19,7 +13,7 @@
             <div class="col-md-8 col-md-offset-1">
                 <h2>ข้อมูลเบื้องต้นของผู้ป่วย</h2>
                 <br>
-                <form class="form-horizontal" action="/" method="POST" onsubmit="return validate_patientInfo_form(this);">
+                <form class="form-horizontal" action="showPatientInfo" method="POST" onsubmit="return validate_patientInfo_form(this);">
                     <fieldset>
                         <div class="control-group">
                             <label class="control-label" for="firstname">ชื่อ</label>

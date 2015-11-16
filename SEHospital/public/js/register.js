@@ -17,31 +17,26 @@ function validate_register_form(form) {
     	form.lastname.focus();
     	return false;
     }
-    if(!validateNonEmpty(password)) {
-        alert('กรุณากรอกรหัสผ่าน');
-        form.password.focus();
-        return false;
-    }
-    if(validateSSN(ssn)) {
+    if(!validateSSN(ssn)) {
     	alert('รหัสประชาชนต้องเป็นเลขความยาว 13 ตัว');
     	form.ssn.focus();
     	return false;
 	}
-	// if(validateTel(tel)) {
-	// 	alert('โทรศัพท์ต้องอยู่ในรูป XX-XXX-XXXX หรือ XXX-XXX-XXXX ');
-	// 	form.tel.focus();
-	// 	return false;
-	// }
-	// if(validateEmail(email)) {
-	// 	alert('email ไม่ถูกต้อง');
-	// 	form.email.focus();
-	// 	return false;
-	// }
-	// if(validatePassword(password)) {
- //    	alert('Password ต้องมีความยาวตั้งแต่ 8 และไม่เกิน 20 ตัวอักษร\n และต้องมีตัวเลขและตัวอักษรภาษาอังกฤษทั้งตัวเล็กและใหญ่่');
- //    	form.password.focus();
- //    	return false;
- //    }
+	if(!validateTel(tel)) {
+		alert('โทรศัพท์ต้องอยู่ในรูป XX-XXX-XXXX หรือ XXX-XXX-XXXX ');
+		form.tel.focus();
+		return false;
+	}
+	if(!validateEmail(email)) {
+		alert('email ไม่ถูกต้อง');
+		form.email.focus();
+		return false;
+	}
+	if(!validatePassword(password)) {
+    	alert('Password ต้องมีความยาวตั้งแต่ 8 และไม่เกิน 20 ตัวอักษร\n และต้องมีตัวเลขและตัวอักษรภาษาอังกฤษทั้งตัวเล็กและใหญ่่');
+    	form.password.focus();
+    	return false;
+    }
     if(password_confirm != password) {
     	alert('Password ไม่ตรงกับ Password (Confirm)');
     	form.password_confirm.focus();

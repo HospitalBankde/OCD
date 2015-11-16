@@ -20,11 +20,12 @@ Route::get('doctorList', 'AppointmentController@getDoctorList');
 
 
 Route::get('register','HomeController@getRegister');
-Route::post('/','HomeController@postRegister');
+Route::post('showRegister','HomeController@postRegister');
 
 Route::get('login','HomeController@getLogin');
 
-Route::get('patientInfo','PatientController@index');
+Route::get('patientInfo','PatientController@getPatientInfo');
+Route::post('showPatientInfo','PatientController@postPatientInfo');
 
 Route::get('schedule','DoctorController@index');
 Route::get('dayoff','DoctorController@getPageDayOff');

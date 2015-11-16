@@ -13,12 +13,17 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getPatientInfo()
     {
         //
         return view('officer.patientInfo');
     }
 
+    public function postPatientInfo()
+    {
+        //
+        return view('home.login');
+    }
     /**
      * Show the form for creating a new resource.
      *
