@@ -8,6 +8,20 @@ function dateDiffInDays(date1, date2) {
   return diffDays;
 }
 
+function isTimeSelect() {
+    if ( $('#select_date').val() == "" )
+    {
+        alert('Please select date and time');
+        return false;
+    }
+    if ( $('#timeRadio1').is(":checked") || $('#timeRadio2').is(":checked"))
+    {
+        return true;
+    }
+    alert('Please select time');
+    return false;
+}
+
 $(document).ready(function()
 {
     $.ajax(
@@ -24,6 +38,7 @@ $(document).ready(function()
                 maxDate:"+1M +2D",
                 numberOfMonths:2,
                 onSelect: function(dateText) {
+                    document.getElementById('select_date').value = dateText;
                     document.getElementById('helpBlock').innerHTML = "วันที่เลือก : " + dateText ;
                     $.ajax(
                     {
@@ -37,20 +52,21 @@ $(document).ready(function()
                             $('#inlineRadio2').attr("checked", false);
                             var doc_schedule = response['doc_schedule'];
                             if (doc_schedule['morning'] == 1) {
-                                $('#inlineRadio1').attr('disabled', false);
+                                $('#timeRadio1').attr('disabled', false);
                             }
                             else {
-                                $('#inlineRadio1').attr('disabled', true);
+                                $('#timeRadio1').attr('disabled', true);
                             }
                             if (doc_schedule['afternoon'] == 1) {
-                                $('#inlineRadio2').attr('disabled', false);
+                                $('#timeRadio2').attr('disabled', false);
                             }
                             else {
-                                $('#inlineRadio2').attr('disabled', true);
+                                $('#timeRadio2').attr('disabled', true);
                             }
                         }
                     });
                 }
+
             });
             $( "#date" ).datepicker('option','beforeShowDay',function(date){
                 var cd = date.getDay();

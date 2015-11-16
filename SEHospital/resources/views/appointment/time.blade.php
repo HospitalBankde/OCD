@@ -29,8 +29,11 @@
 
 @section('content')
 
-    <input id="select_doc" type="hidden" value="{{ $select_doc }}"/>
-    <input id="select_dep" type="hidden" value="{{ $select_dep }}"/>
+    <form  action="/appointment/complete" id="app_submit" onsubmit="return isTimeSelect()" method="post">
+
+    <input name="select_doc" id="select_doc" type="hidden" value="{{ $select_doc }}"/>
+    <input name="select_dep" id="select_dep" type="hidden" value="{{ $select_dep }}"/>
+    <input name="select_date" id="select_date" type="hidden" value=""/>
 
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
@@ -40,10 +43,10 @@
             <div id="date" aria-describedby="helpBlock" ></div>
             <span id="helpBlock" class="help-block">กรุณาเลือกวัน</span>
             <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" disabled> เช้า
+                <input type="radio" name="select_time" id="timeRadio1" value="1" disabled> เช้า
             </label>
             <label class="radio-inline">
-                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" disabled> บ่าย
+                <input type="radio" name="select_time" id="timeRadio2" value="2" disabled> บ่าย
             </label>
             <br><br>
             <button type="submit" class="btn btn-warning">
@@ -51,6 +54,8 @@
             </button>
         </div>
     </div>
+
+    </form>
 @endsection
 
 

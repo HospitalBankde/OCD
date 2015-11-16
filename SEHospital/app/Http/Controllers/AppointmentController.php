@@ -124,4 +124,16 @@ class AppointmentController extends Controller{
         }
         return 'No dep_id sent.';
     }
+
+    public function postApp() {
+        //Assume that client is innocent and never manipulate the post request/javascript file
+        //Security here is beyond worst, you know what I mean
+        $select_doc = Input::get('select_doc');
+        $select_dep = Input::get('select_dept');
+        $select_date = Input::get('select_date');
+        $select_time = Input::get('select_time');
+
+        
+        return view('appointment.complete');
+    }
 }
