@@ -7,12 +7,12 @@
  */
 
 namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
 
-class DoctorSchedule extends Model {
-
+class Doctor_Schedule extends Model {
     protected $table = 'doctor_schedule';
     public $timestamps = false;
     protected $fillable = [
-        'doc_id', 'weekday_id', 'schedule'
+        'doc_id', 'weekday_id', 'morning', 'afternoon'
     ];
 }
