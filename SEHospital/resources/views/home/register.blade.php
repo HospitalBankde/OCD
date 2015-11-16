@@ -16,7 +16,7 @@
 
 @section('content')
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-8 col-md-offset-1">
                 <h2>สมัครบัญชีใหม่</h2>
                 <br>
                 <form class="form-horizontal" action="/appointment" method="POST" onsubmit="return validate_register_form(this);">

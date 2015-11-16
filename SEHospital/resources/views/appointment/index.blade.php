@@ -33,7 +33,7 @@
             <br>
             <form  action="appointment/time" id="doc_select_form" onsubmit="return validate_doctor_search()" method="get">
                 <h3 style="color: #666666">1.เลือกจากสาขาวิชาที่เชี่ยวชาญ</h3>
-                <select class="selectpicker" name="select_dept" id="select_dept" >
+                <select class="selectpicker" name="select_dept" id="select_dept">
                     <option value="-1">Select Department</option>
                     @foreach($depts as $dept)
                         <option value="{{$dept->dep_id}}">{{$dept->dep_name}}</option>
