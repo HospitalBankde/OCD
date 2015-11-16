@@ -27,6 +27,7 @@
                 </ul>
             </nav>
             <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
+
             <?php
                 session_start(); 
                 if (isset($_SESSION['id'])) {
@@ -35,6 +36,7 @@
                 else echo '<a style="float: right;" href="/login">เข้าสู่ระบบ</a>';
                 session_write_close();
             ?>
+            
         </div>
 
 
