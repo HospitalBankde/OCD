@@ -1,11 +1,11 @@
-function validate_register_form(form) {
+function validate_patientOnfo_form(form) {
 	var firstname = form.firstname.value;
 	var lastname = form.lastname.value;
-	var ssn = form.ssn.value;
-	var tel = form.tel.value;
-    var email = form.email.value;
-    var password = form.password.value;
-    var password_confirm = form.password_confirm.value;
+	var weight = form.wieght.value;
+	var height = form.height.value;
+    var temperature = form.temperature.value;
+    var bloodpressure = form.bloodpressure.value;
+    var heartrate = form.heartrate.value;
 
     if(!validateNonEmpty(firstname)) {
     	alert('กรุณากรอกชื่อ');
@@ -17,8 +17,8 @@ function validate_register_form(form) {
     	form.lastname.focus();
     	return false;
     }
-    if(!validateNonEmpty(password)) {
-        alert('กรุณากรอกรหัสผ่าน');
+    if(!validateNonEmpty()) {
+        alert('กรุณา');
         form.password.focus();
         return false;
     }
