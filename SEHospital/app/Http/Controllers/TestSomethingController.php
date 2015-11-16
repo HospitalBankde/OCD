@@ -28,6 +28,9 @@ class TestSomethingController extends Controller {
 
         ]);
     }
+    public function getTestData() {
+        return 'test data';
+    }
     public function postTest() {
         $email = Input::get('email');
         return "You just type: " . $email;

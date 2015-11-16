@@ -26,6 +26,12 @@ Route::post('/','HomeController@postRegister');
 Route::get('login','HomeController@getLogin');
 
 Route::get('schedule','DoctorController@index');
+Route::get('dayoff','DoctorController@getPageDayOff');
+Route::get('createPrescription', 'DoctorController@getCreatePrescription');
+Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');
+
+
 
 Route::get('test','TestSomethingController@getIndex');
+Route::get('testdata', 'TestSomethingController@getTestData');
 Route::post('justposttest','TestSomethingController@postTest');

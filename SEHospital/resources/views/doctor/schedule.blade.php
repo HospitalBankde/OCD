@@ -37,7 +37,7 @@
 
             <h2>ตารางออกตรวจ</h2>
             <button id="edit-button" class="btn btn-link" onclick="editSchedule()">แก้ไข</button>
-            <button class="btn btn-warning pull-right" >แจ้งวันลางาน</button>
+            <button class="btn btn-warning" style="float:right">แจ้งวันลางาน</button>
             <div class="clearfix">
             </div>
             <span class="row"><div id="day-schedule" style="pointer-events: none"></div></span>
@@ -55,19 +55,25 @@
                 days: [0, 1, 2, 3, 4, 5, 6],
                 interval: 30,
                 startTime: '08:00',
-                endTime: '18:30'
+                endTime: '16:30'
 
 
             });
             $("#day-schedule").on('selected.artsy.dayScheduleSelector', function (e, selected) {
                 console.log(selected);
             })
+            // $("#day-schedule").data('artsy.dayScheduleSelector').deserialize({
+            //     '1': [['09:30', '11:00'], ['13:00', '16:30']],
+            //     '2': [['08:00', '10:00'], ['13:00', '16:00']],
+            //     '4': [['10:00', '12:00'], ['13:00', '15:00']],
+            //     '6': [['10:00', '13:00']]
+            // });
             $("#day-schedule").data('artsy.dayScheduleSelector').deserialize({
-                '1': [['09:30', '11:00'], ['13:00', '16:30']],
-                '2': [['08:00', '10:00'], ['13:00', '16:00']],
-                '4': [['10:00', '12:00'], ['13:00', '15:00']],
-                '6': [['10:00', '13:00']]
-            });
+                    '1': [['09:30', '11:00'], ['13:00', '16:30']],
+                    '2': [['08:00', '10:00'], ['13:00', '16:00']],
+                    '4': [['10:00', '12:00'], ['13:00', '15:00']],
+                    '6': [['10:00', '13:00']]
+                });
         })($);
     </script>
     <style type="text/css">
