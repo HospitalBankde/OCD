@@ -132,7 +132,6 @@ class AppointmentController extends Controller{
         $select_dep = Input::get('select_dept');
         $select_date = Input::get('select_date');
         $select_time = Input::get('select_time');
-
         
         return view('appointment.complete');
     }

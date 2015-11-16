@@ -7,7 +7,9 @@
  */
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller{
 
@@ -24,7 +26,39 @@ class HomeController extends Controller{
     public function getLoginOfficer() {
         return view('home.loginOfficer');
     }
+
     public function postRegister() {
-    	return view('home.index');
+        $firstname = Input::get('firstname');
+        $lastname = Input::get('lastname');
+        $ssn = Input::get('ssn');
+        $tel = Input::get('tel');
+        $email = Input::get('email');
+        $password = Input::get('password');
+
+        $id = DB::table('patient')->insertGetId([
+            'pat_name' => $firstname,
+            'pat_surname' => $lastname,
+            'pat_SSN' => $ssn,
+            'pat_tel' => $tel,
+            'pat_email' => $email,
+            'pat_password' => $password
+        ]);
+
+        session_start();
+        $_SESSION['id'] = $id;
+        $_SESSION['name'] = $firstname . " " . $lastname;
+        $_SESSION['type'] = "patient";
+        session_write_close();
+
+    	return view('home.showRegister')->with([
+                'id' => $id,
+                'firstname' => $firstname,
+                'surname' => $lastname,
+                'ssn' => $ssn,
+                'tel' => $tel,
+                'email' => $email,
+                'password' => $password
+            ]
+        );;
     }
 }

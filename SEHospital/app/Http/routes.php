@@ -25,8 +25,9 @@ Route::get('doctorTime', 'AppointmentController@getDoctorTime');
 Route::get('register','HomeController@getRegister');
 Route::post('/','HomeController@postRegister');
 
-
 Route::get('login','HomeController@getLogin');
+
+Route::get('patientInfo','PatientController@index');
 
 Route::get('schedule','DoctorController@index');
 Route::get('dayoff','DoctorController@getPageDayOff');
@@ -38,3 +39,4 @@ Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');
 Route::get('test','TestSomethingController@getIndex');
 Route::get('testdata', 'TestSomethingController@getTestData');
 Route::post('justposttest','TestSomethingController@postTest');
+
