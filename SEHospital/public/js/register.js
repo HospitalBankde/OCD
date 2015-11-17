@@ -17,6 +17,14 @@ function validate_register_form(form) {
     	form.lastname.focus();
     	return false;
     }
+<<<<<<< HEAD
+=======
+    if(!validateNonEmpty(password)) {
+        alert('กรุณากรอกรหัสผ่าน');
+        form.password.focus();
+        return false;
+    }
+>>>>>>> appointmentv0.1
     if(!validateSSN(ssn)) {
     	alert('รหัสประชาชนต้องเป็นเลขความยาว 13 ตัว');
     	form.ssn.focus();

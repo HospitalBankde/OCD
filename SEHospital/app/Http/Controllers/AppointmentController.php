@@ -52,6 +52,8 @@ class AppointmentController extends Controller{
         $todayDate = $today['mday'];
         $todayWeekday = date('N', strtotime($today['weekday']) ) % 7;
 
+        $availday = array();
+
         $doctor = Doctor::where('doc_id','=',$select_doc)
                         ->select('doc_name','doc_surname')->first();
         $doc_schedule = Doctor_Schedule::where('doc_id','=', $select_doc)
@@ -59,32 +61,40 @@ class AppointmentController extends Controller{
                         ->orderBy('weekday_id', 'asc')
                         ->get();
 
+        //if doc_schedule error
+        if ( ! isset($doc_schedule[6])) {
+            return response()->json(['availday' => $availday]);
+        }
+
         $nextMonth = date('Y-m-d', strtotime("+31 days"));
 
-        $appointment = Appointment::where('doc_id','=', $select_doc)
+        //Gather all date that is full (>=30)
+        $appointmentFull = Appointment::where('doc_id','=', $select_doc)
                         ->where('app_date','>', date("Y-m-d") )
                         ->where('app_date','<', $nextMonth)
-                        ->select(DB::raw('count(*) as count, app_date, app_time'))
-                        ->groupBy('app_date', 'app_time')
+                        ->select(DB::raw('count(*) as count, app_date'))
+                        ->groupBy('app_date')
+                        ->having('count', '>=', 30)
                         ->get();
-
-        $availday = array();
 
         for ($i = 0; $i < 31; $i++) {
             $tempDate = $todayDate + $i;
             $tempWeekday = ($todayWeekday + $i) % 7;
 
-            if ( ! isset($doc_schedule[6])) {
-                return "doc_id " . $select_doc . " error, please contact the admin";
-            }
-
-            //Add the condition check here. Right now, I only checked the schedule.
-            //More to add: appointment being full
-
-            if ($doc_schedule[$tempWeekday]->morning == 0 && $doc_schedule[$tempWeekday]->afternoon == 0) {
+           if ($doc_schedule[$tempWeekday]->morning == 0 && $doc_schedule[$tempWeekday]->afternoon == 0) {
                 array_push($availday, 0);
                 continue;
             }
+
+            //If that day is full (>=30)
+            foreach ($appointmentFull as $eachFull) {
+                $tempDate2 = explode("-", $eachFull->app_date);
+                if ($tempDate2[2] == $tempDate) {
+                    array_push($availday, 0);
+                    break;
+                }
+            }
+
             array_push($availday, 1);
         }
 
@@ -102,6 +112,22 @@ class AppointmentController extends Controller{
                         ->where('weekday_id','=', $weekday)
                         ->select('morning','afternoon')
                         ->first();
+
+        //Check if that time is full (>=15)
+        $dateSplit = explode("/", $select_date);
+        $dateSQL = $dateSplit[2] . "-" . $dateSplit[0] . "-". $dateSplit[1];
+        $nextMonth = date('Y-m-d', strtotime("+31 days"));
+        $appointment = Appointment::where('doc_id','=', $select_doc)
+                ->where('app_date','=', $dateSQL)
+                ->select(DB::raw('count(*) as count, app_date, app_time'))
+                ->groupBy('app_date', 'app_time')
+                ->having('count', '>=', 15)
+                ->get();
+        foreach ($appointment as $eachApp) {
+            if ($eachApp->app_time == "morning") $doc_schedule->morning = 0;
+            if ($eachApp->app_time == "afternoon") $doc_schedule->afternoon = 0;
+        }
+
 
         return response()->json(['doc_schedule' => $doc_schedule]);
     }
@@ -132,8 +158,30 @@ class AppointmentController extends Controller{
         $select_dep = Input::get('select_dept');
         $select_date = Input::get('select_date');
         $select_time = Input::get('select_time');
+        $time = "";
+        if ($select_time == "1") $time = "morning";
+        else if ($select_time == "2") $time = "afternoon";
 
-        
-        return view('appointment.complete');
+        $dateSplit = explode("/", $select_date);
+        $dateSQL = $dateSplit[2] . "-" . $dateSplit[0] . "-". $dateSplit[1];
+
+        session_start();
+        if (isset($_SESSION['id'])) {
+            if ($_SESSION['type'] == "patient")
+            {
+                $pat_id = $_SESSION['id'];
+                $id = DB::table('appointment')->insertGetId([
+                    'doc_id' => $select_doc,
+                    'pat_id' => $pat_id,
+                    'app_time' => $time,
+                    'app_date' => $dateSQL,
+                    'date_of_record' => date("Y-m-d")
+                ]);
+                session_write_close();
+                return view('appointment.complete');
+            }
+        }
+        session_write_close();
+        return "Must login as patient first";
     }
 }

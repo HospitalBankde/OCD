@@ -22,10 +22,19 @@ Route::get('doctorDay', 'AppointmentController@getDoctorDay');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime');
 
 
+<<<<<<< HEAD
 Route::get('register','HomeController@getRegister');
 Route::post('showRegister','HomeController@postRegister');
 
 Route::get('login','HomeController@getLogin');
+=======
+Route::get('register','HomeController@getPageRegister');
+Route::post('/actionRegister','HomeController@postRegister');
+>>>>>>> appointmentv0.1
+
+Route::get('login','HomeController@getPageLogin');
+Route::post('actionLogin','HomeController@postLogin');
+Route::get('logout','HomeController@logout');
 
 Route::get('patientInfo','PatientController@getPatientInfo');
 Route::post('showPatientInfo','PatientController@postPatientInfo');
