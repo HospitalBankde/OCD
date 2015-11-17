@@ -18,7 +18,7 @@
 <meta http-equiv="refresh" content="1;url=/" />
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
-            <h2>You've logged-out. <br>Redirect to home page...</h2>
+            <h2>คุณได้ออกจากระบบแล้ว <br>กำลังโหลดหน้าแรก...</h2>
             <br>
         </div>
     </div>

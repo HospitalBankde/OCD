@@ -25,6 +25,7 @@ class HomeController extends Controller{
     public function getPageLogin() {
         return view('home.login');
     }
+    
 
     public function logout() {
         session_start();

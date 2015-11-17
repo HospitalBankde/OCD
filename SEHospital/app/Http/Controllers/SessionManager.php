@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 class SessionManager {
 	public static function getSessionInfo() {
-
 			$info = [];
 	        session_start();
 	        if (isset($_SESSION['id']) && isset($_SESSION['name']) && isset($_SESSION['type'])) {
@@ -23,5 +22,5 @@ class SessionManager {
 	        } else {
 	        	return $info;
 	        }	          
-	}
+	}	
 }
