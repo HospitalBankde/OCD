@@ -75,7 +75,8 @@ class AppointmentController extends Controller{
             $tempWeekday = ($todayWeekday + $i) % 7;
 
             if ( ! isset($doc_schedule[6])) {
-                return "doc_id " . $select_doc . " error, please contact the admin";
+                return response()->json(['availday' => $availday]);
+                //return "doc_id " . $select_doc . " error, please contact the admin";
             }
 
             //Add the condition check here. Right now, I only checked the schedule.

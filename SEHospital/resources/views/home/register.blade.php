@@ -19,7 +19,7 @@
             <div class="col-md-8 col-md-offset-1">
                 <h2>สมัครบัญชีใหม่</h2>
                 <br>
-                <form class="form-horizontal" action="/" method="POST" onsubmit="return validate_register_form(this);">
+                <form class="form-horizontal" action="/actionRegister" method="POST" onsubmit="return validate_register_form(this);">
                     <fieldset>
                         <div class="control-group">
                             <label class="control-label" for="firstname">ชื่อ</label>

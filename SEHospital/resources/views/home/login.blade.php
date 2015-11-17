@@ -19,7 +19,7 @@
         <div class="col-md-8 col-md-offset-1">
             <h2>เข้าสู่ระบบ</h2>
             <br>
-            <form class="form-horizontal" action="/" method="POST">
+            <form class="form-horizontal" action="/actionLogin" method="POST">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">

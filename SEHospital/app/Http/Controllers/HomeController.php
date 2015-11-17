@@ -18,10 +18,10 @@ class HomeController extends Controller{
     public function getIndex() {
         return view('home.index');
     }
-    public function getRegister() {
+    public function getPageRegister() {
         return view('home.register');
     }
-    public function getLogin() {
+    public function getPageLogin() {
         return view('home.login');
     }
 
