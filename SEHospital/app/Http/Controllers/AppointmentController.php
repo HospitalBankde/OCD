@@ -142,18 +142,21 @@ class AppointmentController extends Controller{
 
         session_start();
         if (isset($_SESSION['id'])) {
-            $pat_id = $_SESSION['id'];
-            $id = DB::table('appointment')->insertGetId([
-                'doc_id' => $select_doc,
-                'pat_id' => $pat_id,
-                'app_time' => $time,
-                'app_date' => $dateSQL,
-                'date_of_record' => date("Y-m-d")
-            ]);
-            session_write_close();
-            return view('appointment.complete');
+            if ($_SESSION['type'] == "patient")
+            {
+                $pat_id = $_SESSION['id'];
+                $id = DB::table('appointment')->insertGetId([
+                    'doc_id' => $select_doc,
+                    'pat_id' => $pat_id,
+                    'app_time' => $time,
+                    'app_date' => $dateSQL,
+                    'date_of_record' => date("Y-m-d")
+                ]);
+                session_write_close();
+                return view('appointment.complete');
+            }
         }
         session_write_close();
-        return "Must login first";
+        return "Must login as patient first";
     }
 }
