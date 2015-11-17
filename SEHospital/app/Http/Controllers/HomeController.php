@@ -11,12 +11,13 @@ use App\Models\Patient;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
-
+use App\Http\Controllers\SessionManager;
 class HomeController extends Controller{
 
 
     public function getIndex() {
-        return view('home.index');
+
+        return view('home.index')->with(SessionManager::getSessionInfo());
     }
     public function getPageRegister() {
         return view('home.register');
@@ -49,7 +50,8 @@ class HomeController extends Controller{
         $_SESSION['name'] = $patient->pat_name . " " . $patient->pat_surname;
         $_SESSION['type'] = "patient";
         session_write_close();
-        return view('home.index');
+    
+        return self::getIndex();
     }
 
     public function postRegister() {
@@ -84,6 +86,6 @@ class HomeController extends Controller{
                 'email' => $email,
                 'password' => $password
             ]
-        );;
+        );
     }
 }

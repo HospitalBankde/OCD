@@ -16,11 +16,16 @@
 @section('content')
 
         <div class="jumbotron" >
-            <h1>สวัสดี</h1>
-            <p class="lead">สมัครบัญชีผู้ใช้วันนี้ เพื่อรับบริการชั้นหนึ่ง!</p>
-            <a class="btn btn-primary btn-lg" href="register" role="button">สมัครบัญชี</a>
-            <br>
-            <a class="btn btn-link" style="font-size: medium" href="login" role="button">เข้าสู่ระบบ</a>
+
+            @if(isset($id))            
+                <h2>สวัสดี! {{$name}}</h2>
+            @else
+                <h1>สวัสดี</h1>    
+                <p class="lead">สมัครบัญชีผู้ใช้วันนี้ เพื่อรับบริการชั้นหนึ่ง!</p>
+                <a class="btn btn-primary btn-lg" href="register" role="button">สมัครบัญชี</a>
+                <br>
+                <a class="btn btn-link" style="font-size: medium" href="login" role="button">เข้าสู่ระบบ</a>
+            @endif            
         </div>
 
         <div class="row marketing">
