@@ -22,11 +22,11 @@ Route::get('doctorDay', 'AppointmentController@getDoctorDay');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime');
 
 
-Route::get('register','HomeController@getRegister');
-Route::post('/','HomeController@postRegister');
+Route::get('register','HomeController@getPageRegister');
+Route::post('/actionRegister','HomeController@postRegister');
 
-Route::get('login','HomeController@getLogin');
-Route::post('/','HomeController@postLogin');
+Route::get('login','HomeController@getPageLogin');
+Route::post('/actionLogin','HomeController@postLogin');
 Route::get('logout','HomeController@logout');
 
 Route::get('patientInfo','PatientController@index');

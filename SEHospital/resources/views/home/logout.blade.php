@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-<meta http-equiv="refresh" content="3;url=/" />
+<meta http-equiv="refresh" content="1;url=/" />
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
             <h2>You've logged-out. <br>Redirect to home page...</h2>
