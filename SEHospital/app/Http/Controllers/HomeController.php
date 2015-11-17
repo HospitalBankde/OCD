@@ -69,6 +69,7 @@ class HomeController extends Controller{
             'pat_tel' => $tel,
             'pat_email' => $email,
             'pat_password' => $password
+            'pat_password' => bcrypt($password)
         ]);
 
         session_start();
