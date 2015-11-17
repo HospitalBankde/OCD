@@ -32,9 +32,9 @@ function validate_patientInfo_form(form) {
         form.temperature.focus();
         return false;
     }
-    if(!validateNonEmpty(bloodrate) || !validateNumber(bloodrate)) {
+    if(!validateNonEmpty(bloodpressure) || !validateNumber(bloodpressure)) {
         alert('กรุณากรอกความดันโลหิตหรือเป็นตัวเลขเท่านั้น');
-        form.bloodrate.focus();
+        form.bloodpressure.focus();
         return false;
     }
     if(!validateNonEmpty(heartrate) || !validateNumber(heartrate)) {
@@ -55,6 +55,6 @@ function validateNonEmpty(text) {
 }
 
 function validateNumber(text) {
-    var re = /^[0-9]*$/
+    var re = /^[1-9]\d*(\.\d+)?$/
     return re.test(text);
 }

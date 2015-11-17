@@ -29,22 +29,28 @@ class HomeController extends Controller{
     }
 
     public function postRegister() {
+        $firstname = Input::get('firstname');
+        $lastname = Input::get('lastname');
+        $ssn = Input::get('ssn');
+        $tel = Input::get('tel');
+        $email = Input::get('email');
+        $password = Input::get('password');
         $id = DB::table('patient')->insertGetId([
-            'pat_name' => Input::get('firstname'),
-            'pat_surname' => Input::get('lastname'),
-            'pat_SSN' => Input::get('ssn'),
-            'pat_tel' => Input::get('tel'),
-            'pat_email' => Input::get('email'),
-            'pat_password' => Input::get('password')
+            'pat_name' => $firstname,
+            'pat_surname' => $lastname,
+            'pat_SSN' => $ssn,
+            'pat_tel' => $tel,
+            'pat_email' => $email,
+            'pat_password' => bcrypt($password)
         ]);
     	return view('home.showRegister')->with([
                 'id' => $id,
-                'firstname' => Input::get('firstname'),
-                'surname' => Input::get('lastname'),
-                'ssn' => Input::get('ssn'),
-                'tel' => Input::get('tel'),
-                'email' => Input::get('email'),
-                'password' => Input::get('password')
+                'firstname' => $firstname,
+                'surname' => $lastname,
+                'ssn' => $ssn,
+                'tel' => $tel,
+                'email' => $email,
+                'password' => $password
             ]
         );;
     }
