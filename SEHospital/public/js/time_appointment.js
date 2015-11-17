@@ -48,8 +48,8 @@ $(document).ready(function()
                         dataType: 'json',
                         success: function(response)
                         {
-                            $('#inlineRadio1').attr("checked", false);
-                            $('#inlineRadio2').attr("checked", false);
+                            $('#timeRadio1').attr("checked", false);
+                            $('#timeRadio2').attr("checked", false);
                             var doc_schedule = response['doc_schedule'];
                             if (doc_schedule['morning'] == 1) {
                                 $('#timeRadio1').attr('disabled', false);
