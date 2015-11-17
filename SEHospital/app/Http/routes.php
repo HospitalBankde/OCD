@@ -13,7 +13,7 @@
 
 Route::get('/','HomeController@getIndex');
 
-
+//Appointment
 Route::get('appointment','AppointmentController@getIndex');
 Route::get('appointment/time','AppointmentController@getPageTime');
 Route::post('appointment/complete','AppointmentController@postApp');
@@ -21,10 +21,11 @@ Route::get('doctorList', 'AppointmentController@getDoctorList');
 Route::get('doctorDay', 'AppointmentController@getDoctorDay');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime');
 
-
+//Register
 Route::get('register','HomeController@getRegister');
 Route::post('showRegister','HomeController@postRegister');
 
+//Log in
 Route::get('login','HomeController@getLogin');
 Route::get('register','HomeController@getPageRegister');
 Route::post('/actionRegister','HomeController@postRegister');
@@ -33,16 +34,22 @@ Route::get('login','HomeController@getPageLogin');
 Route::post('actionLogin','HomeController@postLogin');
 Route::get('logout','HomeController@logout');
 
-Route::get('patientInfo','PatientController@getPatientInfo');
+//Patient Info
+Route::get('addPatientInfo','PatientController@getPatientInfo');
 Route::post('showPatientInfo','PatientController@postPatientInfo');
+Route::get('getPatientInfo','DoctorController@getPatientInfo');
+Route::post('postPatientInfo','DoctorController@postPatientInfo');
 
+//Schedule
 Route::get('schedule','DoctorController@index');
 Route::get('dayoff','DoctorController@getPageDayOff');
+
+//Prescription
 Route::get('createPrescription', 'DoctorController@getCreatePrescription');
 Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');
 
 
-
+//Test-----------------------------------------------------------------------------------------
 Route::get('test','TestSomethingController@getIndex');
 Route::get('testdata', 'TestSomethingController@getTestData');
 Route::post('justposttest','TestSomethingController@postTest');
