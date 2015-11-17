@@ -139,7 +139,7 @@
             color:#fff;
             background-size:cover;
         }
-        
+
     </style>
 @endsection
 @stop

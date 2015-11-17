@@ -9,6 +9,13 @@
 @endsection
 
 @section('content')
+        @if(isset($warning))
+                <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                        {{$warning}}
+                </div>
+        @endif
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
                 <h2>ข้อมูลเบื้องต้นของผู้ป่วย</h2>

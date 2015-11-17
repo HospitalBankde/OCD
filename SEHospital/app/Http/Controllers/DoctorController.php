@@ -44,6 +44,11 @@ class DoctorController extends Controller
         $patID = DB::table('patient')->where('pat_name', $firstname)
                                      ->where('pat_surname', $lastname)
                                      ->pluck('pat_id');
+        if (is_null($patID)) {
+            return view('doctor.getPatientInfo')->with([
+                    'warning' => "ไม่มีผู้ป่วย $firstname $lastname ในระบบ"
+                ]);
+        }
         $patientInfo = DB::table('patient_Info')->where('pat_id', $patID)
                                                 ->where('date_of_record', date("Y-m-d"))
                                                 ->first();
