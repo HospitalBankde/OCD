@@ -13,17 +13,11 @@ use App\Models\Appointment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\SessionManager;
 class AppointmentController extends Controller{
 
-    public function getIndex() {
-        self::sendEmail('aun.wirawit@gmail.com', 'Test', 'Testetestsets.');
-        $session_info = SessionManager::getSessionInfo();
-        if(is_null($session_info)) {
-            return view('home.login')->with([
-                'warning' => 'กรุณาเข้าสู่ระบบก่อนการนัดแพทย์'
-                ]);
-        }
+    public function getIndex() {                
         $depts = DB::select('SELECT dep_name, dep_id FROM department');
         return view('appointment.index')->with([
                 'depts' => $depts
@@ -193,10 +187,15 @@ class AppointmentController extends Controller{
 
         return "Must login as patient first";
     }
-    public function sendEmail($address, $subject, $msg) {        
-        // use wordwrap() if lines are longer than 70 characters
-        $msg = wordwrap($msg,70);
-        // send email
-        mail($address ,$subject ,$msg);
+    public function sendEmail($to, $subject, $msg) {        
+        // need 'real' SMTP server & some configs to send email.
+        // localhost alone cannot send it.
+        $from = 'aunkung_only@hotmail.com';
+        Mail::raw($msg, function($message) use ($from, $to)
+        {
+            $message->from($from, 'Laravel');
+
+            $message->to($to);
+        });
     }
 }

@@ -16,7 +16,6 @@ class HomeController extends Controller{
 
 
     public function getIndex() {
-
         return view('home.index')->with(SessionManager::getSessionInfo());
     }
     public function getPageRegister() {
@@ -32,24 +31,23 @@ class HomeController extends Controller{
         session_destroy();
         return view('home.logout');
     }
-    public function getLoginOfficer() {
-        return view('home.loginOfficer');
-    }
-
     public function postLogin() {
         $email = Input::get('email');
         $password = Input::get('password');
+        // need to change this to check 'hashed password' instead of raw password.
         $patient = Patient::where('pat_email','=', $email)
                         ->where('pat_password','=', $password )
                         ->select('pat_id','pat_name','pat_surname')
                         ->first();
         if (!$patient) {
-            return "wrong username or password";
+            return view(home.login)->with([
+                'warning' => 'email หรือ รหัสผ่าน ไม่ถูกต้อง'
+                ]);
         }
         session_start();
         $_SESSION['id'] = $patient->pat_id;
         $_SESSION['name'] = $patient->pat_name . " " . $patient->pat_surname;
-        $_SESSION['type'] = "patient";
+        $_SESSION['role'] = "patient";
         session_write_close();
     
         return self::getIndex();
@@ -75,7 +73,7 @@ class HomeController extends Controller{
         session_start();
         $_SESSION['id'] = $id;
         $_SESSION['name'] = $firstname . " " . $lastname;
-        $_SESSION['type'] = "patient";
+        $_SESSION['role'] = "patient";
         session_write_close();
 
     	return view('home.showRegister')->with([

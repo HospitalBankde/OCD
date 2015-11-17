@@ -24,7 +24,7 @@
     <div class="container">
 
         <div class="jumbotron bg-1">
-            @if(isset($id))
+            @if(isset($id) && isset($role) && $role=="patient")
                 <h2>สวัสดี! {{$name}}</h2>
 
             @else
@@ -33,11 +33,10 @@
                     <p class="lead">สมัครบัญชีผู้ใช้วันนี้ เพื่อรับบริการชั้นหนึ่ง!</p>
                     <a class="btn btn-primary btn-lg" href="register" role="button">สมัครบัญชี</a>
                     <br>
-                    <a class="btn btn-link" style="font-size: medium" href="login" role="button">เข้าสู่ระบบ</a>
+                    <a class="btn btn-link hvr-grow" style="font-size: medium" href="login" role="button">เข้าสู่ระบบ</a>
                 </div>
             @endif
         </div>
-
         <div class="row marketing">
             <div class="col-lg-6">
                 <h4><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>  ประชาสัมพันธ์</h4>
@@ -138,6 +137,23 @@
             background: url('/img/homebg.jpg') no-repeat center center fixed;
             color:#fff;
             background-size:cover;
+        }
+        /* Grow */
+        .hvr-grow {
+            display: inline-block;
+            vertical-align: middle;
+            transform: translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            backface-visibility: hidden;
+            -moz-osx-font-smoothing: grayscale;
+            transition-duration: 0.3s;
+            transition-property: transform;
+        }
+
+        .hvr-grow:hover,
+        .hvr-grow:focus,
+        .hvr-grow:active {
+            transform: scale(1.1);
         }
 
     </style>

@@ -11,15 +11,26 @@
 |
 */
 
+
+// Middleware is utility to help set before & after action of Route without
+// manually insert codes in every Controllers.
+//
+//
+// To Use:
+// Route:: ... -> middleware('role:somerole'); to check whether user has that somerole.
+// Current Roles Checking: patient, doctor, nurse
+// Edit in App\Http\Middleware\RoleMiddleware.php
+
+
 Route::get('/','HomeController@getIndex');
 
 //Appointment
-Route::get('appointment','AppointmentController@getIndex');
-Route::get('appointment/time','AppointmentController@getPageTime');
-Route::post('appointment/complete','AppointmentController@postApp');
-Route::get('doctorList', 'AppointmentController@getDoctorList');
-Route::get('doctorDay', 'AppointmentController@getDoctorDay');
-Route::get('doctorTime', 'AppointmentController@getDoctorTime');
+Route::get('appointment','AppointmentController@getIndex')->middleware('role:patient');
+Route::get('appointment/time','AppointmentController@getPageTime')->middleware('role:patient');
+Route::post('appointment/complete','AppointmentController@postApp')->middleware('role:patient');
+Route::get('doctorList', 'AppointmentController@getDoctorList')->middleware('role:patient');
+Route::get('doctorDay', 'AppointmentController@getDoctorDay')->middleware('role:patient');
+Route::get('doctorTime', 'AppointmentController@getDoctorTime')->middleware('role:patient');
 
 //Register
 Route::get('register','HomeController@getRegister');
@@ -34,20 +45,32 @@ Route::get('login','HomeController@getPageLogin');
 Route::post('actionLogin','HomeController@postLogin');
 Route::get('logout','HomeController@logout');
 
+// Log in Officer
+Route::get('loginOfficer','LoginController@getPageLoginOfficer');
+Route::post('actionLoginOfficer','LoginController@postLoginOfficer');
+Route::get('dashboard', function() {
+	return view('officer.dashboard');
+});
+
 //Patient Info
-Route::get('addPatientInfo','PatientController@getPatientInfo');
-Route::post('showPatientInfo','PatientController@postPatientInfo');
-Route::get('getPatientInfo','DoctorController@getPatientInfo');
-Route::post('postPatientInfo','DoctorController@postPatientInfo');
+Route::get('addPatientInfo','PatientController@getPatientInfo');//->middleware('role:nurse');
+Route::post('showPatientInfo','PatientController@postPatientInfo');//->middleware('role:doctor');
+Route::get('getPatientInfo','DoctorController@getPatientInfo');//->middleware('role:doctor');
+Route::post('postPatientInfo','DoctorController@postPatientInfo');//->middleware('role:nurse');
 
 //Schedule
-Route::get('schedule','DoctorController@index');
-Route::get('dayoff','DoctorController@getPageDayOff');
+Route::get('schedule','DoctorController@index')->middleware('role:doctor');
+Route::get('dayoff','DoctorController@getPageDayOff')->middleware('role:doctor');
 
 //Prescription
 Route::get('createPrescription', 'DoctorController@getCreatePrescription');
 Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');
 
+
+//Error
+// Route::get('503', function() {
+// 	return view('errors/503');
+// });
 
 //Test-----------------------------------------------------------------------------------------
 Route::get('test','TestSomethingController@getIndex');

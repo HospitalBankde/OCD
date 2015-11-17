@@ -30,7 +30,7 @@
 
             <?php
                 session_start(); 
-                if (isset($_SESSION['id'])) {
+                if (isset($_SESSION['id']) && $_SESSION['role']=="patient") {
                     echo '<div style="float: right;">' . $_SESSION['name'];
                     echo '&emsp;<a href="/logout">[logout]</a>' . '</div>';
                 }

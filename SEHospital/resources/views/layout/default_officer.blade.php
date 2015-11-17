@@ -15,7 +15,7 @@
     @yield('title')
 
 </head>
-<body class="custom" style="background-color: #fefefe">
+<body class="custom" style="background-color: #FDFFD8">
     <!-- Content for each page -->
     <div class="container">
         <div class="header clearfix">
@@ -26,7 +26,15 @@
                 </ul>
             </nav>
             <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
-            <a style="float: right;" href="/login">น.พ. John Doe</a>
+            <?php
+                session_start(); 
+                if (isset($_SESSION['id']) && $_SESSION['role'] != 'patient') {
+                    echo '<div style="float: right;">' . $_SESSION['name'] .' ('.$_SESSION['role'].'';
+                    echo '&emsp;<a href="/logout">[logout]</a>' . '</div>';
+                }
+                else echo '<a style="float: right;" href="/login">เข้าสู่ระบบ</a>';
+                session_write_close();
+            ?>
         </div>
 
 

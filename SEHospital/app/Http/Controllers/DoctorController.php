@@ -21,6 +21,7 @@ class DoctorController extends Controller
         //
         return view('doctor.schedule_alt');
     }
+
     public function getPageDayOff()
     {
         return view('doctor.dayoff');
