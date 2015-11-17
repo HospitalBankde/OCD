@@ -26,6 +26,8 @@ Route::get('register','HomeController@getRegister');
 Route::post('/','HomeController@postRegister');
 
 Route::get('login','HomeController@getLogin');
+Route::post('/','HomeController@postLogin');
+Route::get('logout','HomeController@logout');
 
 Route::get('patientInfo','PatientController@index');
 

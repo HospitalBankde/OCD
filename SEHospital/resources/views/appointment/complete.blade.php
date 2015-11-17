@@ -27,8 +27,11 @@
 @endsection
 
 @section('content')
-
-    <p>check</p>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+            <h2>Appointment Complete</h2>
+        </div>
+    </div>
 @endsection
 
 

@@ -7,6 +7,7 @@
  */
 
 namespace App\Http\Controllers;
+use App\Models\Patient;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
@@ -23,8 +24,32 @@ class HomeController extends Controller{
     public function getLogin() {
         return view('home.login');
     }
+
+    public function logout() {
+        session_start();
+        session_destroy();
+        return view('home.logout');
+    }
     public function getLoginOfficer() {
         return view('home.loginOfficer');
+    }
+
+    public function postLogin() {
+        $email = Input::get('email');
+        $password = Input::get('password');
+        $patient = Patient::where('pat_email','=', $email)
+                        ->where('pat_password','=', $password )
+                        ->select('pat_id','pat_name','pat_surname')
+                        ->first();
+        if (!$patient) {
+            return "wrong username or password";
+        }
+        session_start();
+        $_SESSION['id'] = $patient->pat_id;
+        $_SESSION['name'] = $patient->pat_name . " " . $patient->pat_surname;
+        $_SESSION['type'] = "patient";
+        session_write_close();
+        return view('home.index');
     }
 
     public function postRegister() {

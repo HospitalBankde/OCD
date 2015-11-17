@@ -132,7 +132,27 @@ class AppointmentController extends Controller{
         $select_dep = Input::get('select_dept');
         $select_date = Input::get('select_date');
         $select_time = Input::get('select_time');
-        
-        return view('appointment.complete');
+        $time = "";
+        if ($select_time == "1") $time = "morning";
+        else if ($select_time == "2") $time = "afternoon";
+
+        $dateSplit = explode("/", $select_date);
+        $dateSQL = $dateSplit[2] . "-" . $dateSplit[0] . "-". $dateSplit[1];
+
+        session_start();
+        if (isset($_SESSION['id'])) {
+            $pat_id = $_SESSION['id'];
+            $id = DB::table('appointment')->insertGetId([
+                'doc_id' => $select_doc,
+                'pat_id' => $pat_id,
+                'app_time' => $time,
+                'app_date' => $dateSQL,
+                'date_of_record' => date("Y-m-d")
+            ]);
+            session_write_close();
+            return view('appointment.complete');
+        }
+        session_write_close();
+        return "Must login first";
     }
 }
