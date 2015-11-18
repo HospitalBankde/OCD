@@ -8,7 +8,7 @@
 @extends('layout.default_officer')
 
 @section('title')
-    <title>Register</title>
+    <title>Login เจ้าหน้าที่</title>
 @endsection
 
 @section('script')
@@ -26,7 +26,7 @@
         <div class="col-md-8 col-md-offset-1">
             <h2>เข้าสู่ระบบเจ้าหน้าที่</h2>
             <br>
-            <form class="form-horizontal" onsubmit="" action="/actionLoginOfficer" method="POST">
+            <form class="form-horizontal" onsubmit="" action="actionLogin" method="POST">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">

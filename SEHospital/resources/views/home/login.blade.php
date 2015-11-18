@@ -39,6 +39,8 @@
                         <input name="password" type="password" class="form-control" id="password" placeholder="Password">
                     </div>
                 </div>
+                <!-- force sent role as patient -->
+                <input type="hidden" name="role" id="role" value="patient">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <div class="checkbox">

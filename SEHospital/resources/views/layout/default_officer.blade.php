@@ -28,11 +28,11 @@
             <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
             <?php
                 session_start(); 
-                if (isset($_SESSION['id']) && $_SESSION['role'] != 'patient') {
-                    echo '<div style="float: right;">' . $_SESSION['name'] .' ('.$_SESSION['role'].'';
+                if (isset($_SESSION['id'])) {
+                    echo '<div style="float: right;">' . $_SESSION['name'] .' ('.$_SESSION['role'].') ';
                     echo '&emsp;<a href="/logout">[logout]</a>' . '</div>';
                 }
-                else echo '<a style="float: right;" href="/login">เข้าสู่ระบบ</a>';
+                else echo '<a style="float: right;" href="/loginOfficer">เข้าสู่ระบบ</a>';
                 session_write_close();
             ?>
         </div>

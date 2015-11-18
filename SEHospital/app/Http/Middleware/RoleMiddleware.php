@@ -16,7 +16,7 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next, $role)
     {
-        // This middleware check that session has correct role.
+        // This middleware check that session has correct role to enter the page.
 
 
         $session_info = SessionManager::getSessionInfo();
@@ -24,18 +24,18 @@ class RoleMiddleware
         // Not login yet
         if (is_null($session_info)) {
             if($role == 'patient') {
-                return view('home/login')->with([
+                return view('home.login')->with([
                     'warning' => 'กรุณาเข้าสู่ระบบผู้ป่วยก่อนทำรายการ'
                     ]);
             } elseif ($role == 'doctor') {
                 # change to doctor login page
-                return view('home/loginOfficer')->with([
+                return view('home.loginOfficer')->with([
                     'warning' => 'กรุณาเข้าสู่ระบบแพทย์ก่อนทำรายการ',
                     'selectedRole' => 'doctor'
                     ]);
             } elseif ($role == 'nurse') {
                 # change to nurse login page
-                return view('home/loginOfficer')->with([
+                return view('home.loginOfficer')->with([
                     'warning' => 'กรุณาเข้าสู่ระบบพยาบาลก่อนทำรายการ',
                     'selectedRole' => 'nurse'
                     ]);
@@ -45,12 +45,12 @@ class RoleMiddleware
                     ]);
             }
         } 
-        // login but not correct role
+        // login but not correct role        
         if ($session_info['role'] != $role) {
             return view('errors/errorText')->with([
                 'text' => 'เกิดข้อผิดพลาด ท่านไม่มมีสิทธิ์ทำรายการนี้'
                 ]);
-        }
+        }        
         // login & correct role => proceed
         return $next($request);
     }

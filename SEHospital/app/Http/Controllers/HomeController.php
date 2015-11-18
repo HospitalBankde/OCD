@@ -24,35 +24,12 @@ class HomeController extends Controller{
     public function getPageLogin() {
         return view('home.login');
     }
-    
-
-    public function logout() {
-        session_start();
-        session_destroy();
-        return view('home.logout');
+    public function getPageLoginOfficer() {
+        return view('home.loginOfficer');
     }
-    public function postLogin() {
-        $email = Input::get('email');
-        $password = Input::get('password');
-        // need to change this to check 'hashed password' instead of raw password.
-        $patient = Patient::where('pat_email','=', $email)
-                        ->where('pat_password','=', $password )
-                        ->select('pat_id','pat_name','pat_surname')
-                        ->first();
-        if (!$patient) {
-            return view(home.login)->with([
-                'warning' => 'email หรือ รหัสผ่าน ไม่ถูกต้อง'
-                ]);
-        }
-        session_start();
-        $_SESSION['id'] = $patient->pat_id;
-        $_SESSION['name'] = $patient->pat_name . " " . $patient->pat_surname;
-        $_SESSION['role'] = "patient";
-        session_write_close();
-    
-        return self::getIndex();
+    public function getPageDashboard() {
+        return view('home.dashboard')->with(Session::getSessionInfo());
     }
-
     public function postRegister() {
         $firstname = Input::get('firstname');
         $lastname = Input::get('lastname');

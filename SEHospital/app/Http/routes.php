@@ -20,7 +20,7 @@
 // Route:: ... -> middleware('role:somerole'); to check whether user has that somerole.
 // Current Roles Checking: patient, doctor, nurse
 // Edit in App\Http\Middleware\RoleMiddleware.php
-
+use App\Http\Controllers\SessionManager;
 
 Route::get('/','HomeController@getIndex');
 
@@ -32,24 +32,25 @@ Route::get('doctorList', 'AppointmentController@getDoctorList')->middleware('rol
 Route::get('doctorDay', 'AppointmentController@getDoctorDay')->middleware('role:patient');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime')->middleware('role:patient');
 
-//Register
-Route::get('register','HomeController@getRegister');
-Route::post('showRegister','HomeController@postRegister');
 
-//Log in
-Route::get('login','HomeController@getLogin');
+// Register
 Route::get('register','HomeController@getPageRegister');
 Route::post('/actionRegister','HomeController@postRegister');
 
+// Login (All users login via LoginController@postLogin )
+	// page
 Route::get('login','HomeController@getPageLogin');
-Route::post('actionLogin','HomeController@postLogin');
-Route::get('logout','HomeController@logout');
+Route::get('loginOfficer','HomeController@getPageLoginOfficer');
+	// action
+Route::post('actionLogin','LoginController@postLogin');
+Route::get('logout','LoginController@logout');
 
-// Log in Officer
-Route::get('loginOfficer','LoginController@getPageLoginOfficer');
-Route::post('actionLoginOfficer','LoginController@postLoginOfficer');
 Route::get('dashboard', function() {
-	return view('officer.dashboard');
+	$info = SessionManager::getSessionInfo();
+	if(is_null($info)) {
+		return redirect('/');
+	}
+	return view('home.dashboard')->with(SessionManager::getSessionInfo());
 });
 
 //Patient Info
@@ -76,4 +77,6 @@ Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');
 Route::get('test','TestSomethingController@getIndex');
 Route::get('testdata', 'TestSomethingController@getTestData');
 Route::post('justposttest','TestSomethingController@postTest');
-
+Route::get('sessionTestLaravel', 'TestSomethingController@sessionTestLaravel');
+Route::get('sessionTestPHP', 'TestSomethingController@sessionTestPHP');
+Route::get('sessionTestClose', 'TestSomethingController@sessionTestClose');
