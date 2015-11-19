@@ -14,7 +14,8 @@
 @section('script')
     {!! Html::style('jquery-ui/jquery-ui.min.css') !!}
     {!! Html::script('jquery-ui/jquery-ui.min.js') !!}
-    <script>
+    
+    <script type="text/javascript">
         $(function() {
             $( "#date" ).datepicker()
             $( "#date" ).datepicker('option','beforeShowDay',function(date){
@@ -24,9 +25,11 @@
                 return ret;
             });
         });
+
         function updateSelectedDate(date) {
             document.getElementById('helpBlock').innerHTML = date ;
         }
+        
     </script>
     <style type="text/css">
         .ui-datepicker {

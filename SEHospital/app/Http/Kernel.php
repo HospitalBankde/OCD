@@ -28,9 +28,10 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,        
+        'role' => \App\Http\Middleware\RoleMiddleware::class,
         // specify in Route:: if needed csrf
         'csrf' => \App\Http\Middleware\VerifyCsrfToken::class
+
     ];
 }

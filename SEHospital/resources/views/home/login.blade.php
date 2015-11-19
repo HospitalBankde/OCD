@@ -8,13 +8,21 @@
 @extends('layout.default')
 
 @section('title')
-    <title>iHospital</title>
+    <title>Login</title>
 @endsection
 
 @section('script')
+
 @endsection
 
 @section('content')
+    @if(isset($warning))
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+                {{$warning}}
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
             <h2>เข้าสู่ระบบ</h2>
@@ -32,6 +40,8 @@
                         <input name="password" type="password" class="form-control" id="password" placeholder="Password">
                     </div>
                 </div>
+                <!-- force sent role as patient -->
+                <input type="hidden" name="role" id="role" value="patient">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <div class="checkbox">

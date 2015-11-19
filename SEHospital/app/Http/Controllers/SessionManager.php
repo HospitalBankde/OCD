@@ -4,17 +4,16 @@ namespace App\Http\Controllers;
 
 class SessionManager {
 	public static function getSessionInfo() {
-
 			$info = [];
 	        session_start();
-	        if (isset($_SESSION['id']) && isset($_SESSION['name']) && isset($_SESSION['type'])) {
+	        if (isset($_SESSION['id']) && isset($_SESSION['name']) && isset($_SESSION['role'])) {
 	        	$id = $_SESSION['id'];
 	            $name = $_SESSION['name'];
-	            $type = $_SESSION['type'];
+	            $role = $_SESSION['role'];
 	            $info = [
 	        		'id' => $id,
 	        		'name' => $name,
-			        'type' => $type
+			        'role' => $role
 	    	    ];
 	        };
 	        session_write_close();
@@ -23,5 +22,5 @@ class SessionManager {
 	        } else {
 	        	return $info;
 	        }	          
-	}
-}
+	}	
+} 

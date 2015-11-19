@@ -16,7 +16,6 @@ class HomeController extends Controller{
 
 
     public function getIndex() {
-
         return view('home.index')->with(SessionManager::getSessionInfo());
     }
     public function getPageRegister() {
@@ -25,35 +24,12 @@ class HomeController extends Controller{
     public function getPageLogin() {
         return view('home.login');
     }
-
-    public function logout() {
-        session_start();
-        session_destroy();
-        return view('home.logout');
-    }
-    public function getLoginOfficer() {
+    public function getPageLoginOfficer() {
         return view('home.loginOfficer');
     }
-
-    public function postLogin() {
-        $email = Input::get('email');
-        $password = Input::get('password');
-        $patient = Patient::where('pat_email','=', $email)
-                        ->where('pat_password','=', $password )
-                        ->select('pat_id','pat_name','pat_surname')
-                        ->first();
-        if (!$patient) {
-            return "wrong username or password";
-        }
-        session_start();
-        $_SESSION['id'] = $patient->pat_id;
-        $_SESSION['name'] = $patient->pat_name . " " . $patient->pat_surname;
-        $_SESSION['type'] = "patient";
-        session_write_close();
-    
-        return self::getIndex();
+    public function getPageDashboard() {
+        return view('home.dashboard')->with(Session::getSessionInfo());
     }
-
     public function postRegister() {
         $firstname = Input::get('firstname');
         $lastname = Input::get('lastname');
@@ -67,14 +43,14 @@ class HomeController extends Controller{
             'pat_surname' => $lastname,
             'pat_SSN' => $ssn,
             'pat_tel' => $tel,
-            'pat_email' => $email,
-            'pat_password' => $password
+            'pat_email' => $email,            
+            'pat_password' => bcrypt($password)
         ]);
 
         session_start();
         $_SESSION['id'] = $id;
         $_SESSION['name'] = $firstname . " " . $lastname;
-        $_SESSION['type'] = "patient";
+        $_SESSION['role'] = "patient";
         session_write_close();
 
     	return view('home.showRegister')->with([

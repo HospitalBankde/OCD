@@ -1,7 +1,7 @@
-function validate_patientOnfo_form(form) {
+function validate_patientInfo_form(form) {
 	var firstname = form.firstname.value;
 	var lastname = form.lastname.value;
-	var weight = form.wieght.value;
+	var weight = form.weight.value;
 	var height = form.height.value;
     var temperature = form.temperature.value;
     var bloodpressure = form.bloodpressure.value;
@@ -17,60 +17,44 @@ function validate_patientOnfo_form(form) {
     	form.lastname.focus();
     	return false;
     }
-    if(!validateNonEmpty()) {
-        alert('กรุณา');
-        form.password.focus();
+    if(!validateNonEmpty(weight) || !validateNumber(weight)) {
+        alert('กรุณากรอกน้ำหนักหรือเป็นตัวเลขเท่านั้น');
+        form.weight.focus();
         return false;
     }
-    if(validateSSN(ssn)) {
-    	alert('รหัสประชาชนต้องเป็นเลขความยาว 13 ตัว');
-    	form.ssn.focus();
-    	return false;
-	}
-	// if(validateTel(tel)) {
-	// 	alert('โทรศัพท์ต้องอยู่ในรูป XX-XXX-XXXX หรือ XXX-XXX-XXXX ');
-	// 	form.tel.focus();
-	// 	return false;
-	// }
-	// if(validateEmail(email)) {
-	// 	alert('email ไม่ถูกต้อง');
-	// 	form.email.focus();
-	// 	return false;
-	// }
-	// if(validatePassword(password)) {
- //    	alert('Password ต้องมีความยาวตั้งแต่ 8 และไม่เกิน 20 ตัวอักษร\n และต้องมีตัวเลขและตัวอักษรภาษาอังกฤษทั้งตัวเล็กและใหญ่่');
- //    	form.password.focus();
- //    	return false;
- //    }
-    if(password_confirm != password) {
-    	alert('Password ไม่ตรงกับ Password (Confirm)');
-    	form.password_confirm.focus();
-    	return false;
+    if(!validateNonEmpty(height) || !validateNumber(height)) {
+        alert('กรุณากรอกส่วนสูงหรือเป็นตัวเลขเท่านั้น');
+        form.height.focus();
+        return false;
     }
-    alert(firstname + ' ได้ทำการสมัครสมาชิกเรียบร้อย');
+    if(!validateNonEmpty(temperature) || !validateNumber(temperature)) {
+        alert('กรุณากรอกอุณหภูมิหรือเป็นตัวเลขเท่านั้น');
+        form.temperature.focus();
+        return false;
+    }
+    if(!validateNonEmpty(bloodpressure) || !validateNumber(bloodpressure)) {
+        alert('กรุณากรอกความดันโลหิตหรือเป็นตัวเลขเท่านั้น');
+        form.bloodpressure.focus();
+        return false;
+    }
+    if(!validateNonEmpty(heartrate) || !validateNumber(heartrate)) {
+        alert('กรุณากรอกอัตราการเต้นของหัวใจหรือเป็นตัวเลขเท่านั้น');
+        form.heartrate.focus();
+        return false;
+    }
+    alert('ลงข้อมูลของผู้ป่วยเรียบร้อย');
     return true;
 }
 
 function validateNonEmpty(text) {
-	if(text.length == 0) {
+	if (text.length == 0) {
 		return false;
 	} else {
 		return true;
 	}
 }
-function validateSSN(ssn) {
-	var re = /^\d{13}/;
-	return re.test(ssn);
-}
-function validateTel(tel) {
-	var re = /^\(?([0-9]{2,3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-	return re.test(tel);
-}
-function validateEmail(email) {
-    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-    return re.test(email);
-}
-function validatePassword(pwd) {
-    var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w{6,}$/;
-	return re.test(pwd);
+
+function validateNumber(text) {
+    var re = /^[1-9]\d*(\.\d+)?$/
+    return re.test(text);
 }

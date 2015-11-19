@@ -13,10 +13,11 @@ use App\Models\Appointment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
-
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\SessionManager;
 class AppointmentController extends Controller{
 
-    public function getIndex() {
+    public function getIndex() {                
         $depts = DB::select('SELECT dep_name, dep_id FROM department');
         return view('appointment.index')->with([
                 'depts' => $depts
@@ -182,6 +183,19 @@ class AppointmentController extends Controller{
             }
         }
         session_write_close();
+
+
         return "Must login as patient first";
+    }
+    public function sendEmail($to, $subject, $msg) {        
+        // need 'real' SMTP server & some configs to send email.
+        // localhost alone cannot send it.
+        $from = 'aunkung_only@hotmail.com';
+        Mail::raw($msg, function($message) use ($from, $to)
+        {
+            $message->from($from, 'Laravel');
+
+            $message->to($to);
+        });
     }
 }
