@@ -7,31 +7,24 @@
 @extends('layout.default')
 
 @section('title')
-    <title>Register</title>
+    <title>Prescription</title>
 @endsection
 
 @section('script')
-    {!! Html::script('js/register.js') !!}
+
 @endsection
 
 @section('content')
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <h2>สมัครบัญชีใหม่</h2>
+                <h2>llll</h2>
                 <br>
-                <form class="form-horizontal" action="showRegister" method="POST" onsubmit="return validate_register_form(this);">
-                <form class="form-horizontal" action="/actionRegister" method="POST" onsubmit="return validate_register_form(this);">
+                <form class="form-horizontal" action="/appointment" method="POST" onsubmit="return validate_register_form(this);">
                     <fieldset>
                         <div class="control-group">
-                            <label class="control-label" for="firstname">ชื่อ</label>
+                            <label class="control-label" for="ID"></label>
                             <div class="controls">
-                                <input type="text" id="firstname" name="firstname" placeholder="" class="form-control input-lg">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="lastname">นามสกุล</label>
-                            <div class="controls">
-                                <input type="text" id="lastname" name="lastname" placeholder="" class="form-control input-lg">
+                                <input type="text" id="ID" name="firstname" placeholder="" class="form-control input-lg">
                             </div>
                         </div>
 
@@ -61,7 +54,7 @@
                             <label class="control-label" for="password">Password</label>
                             <div class="controls">
                                 <input type="password" id="password" name="password" placeholder="" class="form-control input-lg">
-                                <p class="help-block">Password should be at least 8 characters</p>
+                                <p class="help-block">Password should be at least 6 characters</p>
                             </div>
                         </div>
 

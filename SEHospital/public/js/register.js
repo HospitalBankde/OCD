@@ -7,7 +7,6 @@ function validate_register_form(form) {
     var password = form.password.value;
     var password_confirm = form.password_confirm.value;
 
-    alert(firstname);
     if(!validateNonEmpty(firstname)) {
     	alert('กรุณากรอกชื่อ');
     	form.firstname.focus();
@@ -18,22 +17,30 @@ function validate_register_form(form) {
     	form.lastname.focus();
     	return false;
     }
-    if(validateSSN(ssn)) {
+<<<<<<< HEAD
+=======
+    if(!validateNonEmpty(password)) {
+        alert('กรุณากรอกรหัสผ่าน');
+        form.password.focus();
+        return false;
+    }
+>>>>>>> appointmentv0.1
+    if(!validateSSN(ssn)) {
     	alert('รหัสประชาชนต้องเป็นเลขความยาว 13 ตัว');
     	form.ssn.focus();
     	return false;
 	}
-	if(validateTel(tel)) {
+	if(!validateTel(tel)) {
 		alert('โทรศัพท์ต้องอยู่ในรูป XX-XXX-XXXX หรือ XXX-XXX-XXXX ');
 		form.tel.focus();
 		return false;
 	}
-	if(validateEmail(email)) {
+	if(!validateEmail(email)) {
 		alert('email ไม่ถูกต้อง');
 		form.email.focus();
 		return false;
 	}
-	if(validatePassword(password)) {
+	if(!validatePassword(password)) {
     	alert('Password ต้องมีความยาวตั้งแต่ 8 และไม่เกิน 20 ตัวอักษร\n และต้องมีตัวเลขและตัวอักษรภาษาอังกฤษทั้งตัวเล็กและใหญ่่');
     	form.password.focus();
     	return false;
@@ -43,6 +50,7 @@ function validate_register_form(form) {
     	form.password_confirm.focus();
     	return false;
     }
+    alert(firstname + ' ได้ทำการสมัครสมาชิกเรียบร้อย');
     return true;
 }
 

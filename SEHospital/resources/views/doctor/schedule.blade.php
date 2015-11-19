@@ -7,10 +7,10 @@
 */
 
 
-@extends('layout.default')
+@extends('layout.default_officer')
 
 @section('title')
-    <title>Register</title>
+    <title>Schedule</title>
 @endsection
 
 @section('script')
