@@ -30,6 +30,9 @@ Route::get('dayoff','DoctorController@getPageDayOff');
 Route::get('createPrescription', 'DoctorController@getCreatePrescription');
 Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');
 
+Route::get('getPatientInformation', 'PrescriptionController@getPatientInformation');
+Route::get('medicineList','PrescriptionController@getMedicineList');
+Route::post('postPrescription','PrescriptionController@postCreatePrescription');
 
 
 Route::get('test','TestSomethingController@getIndex');

@@ -13,6 +13,7 @@
 @endsection
 
 @section('script')
+    {!! Html::script('js/createPrescription.js') !!}
     {!! Html::script('bootstrap-typeahead/bootstrap3-typeahead.js') !!}
     <style type="text/css">
         .top5 { margin-top:5px; }
@@ -23,9 +24,12 @@
         .top30 { margin-top:30px; }
     </style>
     <script>
-        $.get('test_medicine.json', function(data){
-            $('#typeahead').typeahead({ source:data });
-        },'json');
+        $(document).ready(function() {
+             showResult();
+       });
+        // $.get('test_medicine.json', function(data){
+        //     $('#typeahead').typeahead({ source:data });
+        // },'json');
     </script>
 @endsection
 
@@ -34,107 +38,120 @@
         <div class="col-md-8 col-md-offset-1">
             <h2>ใบสั่งยา</h2>
             <br>
-            <form class="form-horizontal" action="/appointment" method="POST" onsubmit="return validate_register_form(this);">
+        
                 <fieldset>
                     <div class="control-group">
-                        <label class="control-label" for="firstname">รหัสผู้ป่วย</label>
+                        <label class="control-label" for="pat_id">รหัสผู้ป่วย</label>
                         <div class="controls">
-                            <input type="text" id="firstname" name="firstname" placeholder="" class="form-control input-lg">
+                            <input type="text" id="pat_id" name="pat_id" placeholder="" class="form-control input-lg" autocomplete="off" onkeyup="">
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label" for="lastname">ชื่อผู้ป่วย</label>
-                        <div class="controls">
-                            <input type="text" id="lastname" name="lastname" placeholder="" class="form-control input-lg">
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label" for="ssn">นามสกุล</label>
-                        <div class="controls">
-                            <input type="text" id="ssn" name="ssn" placeholder="" class="form-control input-lg">
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label" for="tel">อาการ</label>
-                        <div class="controls">
-                            <input type="text" id="tel" name="tel" placeholder="" class="form-control input-lg">
-                        </div>
-                    </div>
+                
                 </fieldset>
-            </form>
+            
+                    <br>    
+                    <button class="btn btn-primary" onclick="checkPatientID()" >ตรวจสอบ</button><br><br>
+
+                    <div class="row 30">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">ข้อมูลผู้ป่วย</h3>
+                            </div>
+                            <div class="panel-body">
+                                <p class="control-label" for="firstname" id="patientname">ชื่อ สกุล</p>                            
+                            </div>
+                        </div>
+                    </div>
+                
+                   <!--  <div class="control-group">
+                        <label class="control-label" for="firstname">ชื่อผู้ป่วย</label>
+                        <div class="controls">
+                            <input type="text" id="firstname" name="firstname" placeholder="" class="form-control input-lg" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="lastname">นามสกุล</label>
+                        <div class="controls">
+                            <input type="text" id="lastname" name="lastname" placeholder="" class="form-control input-lg" autocomplete="off">
+                        </div>
+                    </div> -->
+
+                    <div class="control-group">
+                        <label class="control-label" for="symtom">อาการ</label>
+                        <div class="controls">
+                            <input type="text" id="symtom" name="symtom" placeholder="" class="form-control input-lg" autocomplete="off">
+                        </div>
+                    </div>
+                
+            
 
             <div class="row top30">
-                <form class="form-inline">
-
-                    <label class="control-label" for="tel">ค้นหายา</label>
-                    <input id="typeahead" type="text" data-provide="typeahead" placeholder="ชื่อยา หรือ id">
-                </form>
-                <form class="form-horizontal top10">
+                <!-- <form class="form-horizontal top10" > -->
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            <h3 class="panel-title">id : 1  ชื่อยา : med1</h3>
+                            <h3 class="panel-title">รายการยา</h3>
                         </div>
+                        <!-- <label class="control-label" for="tel">ค้นหายา</label> -->
+                        
+
                         <div class="panel-body">
+                            <label>ค้นหายา</label>
+                            <input id="typeahead" class="form-control input-sm" autocomplete="off" type="text" data-provide="typeahead" placeholder="ชื่อยา หรือ id" name="medname" >
+                            <br>
                             <label>จำนวน(เม็ด)</label>
-                            <input type="text" class="form-control input-sm">
+                            <input type="text" class="form-control input-sm" id="med_amount" name="med_amount" placeholder="number">
+                            <br>
                             <label>วิธีการใช้</label>
-                            <input type="text" class="form-control input-sm">
-                            <button type="button" class="btn btn-success top10">
+                            <input type="text" class="form-control input-sm" id="description" name="description" placeholder="description">
+                            <br>
+                            <button type="button" class="btn btn-success top10" onclick="add_med()">
                                 เพิ่ม
                             </button>
                         </div>
                     </div>
-                </form>
+                <!-- </form> -->
 
 
-                <table class="table">
+
+                <table class="table" id="prescription_table">
+                    <!-- <col width="50px" />
+                    <col width="50px" />
+                    <col width="100px" /> -->
                     <br>
                     <label class="lead">รายการยา</label>&nbsp&nbsp<a href="#">แก้ไข</a>
                     <!-- <caption>Prescription</caption> -->
                     <thead>
-                    <tr>
+                    <!-- <tr>
                         <th>ลำดับ</th>
                         <th>id</th>
                         <th>ชื่อยา</th>
                         <th>จำนวน(เม็ด)</th>
                         <th>วิธีการใช้</th>
+                    </tr> -->
+                    <tr>
+                        <th>id</th>
+                        <th>ชื่อยา</th>
+                        <th>จำนวน(เม็ด)</th>
+                        <th>วิธีการใช้</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>12</td>
-                        <td>med1</td>
-                        <td>2</td>
-                        <td>ทานหลังอาหารทุกมื้อ</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>26</td>
-                        <td>medimedi</td>
-                        <td>20</td>
-                        <td>ทานทุก 1 ชั่วโมง</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>233</td>
-                        <td>abcdemedicine</td>
-                        <td>8</td>
-                        <td>ทานก่อนนอนจนกว่าจะหาย</td>
-                    </tr>
                     </tbody>
                 </table>
-                </form>
             </div>
 
+
+            <form id="sendform" class="form-horizontal" action="/postPrescription" method="POST" onsubmit="return createPrescription()" >
             <div class="row">
+                <input type="hidden" name="senddata" id="senddata" value="">
                 <!-- Button -->
                 <div class="controls">
-                    <button class="btn btn-warning">สร้างใบสั่งยา</button>
+                    <button class="btn btn-warning" >สร้างใบสั่งยา</button>
                 </div>
             </div>
+            </form>
 
 
         </div>
