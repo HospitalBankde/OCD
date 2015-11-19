@@ -6,6 +6,12 @@
 
 @section('script')
     {!! Html::script('js/patientInfo.js') !!}
+    {!! Html::script('bootstrap-typeahead/bootstrap3-typeahead.js') !!}
+    <script>
+        $(document).ready(function() {
+             showResult();
+       });
+    </script>
 @endsection
 
 @section('content')
@@ -63,6 +69,43 @@
                             <div class="controls">
                                 <input type="text" id="heartrate" name="heartrate" placeholder="" class="form-control input-lg">
                             </div>
+                        </div>
+                        <br>
+                        <div id="showhide"></div>
+                        <div id="hide_show">
+                            <br>
+                            <form class="form-horizontal top10" >
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">รายการยา</h3>
+                                    </div>
+                        
+
+                                    <div class="panel-body">
+                                        <label>ค้นหายา</label>
+                                        <input id="typeahead" class="form-control input-sm" autocomplete="off" type="text" data-provide="typeahead" placeholder="ชื่อยา หรือ id" name="medname" >
+                                        <br>
+                                        <label>อาการที่แพ้</label>
+                                        <input type="text" class="form-control input-sm" id="allergyDescription" name="allegyDescription" placeholder="อาการที่แพ้">
+                                        <br>
+                                        <button type="button" class="btn btn-success top10" onclick="add_med()">เพิ่ม</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <table class="table" id="allergy_table">
+                                <br>
+                                <label class="lead">รายการยา</label>&nbsp&nbsp<a href="#">แก้ไข</a>
+                                <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>ชื่อยา</th>
+                                    <th>อาการที่แพ้</th>
+                                </tr>
+                                </thead>
+                            <tbody>
+                            </tbody>
+                            </table>
                         </div>
                         <br>
                         <div class="control-group">

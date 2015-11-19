@@ -1,3 +1,93 @@
+var button_beg = '<button id="button" onclick="showhide()">', button_end = '</button>';
+var show_button = 'เพิ่มรายการยาที่แพ้', hide_button = 'ปิดรายการยาที่แพ้';
+function showhide() {
+    var div = document.getElementById( "hide_show" );
+    var showhide = document.getElementById( "showhide" );
+    if ( div.style.display !== "none" ) {
+        div.style.display = "none";
+        button = show_button;
+        showhide.innerHTML = button_beg + button + button_end;
+    } else {
+        div.style.display = "block";
+        button = hide_button;
+        showhide.innerHTML = button_beg + button + button_end;
+    }
+}
+function setup_button( status ) {
+    if ( status == 'show' ) {
+        button = hide_button;
+    } else {
+        button = show_button;
+    }
+    var showhide = document.getElementById( "showhide" );
+    showhide.innerHTML = button_beg + button + button_end;
+}
+window.onload = function () {
+    setup_button( 'hide' );
+    showhide(); // if setup_button is set to 'show' comment this line
+}
+
+function showResult()
+{
+        var search = document.getElementById('typeahead').value;
+        $.ajax(
+        {
+            url: 'medicineList',
+            type: 'GET',
+            data: {med_str:search},
+            dataType: 'json',
+            success: function(data)
+            {
+                var med_result = new Array();
+                $.each(data.medicine_list, function(index, med_info) {
+                    var fullmedname = med_info.med_id + '. ' + med_info.med_name;
+                    med_result.push(fullmedname);
+                });
+                $('#typeahead').typeahead({ source:med_result });
+            }
+        });
+}
+row_id_by_far = 0;
+function add_med()
+{
+  var med = document.getElementById("typeahead").value;
+  var allegy_description = document.getElementById("allergydescription").value;
+
+  var med_index= med.indexOf(".");
+  var med_id = med.substr(0, med_index); // Substring Only ID of Medicine
+  var med_name =  med.substr(med_index+2); // Substring Only Name of Medicine
+  
+  if(!validateNonEmpty(med_name)) {
+      alert('กรุณากรอกชื่อยา');
+      document.getElementById("typeahead").focus();
+      return false;
+    }
+    if(!validateAmoutOfMedicine(allergy_description)) {
+      alert('กรุณากรอกอาการที่แพ้');
+      document.getElementById("allergydescription").focus();
+      return false;
+    }
+
+  var table = document.getElementById("allergy_table");
+  var number_of_row = table.rows.length;
+  var row = table.insertRow(number_of_row);
+  row.id = "row" + row_id_by_far;
+  row_id_by_far++;
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+    
+  cell1.innerHTML = med_id;
+  cell2.innerHTML = med_name;
+  cell3.innerHTML = allergy_description;
+  cell4.innerHTML= '<a onclick=deleteRow(\"'+row.id+'\")> ลบ </a>';
+
+  document.getElementById("typeahead").value = "";
+  document.getElementById("allergydescription").value= "";
+  return true;
+}
+
 function validate_patientInfo_form(form) {
 	var firstname = form.firstname.value;
 	var lastname = form.lastname.value;

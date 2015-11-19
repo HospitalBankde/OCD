@@ -30,6 +30,36 @@ class PatientController extends Controller
         $temperature = Input::get('temperature');
         $bloodpressure = Input::get('bloodpressure');
         $heartrate = Input::get('heartrate');
+
+        // session_start();
+        // if (isset($_SESSION['id'])) {
+        //     if ($_SESSION['role'] == "nurse")
+        //     {
+        //         $nurse_id = $_SESSION['id'];
+        //         DB::table('patient_info')->insert([
+        //             'pat_id' => $id,
+        //             'pat_height' => $height,
+        //             'pat_weight' => $weight,
+        //             'pat_temperature' => $temperature,
+        //             'pat_heartRate' => $heartrate,
+        //             'pat_bloodPressure' => $bloodpressure,
+        //             'nurse_id' => $nurse_id,
+        //             'date_of_record' => date("Y-m-d")
+        //         ]);
+        //         session_write_close();
+        //         return view('officer.showPatientInfo')->with([
+        //             'firstname' => $firstname,
+        //             'lastname' => $lastname,
+        //             'weight' => $weight,
+        //             'height' => $height,
+        //             'temperature' => $temperature,
+        //             'bloodpressure' => $bloodpressure,
+        //             'heartrate' => $heartrate,
+        //         ]); 
+        //     }
+        // }
+        // session_write_close();
+        // return "Must login as nurse first";
         DB::table('patient_info')->insert([
             'pat_id' => $id,
             'pat_height' => $height,
@@ -37,18 +67,17 @@ class PatientController extends Controller
             'pat_temperature' => $temperature,
             'pat_heartRate' => $heartrate,
             'pat_bloodPressure' => $bloodpressure,
-            'nurse_id' => '1',//nurse ID
+            'nurse_id' => '3',
             'date_of_record' => date("Y-m-d")
         ]);
         return view('officer.showPatientInfo')->with([
-                'firstname' => $firstname,
-                'lastname' => $lastname,
-                'weight' => $weight,
-                'height' => $height,
-                'temperature' => $temperature,
-                'bloodpressure' => $bloodpressure,
-                'heartrate' => $heartrate,
-            ]
-        );  
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'weight' => $weight,
+            'height' => $height,
+            'temperature' => $temperature,
+            'bloodpressure' => $bloodpressure,
+            'heartrate' => $heartrate,
+        ]);  
     }
 }
