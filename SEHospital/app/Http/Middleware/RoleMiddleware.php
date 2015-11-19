@@ -22,17 +22,19 @@ class RoleMiddleware
 
         // Not login yet
         if (is_null($session_info)) {
-            if($role == 'patient') {                
+
+            // Redirect for primary role (first role specified in roles)
+            if($roles[0] == 'patient') {                
                 return view('home.login')->with([
                     'warning' => 'กรุณาเข้าสู่ระบบผู้ป่วยก่อนทำรายการ'
                     ]);
-            } elseif ($role == 'doctor') {
+            } elseif ($roles[0] == 'doctor') {
                 # change to doctor login page
                 return view('home.loginOfficer')->with([
                     'warning' => 'กรุณาเข้าสู่ระบบแพทย์ก่อนทำรายการ',
                     'selectedRole' => 'doctor'
                     ]);
-            } elseif ($role == 'nurse') {
+            } elseif ($roles[0] == 'nurse') {
                 # change to nurse login page
                 return view('home.loginOfficer')->with([
                     'warning' => 'กรุณาเข้าสู่ระบบพยาบาลก่อนทำรายการ',

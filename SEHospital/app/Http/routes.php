@@ -32,7 +32,7 @@ Route::get('doctorList', 'AppointmentController@getDoctorList');
 Route::get('doctorDay', 'AppointmentController@getDoctorDay')->middleware('role:patient');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime')->middleware('role:patient');
 
-Route::post('/appointmentList', 'AppointmentController@postPageAppointmentList')->middleware('role:patient');
+Route::post('dashboard/appointmentList', 'AppointmentController@postPageAppointmentList')->middleware('role:patient');
 
 // Register
 Route::get('register','HomeController@getPageRegister');
@@ -65,7 +65,7 @@ Route::post('postPatientInfo','DoctorController@postPatientInfo');//->middleware
 //Schedule
 Route::get('schedule','DoctorController@index')->middleware('role:doctor');
 Route::get('dayoff','DoctorController@getPageDayOff')->middleware('role:doctor');
-
+Route::post('dashboard/showSchedule', 'DoctorController@postShowDoctorSchedule')->middleware('role:doctor');
 //Prescription
 Route::get('createPrescription', 'DoctorController@getCreatePrescription')->middleware('role:doctor');
 Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');

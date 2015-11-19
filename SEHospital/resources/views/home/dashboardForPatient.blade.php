@@ -1,7 +1,8 @@
 <div class="container">		
 		<div class="row">
                 <div class="col-lg-3 col-md-6">
-                <form action="/appointmentList" method="POST">
+                <form action="dashboard/appointmentList" method="POST">
+                <!-- this is to use <a href> as a <button type=submit> -->
                 <a href="javascript:;" onclick="parentNode.submit();">
                     @if(isset($id))
                         <input type="hidden" name="pat_id" value="{{$id}}">                    

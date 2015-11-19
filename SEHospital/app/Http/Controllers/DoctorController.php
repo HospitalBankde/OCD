@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
+use App\Models\Doctor_Schedule;
 
 class DoctorController extends Controller
 {
@@ -19,7 +20,7 @@ class DoctorController extends Controller
     public function index()
     {
         //
-        return view('doctor.schedule_alt');
+        return view('doctor.schedule');
     }
 
     public function getPageDayOff()
@@ -63,5 +64,23 @@ class DoctorController extends Controller
                 'heartrate' => $patientInfo->pat_heartRate
             ]
         );
+    }
+    public function postShowDoctorSchedule()
+    {
+        # code...
+        $doc_id = Input::get('doc_id');
+        $doc_id = 11;
+        $schedule = Doctor_Schedule::where('doc_id', '=', $doc_id)
+                                    ->orderBy('weekday_id', 'ASC')
+                                    ->get();
+
+        // replace with readable day
+        $DAY = ['จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์','อาทิตย์'];
+        foreach ($schedule as $index => $day) {
+            $day->weekday_id = $DAY[$index];
+        }                                                            
+        return view('doctor.schedule')->with([
+            'schedule' => $schedule
+            ]);                                
     }
 }
