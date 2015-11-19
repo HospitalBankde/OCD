@@ -14,7 +14,7 @@ class RoleMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, ...$roles)
     {
         // This middleware check that session has correct role to enter the page.
 
@@ -45,7 +45,8 @@ class RoleMiddleware
             }
         } 
         // login but not correct role        
-        if ($session_info['role'] != $role) {
+        $user_role = $session_info['role'];
+        if (!in_array($user_role, $roles)) {
             //return view('errors.503');
             return view('errors.errorText')->with([
                     'text' => 'ท่านไม่สามารถทำรายการนี้ได้'

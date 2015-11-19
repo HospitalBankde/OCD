@@ -27,9 +27,11 @@
 @endsection
 
 @section('content')
+<meta http-equiv="refresh" content="2;url=/dashboard" />
     <div class="row">
-        <div class="col-md-8 col-md-offset-1">
-            <h2>Appointment Complete</h2>
+        <div class="col-md-8 col-md-offset-1">            
+            <div class="alert alert-success" role="alert"><h3 class="lead"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  คุณได้ทำการนัดแพทย์เรียบร้อย</h3></div>
+            <h4>กำลังนำท่านไปหน้า Dashboard...</h4>            
         </div>
     </div>
 @endsection

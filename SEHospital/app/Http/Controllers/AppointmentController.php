@@ -168,7 +168,7 @@ class AppointmentController extends Controller{
 
         session_start();
         if (isset($_SESSION['id'])) {
-            if ($_SESSION['type'] == "patient")
+            if ($_SESSION['role'] == "patient")
             {
                 $pat_id = $_SESSION['id'];
                 $id = DB::table('appointment')->insertGetId([
@@ -186,6 +186,25 @@ class AppointmentController extends Controller{
 
 
         return "Must login as patient first";
+    }
+    public function postPageAppointmentList()
+    {
+        # code...
+        $pat_id = Input::get('pat_id');
+
+        // get all apointments from now, for this patient
+        $appointments = Appointment::where('pat_id','=',$pat_id)
+                        ->where('app_date', '>', date("Y-m-d"))
+                      //  ->select('doc_id', 'app_time', 'app_date')
+                        ->orderBy('app_date', 'ASC') 
+                        ->join('doctor', 'doctor.doc_id', '=', 'appointment.doc_id')                                                                
+                        ->join('department', 'department.dep_id', '=', 'doctor.dep_id')
+                        ->select('app_time', 'app_date', 'doc_name', 'dep_name')
+                        ->get();                    
+
+        return view('appointment.appointmentList')->with([
+                'appointments' => $appointments
+            ]);
     }
     public function sendEmail($to, $subject, $msg) {        
         // need 'real' SMTP server & some configs to send email.
