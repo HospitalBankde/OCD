@@ -26,8 +26,8 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
-
+    //'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => 'mysql',
     /*
     |--------------------------------------------------------------------------
     | Database Connections
@@ -54,11 +54,15 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'SEHospital'),
-            'username'  => env('DB_USERNAME', 'root'),
-            'password'  => env('DB_PASSWORD', 'root'),
-            'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock',
+            //'host'      => env('DB_HOST', 'localhost'),
+            // 'database'  => env('DB_DATABASE', 'sehospital'),
+            // 'username'  => env('DB_USERNAME', 'root'),
+            // 'password'  => env('DB_PASSWORD', 'root'),
+            'host' => 'localhost',
+            'database' => 'sehospital',
+            'username'=> 'root',
+            'password' => 'root',
+            //'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

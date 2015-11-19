@@ -24,9 +24,9 @@
     <div class="container">
 
         <div class="jumbotron bg-1">
-            @if(isset($id) && isset($role) && $role=="patient")
+            @if(isset($id) )
                 <h2>สวัสดี! {{$name}}</h2>
-
+                <p>ทำรายการของท่านได้ <a href="/dashboard">ที่นี่!</a></p>
             @else
                 <div class="container-fluid">
                     <h1>สวัสดี</h1>

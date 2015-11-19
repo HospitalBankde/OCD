@@ -18,12 +18,11 @@ class RoleMiddleware
     {
         // This middleware check that session has correct role to enter the page.
 
-
         $session_info = SessionManager::getSessionInfo();
 
         // Not login yet
         if (is_null($session_info)) {
-            if($role == 'patient') {
+            if($role == 'patient') {                
                 return view('home.login')->with([
                     'warning' => 'กรุณาเข้าสู่ระบบผู้ป่วยก่อนทำรายการ'
                     ]);
@@ -47,8 +46,9 @@ class RoleMiddleware
         } 
         // login but not correct role        
         if ($session_info['role'] != $role) {
-            return view('errors/errorText')->with([
-                'text' => 'เกิดข้อผิดพลาด ท่านไม่มมีสิทธิ์ทำรายการนี้'
+            //return view('errors.503');
+            return view('errors.errorText')->with([
+                    'text' => 'ท่านไม่สามารถทำรายการนี้ได้'
                 ]);
         }        
         // login & correct role => proceed
