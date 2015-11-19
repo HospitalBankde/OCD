@@ -79,8 +79,12 @@ class LoginController extends Controller{
         session_write_close();
         return redirect('dashboard');
 	}
-    public function logout() {
+    public function logout() {        
         session_start();
+        if(!isset($_SESSION['role'])) {
+            session_destroy();
+            return redirect('/');
+        }
         $role = $_SESSION['role'];                
         $_SESSION = [];
         session_destroy();

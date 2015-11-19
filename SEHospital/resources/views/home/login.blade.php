@@ -8,10 +8,11 @@
 @extends('layout.default')
 
 @section('title')
-    <title>iHospital</title>
+    <title>Login</title>
 @endsection
 
 @section('script')
+
 @endsection
 
 @section('content')

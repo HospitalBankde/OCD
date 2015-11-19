@@ -39,7 +39,7 @@ Route::post('/actionRegister','HomeController@postRegister');
 
 // Login (All users login via LoginController@postLogin )
 	// page
-Route::get('login','HomeController@getPageLogin');
+Route::get('login','HomeController@getPageLogin')->middleware('guest');
 Route::get('loginOfficer','HomeController@getPageLoginOfficer');
 	// action
 Route::post('actionLogin','LoginController@postLogin');
