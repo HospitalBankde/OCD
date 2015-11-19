@@ -60,8 +60,8 @@ class PrescriptionController extends Controller{
                     'doc_id' => $doc_id,
                     'pat_id' => $data['pat_id'],
                     'date' => date("Y-m-d"),
-                    'symptom_description' => $data['symtom']
-                    'status' => "0"
+                    'symptom_description' => $data['symtom'],
+                    'status' => '0'
                  ]);
 
                 foreach ($prescriptions as $prescription) {

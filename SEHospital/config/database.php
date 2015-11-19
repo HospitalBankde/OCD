@@ -61,7 +61,7 @@ return [
             'host' => 'localhost',
             'database' => 'sehospital',
             'username'=> 'root',
-            'password' => '',
+            'password' => 'root',
             //'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',

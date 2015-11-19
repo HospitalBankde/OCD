@@ -12,17 +12,21 @@
     <title>Error</title>
 @endsection
 
-@section('content')
-	<div class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span>
-                @if(isset($text))
-                	{{$text}}
-                @else
-                	Error.
-                @end
-    </div>
-@end
+@section('script')
+@endsection
 
+@section('content')
+    <div class="row">
+    	<div class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                    @if(isset($text))
+                    	{{$text}}
+                    @else
+                    	<h1>Error.</h1>
+                    @endif
+        </div>
+    </div>
+@endsection
 
 @stop

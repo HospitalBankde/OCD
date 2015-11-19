@@ -31,6 +31,7 @@ class HomeController extends Controller{
         return view('home.dashboard')->with(Session::getSessionInfo());
     }
     public function postRegister() {
+    
         $firstname = Input::get('firstname');
         $lastname = Input::get('lastname');
         $ssn = Input::get('ssn');
@@ -52,7 +53,7 @@ class HomeController extends Controller{
         $_SESSION['name'] = $firstname . " " . $lastname;
         $_SESSION['role'] = "patient";
         session_write_close();
-
+        
     	return view('home.showRegister')->with([
                 'id' => $id,
                 'firstname' => $firstname,

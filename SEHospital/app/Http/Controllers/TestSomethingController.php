@@ -59,9 +59,17 @@ class TestSomethingController extends Controller {
         }
         session_write_close();
     }
+    public function sessionTestPHPNoStart() {
+        if(isset($_SESSION['testname'])) {
+            return 'value = ' . $_SESSION['testname'];            
+        } else {
+            return 'no session';
+        }
+    }
     public function sessionTestClose(Request $request) {
         //PHP
         session_start();
+        $_SESSION = [];
         session_destroy();   
 
         //Laravel
@@ -71,6 +79,6 @@ class TestSomethingController extends Controller {
         $session->flush();
         //clear some
         // $session->forget('key');
-        return 'All sessions from Laravel & PHP are cleared.'
+        return 'All sessions from Laravel & PHP are cleared.';
     }
 }

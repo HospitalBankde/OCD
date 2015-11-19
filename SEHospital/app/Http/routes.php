@@ -25,10 +25,10 @@ use App\Http\Controllers\SessionManager;
 Route::get('/','HomeController@getIndex');
 
 //Appointment
-Route::get('appointment','AppointmentController@getIndex')->middleware('role:patient');
+Route::get('appointment','AppointmentController@getIndex');
 Route::get('appointment/time','AppointmentController@getPageTime')->middleware('role:patient');
 Route::post('appointment/complete','AppointmentController@postApp')->middleware('role:patient');
-Route::get('doctorList', 'AppointmentController@getDoctorList')->middleware('role:patient');
+Route::get('doctorList', 'AppointmentController@getDoctorList');
 Route::get('doctorDay', 'AppointmentController@getDoctorDay')->middleware('role:patient');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime')->middleware('role:patient');
 
@@ -38,7 +38,9 @@ Route::get('register','HomeController@getPageRegister');
 Route::post('/actionRegister','HomeController@postRegister');
 
 // Login (All users login via LoginController@postLogin )
-	// page
+	// page	
+	// Bug: who's already login, when manually enter /login url,
+	// the sessions are gone, and he can enter this page, which shouldn't.
 Route::get('login','HomeController@getPageLogin')->middleware('guest');
 Route::get('loginOfficer','HomeController@getPageLoginOfficer');
 	// action
@@ -67,9 +69,6 @@ Route::get('dayoff','DoctorController@getPageDayOff')->middleware('role:doctor')
 Route::get('createPrescription', 'DoctorController@getCreatePrescription');
 Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');
 
-Route::get('getPatientInformation', 'PrescriptionController@getPatientInformation');
-Route::get('medicineList','PrescriptionController@getMedicineList');
-Route::post('postPrescription','PrescriptionController@postCreatePrescription');
 
 //Error
 // Route::get('503', function() {
