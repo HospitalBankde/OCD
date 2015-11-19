@@ -32,7 +32,7 @@ Route::get('doctorList', 'AppointmentController@getDoctorList');
 Route::get('doctorDay', 'AppointmentController@getDoctorDay')->middleware('role:patient');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime')->middleware('role:patient');
 
-Route::post('dashboard/appointmentList', 'AppointmentController@postPageAppointmentList')->middleware('role:patient');
+Route::get('dashboard/appointmentList', 'AppointmentController@getPageAppointmentList')->middleware('role:patient,doctor');
 
 // Register
 Route::get('register','HomeController@getPageRegister');

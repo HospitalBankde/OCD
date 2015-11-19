@@ -1,9 +1,8 @@
 <div class="container">		
 		<div class="row">
-                <div class="col-lg-3 col-md-6">
-                <form action="dashboard/appointmentList" method="POST">
-                <!-- this is to use <a href> as a <button type=submit> -->
-                <a href="javascript:;" onclick="parentNode.submit();">
+                <div class="col-lg-3 col-md-6">                
+                
+                <a href="dashboard/appointmentList">
                     @if(isset($id))
                         <input type="hidden" name="pat_id" value="{{$id}}">                    
                     @endif
@@ -25,8 +24,7 @@
                                 <div class="clearfix"></div>
                             </div>                        
                     </div>
-                </a>
-                </form>
+                </a>            
                 </div>
         </div>
 	</div>

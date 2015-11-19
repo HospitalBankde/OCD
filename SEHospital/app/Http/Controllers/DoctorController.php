@@ -83,4 +83,22 @@ class DoctorController extends Controller
             'schedule' => $schedule
             ]);                                
     }
+    public function postPageAppointmentList()
+    {
+        # code...
+        $doc_id = Input::get('doc_id');
+
+        // get all apointments from now, for this patient
+        $appointments = Appointment::where('doc_id','=',$doc_id)
+                        ->where('app_date', '>', date("Y-m-d"))
+                      //  ->select('doc_id', 'app_time', 'app_date')
+                        ->orderBy('app_date', 'ASC') 
+                        ->join('patient', 'patient.pat_id', '=', 'appointment.pat_id')                                                                                        
+                        ->select('app_time', 'app_date', 'pat_name')
+                        ->get();                    
+
+        return view('appointment.appointmentList')->with([
+                'appointments' => $appointments
+            ]);
+    }
 }

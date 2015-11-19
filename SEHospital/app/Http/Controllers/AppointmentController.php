@@ -187,24 +187,49 @@ class AppointmentController extends Controller{
 
         return "Must login as patient first";
     }
-    public function postPageAppointmentList()
+    public function getPageAppointmentList()
     {
         # code...
-        $pat_id = Input::get('pat_id');
+        $session_info = SessionManager::getSessionInfo();
 
-        // get all apointments from now, for this patient
-        $appointments = Appointment::where('pat_id','=',$pat_id)
-                        ->where('app_date', '>', date("Y-m-d"))
-                      //  ->select('doc_id', 'app_time', 'app_date')
-                        ->orderBy('app_date', 'ASC') 
-                        ->join('doctor', 'doctor.doc_id', '=', 'appointment.doc_id')                                                                
-                        ->join('department', 'department.dep_id', '=', 'doctor.dep_id')
-                        ->select('app_time', 'app_date', 'doc_name', 'dep_name')
-                        ->get();                    
+        if ($session_info['role'] == 'patient') {
+            // get all apointments from now, for this patient
+            $pat_id = $session_info['id'];            
+            $appointments = Appointment::where('pat_id','=',$pat_id)
+                            ->where('app_date', '>', date("Y-m-d"))
+                          //  ->select('doc_id', 'app_time', 'app_date')
+                            ->orderBy('app_date', 'ASC') 
+                            ->join('doctor', 'doctor.doc_id', '=', 'appointment.doc_id')                                                                
+                            ->join('department', 'department.dep_id', '=', 'doctor.dep_id')
+                            ->select('app_time', 'app_date', 'doc_name', 'dep_name')
+                            ->get();                    
 
-        return view('appointment.appointmentList')->with([
-                'appointments' => $appointments
+            return view('appointment.appointmentList')->with([
+                    'appointments' => $appointments,
+                    'role' => $session_info['role']
+                ]);
+        } elseif ($session_info['role'] == 'doctor') {
+            // get all apointments from now, for this patient
+            $doc_id = $session_info['id'];
+            $appointments = Appointment::where('doc_id','=',$doc_id)
+                            ->where('app_date', '>', date("Y-m-d"))
+                          //  ->select('doc_id', 'app_time', 'app_date')
+                            ->orderBy('app_date', 'ASC') 
+                            ->join('patient', 'patient.pat_id', '=', 'appointment.pat_id')                                                                                        
+                            ->select('app_time', 'app_date', 'pat_name')
+                            ->get();                    
+
+            return view('appointment.appointmentList')->with([
+                    'appointments' => $appointments,
+                    'role' => $session_info['role']
             ]);
+        } else {
+            return view('errors.errorText') -> with([
+                    'text' => 'ท่านไม่มีสิทธิ์ทำรายการนี้'
+                ]);
+        }
+
+        
     }
     public function sendEmail($to, $subject, $msg) {        
         // need 'real' SMTP server & some configs to send email.

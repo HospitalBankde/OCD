@@ -12,14 +12,14 @@
                         </div>                        
                             <div class="panel-footer">
                                 <span class="pull-left">รายการออกเวรวันนี้</span>
-                                <span class="pull-right">6 คน  <i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>                        
                     </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                <a href="#">
+                <div class="col-lg-3 col-md-6">                
+                <a href="dashboard/appointmentList">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
