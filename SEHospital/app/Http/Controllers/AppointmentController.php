@@ -116,8 +116,13 @@ class AppointmentController extends Controller{
                         0,0,0,0,0,0,0,0,0,0,
                         0,0,0,0,0,0,0,0,0,0);
 
+        //Specific doctor
+        if ($select_doc >= 0)
+        {
+            return response()->json(['availday' => $this->getSpecificDoctorDay($select_doc)]);
+        }
         //Any doctor
-        if ($select_doc == -1)
+        else if ($select_doc == -1)
         {
             $select_dep = Input::get('select_dep');
             $doctors = Doctor::where('dep_id','=',$select_dep)
@@ -133,20 +138,11 @@ class AppointmentController extends Controller{
                     $index++;
                 }
             }
-
             return response()->json(['availday' => $availday]);
-
-        }
-        //Specific doctor
-        else if ($select_doc >= 0)
-        {
-            return response()->json(['availday' => $this->getSpecificDoctorDay($select_doc)]);
         }
     }
 
-    public function getDoctorTime() {
-        $select_doc = Input::get('select_doc');
-        $select_date = Input::get('select_date');
+    function getSpecificDoctorTime($select_doc, $select_date) {
         $date = date("j-m-Y", strtotime($select_date)); 
         $weekday = date("w", strtotime($date));
         $availtime = array();
@@ -170,9 +166,33 @@ class AppointmentController extends Controller{
             if ($eachApp->app_time == "morning") $doc_schedule->morning = 0;
             if ($eachApp->app_time == "afternoon") $doc_schedule->afternoon = 0;
         }
+        return $doc_schedule;
+    }
 
+    public function getDoctorTime() {
+        $select_doc = Input::get('select_doc');
+        $select_date = Input::get('select_date');
+        
+        if ($select_doc >= 0)
+        {
+            return response()->json(['doc_schedule' => $this->getSpecificDoctorTime($select_doc,$select_date)]);
+        }
+        else if ($select_doc == -1)
+        {
+            $select_dep = Input::get('select_dep');
+            $doctors = Doctor::where('dep_id','=',$select_dep)
+                            ->select('doc_id')->get();
+            $doc_schedule = array('morning' => 0,
+                                'afternoon' => 0);
 
-        return response()->json(['doc_schedule' => $doc_schedule]);
+            foreach ($doctors as $doctor)
+            {
+                $doc_availtime = $this->getSpecificDoctorTime($doctor->doc_id,$select_date);
+                $doc_schedule['morning'] = $doc_schedule['morning'] | $doc_availtime['morning'];
+                $doc_schedule['afternoon'] = $doc_schedule['afternoon'] | $doc_availtime['afternoon'];
+            }
+            return response()->json(['doc_schedule' => $doc_schedule]);
+        }
     }
 
     public function getDoctorList() {

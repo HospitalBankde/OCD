@@ -44,7 +44,7 @@ $(document).ready(function()
                     {
                         url: '/doctorTime',
                         type: 'GET',
-                        data: {select_doc:$('#select_doc').val(), select_date:dateText},
+                        data: {select_doc:$('#select_doc').val(), select_date:dateText, select_dep:$('#select_dep').val()},
                         dataType: 'json',
                         success: function(response)
                         {
