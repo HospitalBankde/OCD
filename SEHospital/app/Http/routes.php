@@ -57,12 +57,12 @@ Route::get('dashboard', function() {
 
 //Patient Info
 Route::get('addPatientInfo','PatientController@getPatientInfo');//->middleware('role:nurse');
-Route::post('showPatientInfo','PatientController@postPatientInfo')->middleware('role:doctor');
+Route::post('showPatientInfo','PatientController@postPatientInfo');//->middleware('role:doctor');
 Route::get('getPatientInfo','DoctorController@getPatientInfo');//->middleware('role:doctor');
-Route::post('postPatientInfo','DoctorController@postPatientInfo')->middleware('role:doctor');
+Route::post('postPatientInfo','DoctorController@postPatientInfo');//->middleware('role:doctor');
 
 //Schedule
-Route::get('schedule','DoctorController@index')->middleware('role:doctor');
+Route::get('schedule','DoctorController@index')->middleware('role:nurse');
 Route::get('dayoff','DoctorController@getPageDayOff')->middleware('role:doctor');
 
 //Prescription
