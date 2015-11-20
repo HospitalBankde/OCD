@@ -1,5 +1,5 @@
 function validate_doctor_search() {
-    var x = document.getElementById('select_dept').value;
+    var x = document.getElementById('select_dep').value;
     if (x == null || x == "" || x === "-1") {
         alert("Please select department");
         return false;
@@ -8,8 +8,8 @@ function validate_doctor_search() {
 
 $(document).ready(function()
 {
-    $("#select_dept").change(function(){
-        if (document.getElementById('select_dept').value === "-1"){
+    $("#select_dep").change(function(){
+        if (document.getElementById('select_dep').value === "-1"){
             var select = document.getElementById('select_doc');
             select.options.length = 0;
             var opt = document.createElement('option');
@@ -17,7 +17,7 @@ $(document).ready(function()
             opt.appendChild(document.createTextNode("Any Doctor"));
             $('#select_doc').append(opt);
             document.getElementById('select_doc').disabled = true;
-            document.getElementById('dept_label').innerHTML = "";
+            document.getElementById('dep_label').innerHTML = "";
             $('#select_doc').selectpicker('refresh');
         }
         else{
@@ -48,10 +48,10 @@ $(document).ready(function()
                     });
 
                     // Update related elements
-                    var e = document.getElementById('select_dept');
-                    var current_dept = e.options[e.selectedIndex].text;
+                    var e = document.getElementById('select_dep');
+                    var current_dep = e.options[e.selectedIndex].text;
                     document.getElementById('select_doc').disabled = false;
-                    document.getElementById('dept_label').innerHTML = current_dept;
+                    document.getElementById('dep_label').innerHTML = current_dep;
 
                     $('#select_doc').selectpicker('refresh');
                 }

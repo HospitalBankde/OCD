@@ -28,7 +28,7 @@ $(document).ready(function()
     {
         url: '/doctorDay',
         type: 'GET',
-        data: {select_doc:$('#select_doc').val()},
+        data: {select_doc:$('#select_doc').val(), select_dep:$('#select_dep').val()},
         dataType: 'json',
         success: function(response)
         {

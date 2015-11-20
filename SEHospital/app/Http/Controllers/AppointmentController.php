@@ -18,25 +18,32 @@ use App\Http\Controllers\SessionManager;
 class AppointmentController extends Controller{
 
     public function getIndex() {                
-        $depts = DB::select('SELECT dep_name, dep_id FROM department');
+        $deps = DB::select('SELECT dep_name, dep_id FROM department');
         return view('appointment.index')->with([
-                'depts' => $depts
+                'deps' => $deps
             ]
         );
     }
 
     public function getPageTime() {
-        $select_dep = Input::get('select_dept');
+        $select_dep = Input::get('select_dep');
         if ($select_dep == null || $select_dep == "" || $select_dep === "-1") {
             return 'No dep_id sent';
         }
 
         $select_doc = Input::get('select_doc');
-        $doctor = Doctor::where('doc_id','=',$select_doc)
-                        ->select('doc_name','doc_surname')->first();
-
-        $doc_name = $doctor->doc_name;
-        $doc_surname = $doctor->doc_surname;
+        if ($select_doc >= 0)
+        {
+            $doctor = Doctor::where('doc_id','=',$select_doc)
+                            ->select('doc_name','doc_surname')->first();
+            $doc_name = $doctor->doc_name;
+            $doc_surname = $doctor->doc_surname;
+        }
+        else if ($select_doc == -1)
+        {
+            $doc_name = "Any doctor";
+            $doc_surname = "";
+        }
 
         return view('appointment.time')->with([
                 'select_doc' => $select_doc,
@@ -47,14 +54,12 @@ class AppointmentController extends Controller{
         );
     }
 
-    public function getDoctorDay() {
-        $select_doc = Input::get('select_doc');
+    function getSpecificDoctorDay($select_doc) {
+        $availday = array();
         $today = getdate();
         $todayDate = $today['mday'];
         $todayWeekday = date('N', strtotime($today['weekday']) ) % 7;
-
-        $availday = array();
-
+        $nextMonth = date('Y-m-d', strtotime("+31 days"));
         $doctor = Doctor::where('doc_id','=',$select_doc)
                         ->select('doc_name','doc_surname')->first();
         $doc_schedule = Doctor_Schedule::where('doc_id','=', $select_doc)
@@ -64,10 +69,8 @@ class AppointmentController extends Controller{
 
         //if doc_schedule error
         if ( ! isset($doc_schedule[6])) {
-            return response()->json(['availday' => $availday]);
+            return $availday;
         }
-
-        $nextMonth = date('Y-m-d', strtotime("+31 days"));
 
         //Gather all date that is full (>=30)
         $appointmentFull = Appointment::where('doc_id','=', $select_doc)
@@ -82,8 +85,10 @@ class AppointmentController extends Controller{
             $tempDate = $todayDate + $i;
             $tempWeekday = ($todayWeekday + $i) % 7;
 
-           if ($doc_schedule[$tempWeekday]->morning == 0 && $doc_schedule[$tempWeekday]->afternoon == 0) {
+            $availcheck = 1;
+            if ($doc_schedule[$tempWeekday]->morning == 0 && $doc_schedule[$tempWeekday]->afternoon == 0) {
                 array_push($availday, 0);
+                $availcheck = 0;
                 continue;
             }
 
@@ -92,14 +97,51 @@ class AppointmentController extends Controller{
                 $tempDate2 = explode("-", $eachFull->app_date);
                 if ($tempDate2[2] == $tempDate) {
                     array_push($availday, 0);
+                    $availcheck = 0;
                     break;
                 }
             }
 
-            array_push($availday, 1);
+            if ($availcheck == 1) {
+                array_push($availday, 1);
+            }
         }
+        return $availday;
+    }
 
-        return response()->json(['availday' => $availday]);
+    public function getDoctorDay() {
+        $select_doc = Input::get('select_doc');
+
+        $availday = array(0,0,0,0,0,0,0,0,0,0,
+                        0,0,0,0,0,0,0,0,0,0,
+                        0,0,0,0,0,0,0,0,0,0);
+
+        //Any doctor
+        if ($select_doc == -1)
+        {
+            $select_dep = Input::get('select_dep');
+            $doctors = Doctor::where('dep_id','=',$select_dep)
+                            ->select('doc_id')->get();
+
+            foreach ($doctors as $doctor)
+            {
+                $doc_availday = $this->getSpecificDoctorDay($doctor->doc_id);
+                $index = 0;
+                while ($index < 30)
+                {
+                    $availday[$index] = $availday[$index] | $doc_availday[$index];
+                    $index++;
+                }
+            }
+
+            return response()->json(['availday' => $availday]);
+
+        }
+        //Specific doctor
+        else if ($select_doc >= 0)
+        {
+            return response()->json(['availday' => $this->getSpecificDoctorDay($select_doc)]);
+        }
     }
 
     public function getDoctorTime() {
@@ -156,7 +198,7 @@ class AppointmentController extends Controller{
         //Assume that client is innocent and never inject the post request/javascript file
         //Security here is beyond worst, you know what I mean
         $select_doc = Input::get('select_doc');
-        $select_dep = Input::get('select_dept');
+        $select_dep = Input::get('select_dep');
         $select_date = Input::get('select_date');
         $select_time = Input::get('select_time');
         $time = "";
@@ -168,7 +210,7 @@ class AppointmentController extends Controller{
 
         session_start();
         if (isset($_SESSION['id'])) {
-            if ($_SESSION['type'] == "patient")
+            if ($_SESSION['role'] == "patient")
             {
                 $pat_id = $_SESSION['id'];
                 $id = DB::table('appointment')->insertGetId([
@@ -183,7 +225,6 @@ class AppointmentController extends Controller{
             }
         }
         session_write_close();
-
 
         return "Must login as patient first";
     }
