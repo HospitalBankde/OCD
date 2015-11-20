@@ -57,9 +57,9 @@ Route::get('dashboard', function() {
 
 //Patient Info
 Route::get('addPatientInfo','PatientController@getPatientInfo');//->middleware('role:nurse');
-Route::post('showPatientInfo','PatientController@postPatientInfo');//->middleware('role:doctor');
+Route::post('showPatientInfo','PatientController@postPatientInfo')->middleware('role:doctor');
 Route::get('getPatientInfo','DoctorController@getPatientInfo');//->middleware('role:doctor');
-Route::post('postPatientInfo','DoctorController@postPatientInfo');//->middleware('role:nurse');
+Route::post('postPatientInfo','DoctorController@postPatientInfo')->middleware('role:doctor');
 
 //Schedule
 Route::get('schedule','DoctorController@index')->middleware('role:doctor');
@@ -69,7 +69,9 @@ Route::get('dayoff','DoctorController@getPageDayOff')->middleware('role:doctor')
 Route::get('createPrescription', 'DoctorController@getCreatePrescription');
 Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');
 
-
+Route::get('getPatientInformation', 'PrescriptionController@getPatientInformation');
+Route::get('medicineList','PrescriptionController@getMedicineList');
+Route::post('postPrescription','PrescriptionController@postCreatePrescription');
 //Error
 // Route::get('503', function() {
 // 	return view('errors/503');

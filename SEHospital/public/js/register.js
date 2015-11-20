@@ -17,11 +17,6 @@ function validate_register_form(form) {
     	form.lastname.focus();
     	return false;
     }
-    if(!validateNonEmpty(password)) {
-        alert('กรุณากรอกรหัสผ่าน');
-        form.password.focus();
-        return false;
-    }
     if(!validateSSN(ssn)) {
     	alert('รหัสประชาชนต้องเป็นเลขความยาว 13 ตัว');
     	form.ssn.focus();
@@ -37,8 +32,13 @@ function validate_register_form(form) {
 		form.email.focus();
 		return false;
 	}
+    if(!validateNonEmpty(password)) {
+        alert('กรุณากรอกรหัสผ่าน');
+        form.password.focus();
+        return false;
+    }
 	if(!validatePassword(password)) {
-    	alert('Password ต้องมีความยาวตั้งแต่ 8 และไม่เกิน 20 ตัวอักษร\n และต้องมีตัวเลขและตัวอักษรภาษาอังกฤษทั้งตัวเล็กและใหญ่่');
+    	alert('Password ต้องมีความยาวตั้งแต่ 8 และไม่เกิน 20 ตัวอักษร\n และต้องมีตัวเลขและตัวอักษรภาษาอังกฤษทั้งตัวเล็กและใหญ่');
     	form.password.focus();
     	return false;
     }

@@ -86,7 +86,7 @@
                                         <input id="typeahead" class="form-control input-sm" autocomplete="off" type="text" data-provide="typeahead" placeholder="ชื่อยา หรือ id" name="medname" >
                                         <br>
                                         <label>อาการที่แพ้</label>
-                                        <input type="text" class="form-control input-sm" id="allergyDescription" name="allegyDescription" placeholder="อาการที่แพ้">
+                                        <input type="text" class="form-control input-sm" id="allergyDescription" name="allergyDescription" placeholder="อาการที่แพ้">
                                         <br>
                                         <button type="button" class="btn btn-success top10" onclick="add_med()">เพิ่ม</button>
                                     </div>
@@ -109,6 +109,7 @@
                         </div>
                         <br>
                         <div class="control-group">
+                            <input type="hidden" name="senddata" id="senddata" value="">    
                             <!-- Button -->
                             <div class="controls">
                                 <button class="btn btn-success">Submit</button>

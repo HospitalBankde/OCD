@@ -5,6 +5,8 @@
 @endsection
 
 @section('script')
+    {!! Html::script('js/showPatientInfo.js') !!}
+    {!! Html::script('bootstrap-typeahead/bootstrap3-typeahead.js') !!}
 @endsection
 
 @section('content')
@@ -22,6 +24,27 @@
                 </label>
             </div>
         </div>
+
+        <table class="table" id="allergy_table">
+        <br>
+            <label class="lead"><b>รายการยาที่แพ้</b></label>&nbsp&nbsp<a href="#">แก้ไข</a>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>ชื่อยา</th>
+                <th>อาการที่แพ้</th>
+            </tr>            
+            </thead>
+            <tbody>
+                @foreach($allergys as $allergy)
+                    <tr>
+                        <th>{{$allergy['id']}}</th>
+                        <th>{{$allergy['name']}}</th>
+                        <th>{{$allergy['description']}}</th>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 @endsection
 
 @stop

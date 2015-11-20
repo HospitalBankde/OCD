@@ -53,6 +53,18 @@ class DoctorController extends Controller
         $patientInfo = DB::table('patient_Info')->where('pat_id', $patID)
                                                 ->where('date_of_record', date("Y-m-d"))
                                                 ->first();
+        $allergys_id = DB::table('medicine_allergy')->where('pat_id', $patID)
+                                                    ->select('med_id','allergy_desc')->get();
+        $allergys = array();
+
+        foreach($allergys_id as $allergy) {
+            $allergy_med = DB::table('medicine')->where('med_id',$allergy->med_id)->first();
+            $dict = array("id" => $allergy->med_id,
+                          "name" => $allergy_med->med_name,
+                          "description" => $allergy->allergy_desc);
+            array_push($allergys, $dict);
+        }  
+
         return view('officer.showPatientInfo')->with([
                 'firstname' => $firstname,
                 'lastname' => $lastname,
@@ -60,7 +72,8 @@ class DoctorController extends Controller
                 'height' => $patientInfo->pat_height,
                 'temperature' => $patientInfo->pat_temperature,
                 'bloodpressure' => $patientInfo->pat_bloodPressure,
-                'heartrate' => $patientInfo->pat_heartRate
+                'heartrate' => $patientInfo->pat_heartRate,
+                'allergys' => $allergys
             ]
         );
     }

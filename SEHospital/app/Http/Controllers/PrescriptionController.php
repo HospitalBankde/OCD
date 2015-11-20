@@ -49,21 +49,23 @@ class PrescriptionController extends Controller{
     public function postCreatePrescription() {
         $json  = Input::get('senddata');
         $data  = json_decode($json,true);
-        //echo $data['prescriptions'];
+
         $prescriptions = $data['prescriptions'];
 
+        $pat_id = $data['pat_id'];
         session_start();
         if (isset($_SESSION['id'])) {
             if($_SESSION['role'] == "doctor"){
                 $doc_id = $_SESSION['id'];
                 $id = DB::table('diagnosis')->insertGetId([
                     'doc_id' => $doc_id,
-                    'pat_id' => $data['pat_id'],
+                    'pat_id' => $pat_id,
                     'date' => date("Y-m-d"),
                     'symptom_description' => $data['symtom'],
                     'status' => '0'
                  ]);
-
+                $pat_name = DB::table('patient')->where('pat_id',$pat_id)->pluck('pat_name');
+                $pat_surname = DB::table('patient')->where('pat_id',$pat_id)->pluck('pat_surname');
                 foreach ($prescriptions as $prescription) {
                  # code...
                     DB::table('medicine_prescription')->insert([
@@ -74,7 +76,12 @@ class PrescriptionController extends Controller{
                     ]);
                 }
                 session_write_close();
-                return "finish";
+                return view('doctor.finishPrescription')->with([
+                        'pat_name' => $pat_name,
+                        'pat_surname' => $pat_surname,
+                        'symptom' => $data['symtom'],
+                        'prescriptions' => $prescriptions
+                    ]);
             }
 
         }
