@@ -29,10 +29,11 @@ Route::get('appointment','AppointmentController@getIndex');
 Route::get('appointment/time','AppointmentController@getPageTime')->middleware('role:patient');
 Route::post('appointment/complete','AppointmentController@postApp')->middleware('role:patient');
 Route::get('doctorList', 'AppointmentController@getDoctorList');
-Route::get('doctorDay', 'AppointmentController@getDoctorDay')->middleware('role:patient');
+Route::get('doctorDay', 'AppointmentController@getDoctorDay');//->middleware('role:patient');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime')->middleware('role:patient');
 
-
+Route::get('dashboard/appointmentList', 'AppointmentController@getPageAppointmentList')->middleware('role:patient,doctor');
+Route::get('dashboard/todayAppointmentList', 'AppointmentController@getPageAppointmentListForToday')->middleware('role:doctor');
 // Register
 Route::get('register','HomeController@getPageRegister');
 Route::post('/actionRegister','HomeController@postRegister');
@@ -62,11 +63,13 @@ Route::get('getPatientInfo','DoctorController@getPatientInfo');//->middleware('r
 Route::post('postPatientInfo','DoctorController@postPatientInfo');//->middleware('role:doctor');
 
 //Schedule
-Route::get('schedule','DoctorController@index')->middleware('role:nurse');
-Route::get('dayoff','DoctorController@getPageDayOff')->middleware('role:doctor');
+// Route::get('schedule','DoctorController@index')->middleware('role:doctor');
+Route::get('dashboard/dayoff','DoctorController@getPageDayOff')->middleware('role:doctor');
+Route::post('dashboard/dayoff/postDayOff', 'DoctorController@postDayOff')->middleware('role:doctor');
+Route::post('dashboard/showSchedule', 'DoctorController@postShowDoctorSchedule')->middleware('role:doctor');
 
 //Prescription
-Route::get('createPrescription', 'DoctorController@getCreatePrescription');
+Route::get('createPrescription', 'DoctorController@getCreatePrescription')->middleware('role:doctor');
 Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');
 
 Route::get('getPatientInformation', 'PrescriptionController@getPatientInformation');
@@ -76,6 +79,11 @@ Route::post('postPrescription','PrescriptionController@postCreatePrescription');
 // Route::get('503', function() {
 // 	return view('errors/503');
 // });
+Route::get('403', function() {
+	return view('errors.errorText')->with([
+		'text' => 'ท่านไม่มีสิทธิ์ทำรายการนี้'
+		]);
+});
 
 //Test-----------------------------------------------------------------------------------------
 Route::get('test','TestSomethingController@getIndex');

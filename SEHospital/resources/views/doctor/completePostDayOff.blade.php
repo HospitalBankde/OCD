@@ -30,7 +30,7 @@
 <meta http-equiv="refresh" content="2;url=/dashboard" />
     <div class="row">
         <div class="col-md-8 col-md-offset-1">            
-            <div class="alert alert-success" role="alert"><h3 class="lead"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  คุณได้ทำการนัดแพทย์เรียบร้อย</h3></div>
+            <div class="alert alert-success" role="alert"><h3 class="lead"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  คุณได้ทำการแจ้งการลาพักเรียบร้อย</h3></div>
             <h4>กำลังนำท่านไปหน้า Dashboard...</h4>            
         </div>
     </div>

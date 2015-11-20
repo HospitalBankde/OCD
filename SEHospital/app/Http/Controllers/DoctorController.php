@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
+use App\Models\Doctor_Schedule;
+use App\Http\Controllers\SessionManager;
 
 class DoctorController extends Controller
 {
@@ -19,12 +21,7 @@ class DoctorController extends Controller
     public function index()
     {
         //
-        return view('doctor.schedule_alt');
-    }
-
-    public function getPageDayOff()
-    {
-        return view('doctor.dayoff');
+        return view('doctor.schedule');
     }
     public function getCreatePrescription()
     {
@@ -76,5 +73,72 @@ class DoctorController extends Controller
                 'allergys' => $allergys
             ]
         );
+    }
+    public function postShowDoctorSchedule()
+    {
+        # code...
+        $doc_id = Input::get('doc_id');
+        $doc_id = 11;
+        $schedule = Doctor_Schedule::where('doc_id', '=', $doc_id)
+                                    ->orderBy('weekday_id', 'ASC')
+                                    ->get();
+
+        // replace with readable day
+        $DAY = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+        foreach ($schedule as $index => $day) {
+            $day->weekday_id = $DAY[$index];
+        }                                                            
+        return view('doctor.schedule')->with([
+            'schedule' => $schedule
+            ]);                                
+    }
+    public function postPageAppointmentList()
+    {
+        # code...
+        $doc_id = Input::get('doc_id');
+
+        // get all apointments from now, for this patient
+        $appointments = Appointment::where('doc_id','=',$doc_id)
+                        ->where('app_date', '>', date("Y-m-d"))
+                      //  ->select('doc_id', 'app_time', 'app_date')
+                        ->orderBy('app_date', 'ASC') 
+                        ->join('patient', 'patient.pat_id', '=', 'appointment.pat_id')                                                                                        
+                        ->select('app_time', 'app_date', 'pat_name')
+                        ->get();                    
+
+        return view('appointment.appointmentList')->with([
+                'appointments' => $appointments
+            ]);
+    }
+    public function getPageDayOff() {
+        $session_info = SessionManager::getSessionInfo();
+        if ($session_info['role'] != 'doctor') {
+            # code...
+            return redirect('/403');
+        } else {
+            $date = Input::get('date');
+            $doc_id = $session_info['id'];
+            $description = Input::get('description');
+            $cancels = DB::table('cancel_schedule')
+                            ->where('doc_id' ,'=', $doc_id)
+                            ->orderBy('cancel_date')
+                            ->get();                            
+            return view('doctor.dayoff')->with([
+                    'cancels' => $cancels,
+                    'doc_id' => $doc_id
+                ]);
+        }        
+    }
+    public function postDayOff() {
+        $doc_id = Input::get('doc_id');
+        $cancel_date = Input::get('date');
+        $cancel_description = Input::get('description');
+        $id = DB::table('cancel_schedule')->insertGetId([
+                            'doc_id' => $doc_id,
+                            'cancel_date' => $cancel_date,
+                            'cancel_description' => $cancel_description                                
+                        ]);
+                        
+        return view('doctor.completePostDayOff');
     }
 }

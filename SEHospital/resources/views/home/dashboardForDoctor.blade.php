@@ -1,7 +1,7 @@
 <div class="container">		
-		<div class="row">
+		<div class="row">        
                 <div class="col-lg-3 col-md-6">
-                <a href="#">
+                <a href="dashboard/todayAppointmentList">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
@@ -12,14 +12,14 @@
                         </div>                        
                             <div class="panel-footer">
                                 <span class="pull-left">รายการออกเวรวันนี้</span>
-                                <span class="pull-right">6 คน  <i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>                        
                     </div>
                     </a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                <a href="#">
+                <div class="col-lg-3 col-md-6">                
+                <a href="dashboard/appointmentList">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
@@ -42,31 +42,38 @@
                 </a>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                <a href="#">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-table fa-5x"></i>
+                    <form method="POST" action="dashboard/showSchedule">
+                        <!-- this is to use <a href> as a <button type=submit> -->
+                        <a href="javascript:;" onclick="parentNode.submit();">
+                            @if(isset($id))
+                                <input type="hidden" name="doc_id" value="{{$id}}">                    
+                            @endif
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i class="fa fa-table fa-5x"></i>
+                                        </div>
+                                        <!-- <div class="col-xs-9 text-right">
+                                            <div class="huge">124</div>
+                                            <div>New Orders!</div>
+                                        </div> -->
+                                    </div>
                                 </div>
-                                <!-- <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
-                                </div> -->
+                                
+                                    <div class="panel-footer">
+                                        <span class="pull-left">ตารางออกตรวจ</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                
                             </div>
-                        </div>
-                        
-                            <div class="panel-footer">
-                                <span class="pull-left">แก้ไขตารางออกตรวจ</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        
-                    </div>
-                    </a>
+                        </a>
+                    </form>
                 </div>
+
                 <div class="col-lg-3 col-md-6">
-                <a href="#">
+                <a href="dashboard/dayoff">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">
