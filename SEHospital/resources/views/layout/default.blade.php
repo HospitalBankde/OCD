@@ -16,11 +16,13 @@
 
 </head>
 
+<?php session_start() ?>
 @if((isset($_SESSION['id']) && $_SESSION['role']!='patient'))
     <body class="custom" style="background-color: #FDFFD8">
 @else
     <body class="custom" style="background-color: #FEFEFE">
 @endif
+<?php session_write_close() ?>
     <!-- Content for each page -->
     <div class="container">
         <div class="header clearfix">

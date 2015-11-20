@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
 use App\Models\Doctor_Schedule;
+use App\Http\Controllers\SessionManager;
 
 class DoctorController extends Controller
 {
@@ -21,11 +22,6 @@ class DoctorController extends Controller
     {
         //
         return view('doctor.schedule');
-    }
-
-    public function getPageDayOff()
-    {
-        return view('doctor.dayoff');
     }
     public function getCreatePrescription()
     {
@@ -75,7 +71,7 @@ class DoctorController extends Controller
                                     ->get();
 
         // replace with readable day
-        $DAY = ['จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์','อาทิตย์'];
+        $DAY = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
         foreach ($schedule as $index => $day) {
             $day->weekday_id = $DAY[$index];
         }                                                            
@@ -100,5 +96,36 @@ class DoctorController extends Controller
         return view('appointment.appointmentList')->with([
                 'appointments' => $appointments
             ]);
+    }
+    public function getPageDayOff() {
+        $session_info = SessionManager::getSessionInfo();
+        if ($session_info['role'] != 'doctor') {
+            # code...
+            return redirect('/403');
+        } else {
+            $date = Input::get('date');
+            $doc_id = $session_info['id'];
+            $description = Input::get('description');
+            $cancels = DB::table('cancel_schedule')
+                            ->where('doc_id' ,'=', $doc_id)
+                            ->orderBy('cancel_date')
+                            ->get();                            
+            return view('doctor.dayoff')->with([
+                    'cancels' => $cancels,
+                    'doc_id' => $doc_id
+                ]);
+        }        
+    }
+    public function postDayOff() {
+        $doc_id = Input::get('doc_id');
+        $cancel_date = Input::get('date');
+        $cancel_description = Input::get('description');
+        $id = DB::table('cancel_schedule')->insertGetId([
+                            'doc_id' => $doc_id,
+                            'cancel_date' => $cancel_date,
+                            'cancel_description' => $cancel_description                                
+                        ]);
+                        
+        return view('doctor.completePostDayOff');
     }
 }

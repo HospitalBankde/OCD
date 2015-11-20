@@ -1,7 +1,7 @@
 <div class="container">		
 		<div class="row">        
                 <div class="col-lg-3 col-md-6">
-                <a href="#">
+                <a href="dashboard/todayAppointmentList">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                <a href="#">
+                <a href="dashboard/dayoff">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="row">

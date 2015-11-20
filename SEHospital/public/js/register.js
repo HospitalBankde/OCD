@@ -51,13 +51,8 @@ function validate_register_form(form) {
     return true;
 }
 
-function validateNonEmpty(text) {
-	if(text.length == 0) {
-		return false;
-	} else {
-		return true;
-	}
-}
+
+
 function validateSSN(ssn) {
 	var re = /^\d{13}/;
 	return re.test(ssn);

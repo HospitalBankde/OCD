@@ -198,7 +198,7 @@ class AppointmentController extends Controller{
             $appointments = Appointment::where('pat_id','=',$pat_id)
                             ->where('app_date', '>', date("Y-m-d"))
                           //  ->select('doc_id', 'app_time', 'app_date')
-                            ->orderBy('app_date', 'ASC') 
+                            ->orderBy('app_date', 'ASC')
                             ->join('doctor', 'doctor.doc_id', '=', 'appointment.doc_id')                                                                
                             ->join('department', 'department.dep_id', '=', 'doctor.dep_id')
                             ->select('app_time', 'app_date', 'doc_name', 'dep_name')
@@ -209,16 +209,16 @@ class AppointmentController extends Controller{
                     'role' => $session_info['role']
                 ]);
         } elseif ($session_info['role'] == 'doctor') {
-            // get all apointments from now, for this patient
+            // get all apointments from now, for doctor
             $doc_id = $session_info['id'];
             $appointments = Appointment::where('doc_id','=',$doc_id)
                             ->where('app_date', '>', date("Y-m-d"))
                           //  ->select('doc_id', 'app_time', 'app_date')
-                            ->orderBy('app_date', 'ASC') 
+                            ->orderBy('app_date', 'ASC')
+                            ->orderBy('app_time', 'DESC')
                             ->join('patient', 'patient.pat_id', '=', 'appointment.pat_id')                                                                                        
                             ->select('app_time', 'app_date', 'pat_name')
-                            ->get();                    
-
+                            ->get();                   
             return view('appointment.appointmentList')->with([
                     'appointments' => $appointments,
                     'role' => $session_info['role']
@@ -230,6 +230,26 @@ class AppointmentController extends Controller{
         }
 
         
+    }
+    public function getPageAppointmentListForToday () {
+        $session_info = SessionManager::getSessionInfo();
+        if ($session_info['role'] == 'patient') {
+            return redirect('/403');
+        } elseif ($session_info['role'] == 'doctor') {
+            $role = $session_info['role'];
+            $doc_id = $session_info['id'];
+            $appointments = Appointment::where('doc_id','=',$doc_id)
+                            ->where('app_date', '=', date("Y-m-d"))                          
+                            ->orderBy('app_time', 'DESC') 
+                            ->join('patient', 'patient.pat_id', '=', 'appointment.pat_id')                                                                                        
+                            ->select('app_time', 'app_date', 'pat_name')
+                            ->get(); 
+            return view('appointment.appointmentList')->with([
+                'appointments' => $appointments ,
+                'role' => $role ,
+                'today' => date("Y-m-d")               
+                ]);
+        }
     }
     public function sendEmail($to, $subject, $msg) {        
         // need 'real' SMTP server & some configs to send email.

@@ -12,25 +12,9 @@
 @endsection
 
 @section('script')
+    {!! Html::script('js/dayoff.js') !!}
     {!! Html::style('jquery-ui/jquery-ui.min.css') !!}
-    {!! Html::script('jquery-ui/jquery-ui.min.js') !!}
-    
-    <script type="text/javascript">
-        $(function() {
-            $( "#date" ).datepicker()
-            $( "#date" ).datepicker('option','beforeShowDay',function(date){
-                var td = date.getDay();
-                var ret = [(date.getDay() != 0 && date.getDay() != 6 && date.getDay() != 2 && date.getDay() != 4),'',
-                    (td != 'Sat' && td != 'Sun' && td != 'Tue' && td != 'Thu')?'':'only on workday'];
-                return ret;
-            });
-        });
-
-        function updateSelectedDate(date) {
-            document.getElementById('helpBlock').innerHTML = date ;
-        }
-        
-    </script>
+    {!! Html::script('jquery-ui/jquery-ui.min.js') !!}    
     <style type="text/css">
         .ui-datepicker {
             background: #ffffff;
@@ -45,22 +29,29 @@
 @endsection
 
 @section('content')
-
+<div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-1">
+        <a href="/dashboard"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> กลับ dashboard </a>        
             <h2>แจ้งการลาพัก</h2>
             <br>
-            <form class="form-inline">
+            <input name="select_doc" id="select_doc" type="hidden" value="{{ e($doc_id) }}"/>
+            <form class="form-inline" onsubmit="return validate_dayoff_form(this)" method="POST" action="dayoff/postDayOff">
                 <div class="form-group">
-                    <label>วันที่: <input type="text" id="date"></label>
+                    <label>วันที่: <input type="text" id="date" name="date"></label>
+                    <!-- <div id="date"></div> -->
+                    <!-- <span id="helpBlock" class="help-block">กรุณาเลือกวัน</span> -->
+                    <input type="text" placeholder="หมายเหตุ" name="description">
+                    <input type="hidden" value="{{e($doc_id)}}" name="doc_id">
+                    <br>
+                    <br>
                     <button type="submit" class="btn btn-warning">
-                        ลาพัก
+                        แจ้งลาพัก
                     </button>
                 </div>
             </form>
             <br><br><br>
             <label class="lead">
-                ประวัติการลาพัก
+                รายการลาพักปัจจุบัน
             </label>
             <table class="table table-bordered">
                 <thead>
@@ -72,26 +63,18 @@
                 </thead>
                 <tbody>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>10/09/2015</td>
-                    <td>ลาป่วย</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>06/12/2015</td>
-                    <td>สัมนาต่างจังหวัด</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>01/23/2014</td>
-                    <td>ลากิจ</td>
-                </tr>
+                @foreach($cancels as $index => $cancel)
+                    <tr>
+                        <th>{{$index}}</th>
+                        <th>{{$cancel->cancel_date}}</th>
+                        <th>{{$cancel->cancel_description}}</th>
+                    </tr>
+                @endforeach
                 </tbody>
                 </tbody>
-            </table>
-        </div>
+            </table>        
     </div>
+</div>
 @endsection
 
 
