@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Doctor_Schedule extends Model {
     protected $table = 'doctor_schedule';
-    public $timestamps = false;
+    public $timestamps = false;    
+    //public $primaryKey = ['doc_id', 'weekday_id'];
     protected $fillable = [
         'doc_id', 'weekday_id', 'morning', 'afternoon'
     ];

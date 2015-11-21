@@ -27,8 +27,13 @@
 @section('content')
     <div class="row">
     <a href="/dashboard"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> กลับ dashboard </a>
-        <!-- <div class="col-md-11 col-md-offset-1"> -->
-            <h2>ตารางออกตรวจ</h2>
+        <!-- <div class="col-md-11 col-md-offset-1"> -->            
+            @if(isset($forDoctorID))
+                <h2>บันทึกตารางออกตรวจเสร็จสิ้น</h2>
+                <h4>( doc_id = {{$forDoctorID}} )</h4>
+            @else
+                <h2>ตารางออกตรวจ</h2>
+            @endif
             <br>
 
             <!-- <div class="row">

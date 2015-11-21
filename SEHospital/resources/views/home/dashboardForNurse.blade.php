@@ -19,6 +19,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-6">
+                    <a href="dashboard/addSchedule">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
@@ -33,7 +34,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">รายการนัดหมาย</span>
+                                <span class="pull-left">เพิ่มตารางออกตรวจให้แพทย์</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>

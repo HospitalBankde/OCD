@@ -8,18 +8,21 @@ use App\Http\Controllers\SessionManager;
 use App\Models\Doctor_Schedule;
 class ScheduleController extends Controller{
 
-	public function showSchedule()
+	public function postAddSchedule ()
     {
     	$doc_id = Input::get('doc_id');
 
-        DB::table('doctor_schedule')->insert(['doc_id' => $doc_id,'weekday_id' => '0', 'morning' => Input::get('sun_morn'), 'afternoon' => Input::get('sun_after')]);
-        DB::table('doctor_schedule')->insert(['doc_id' => $doc_id,'weekday_id' => '1', 'morning' => Input::get('mon_morn'), 'afternoon' => Input::get('mon_after')]);
-		DB::table('doctor_schedule')->insert(['doc_id' => $doc_id,'weekday_id' => '2', 'morning' => Input::get('tue_morn'), 'afternoon' => Input::get('tue_after')]);
-		DB::table('doctor_schedule')->insert(['doc_id' => $doc_id,'weekday_id' => '3', 'morning' => Input::get('wed_morn'), 'afternoon' => Input::get('wed_after')]);
-		DB::table('doctor_schedule')->insert(['doc_id' => $doc_id,'weekday_id' => '4', 'morning' => Input::get('thu_morn'), 'afternoon' => Input::get('thu_after')]);
-		DB::table('doctor_schedule')->insert(['doc_id' => $doc_id,'weekday_id' => '5', 'morning' => Input::get('fri_morn'), 'afternoon' => Input::get('fri_after')]);
-		DB::table('doctor_schedule')->insert(['doc_id' => $doc_id,'weekday_id' => '6', 'morning' => Input::get('sat_morn'), 'afternoon' => Input::get('sat_after')]);
-
+        $DAY = ['sun' ,'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+        for ($i=0; $i < 7; $i++) { 
+            $get_key_morn = $DAY[$i] . '_morn';   
+            $get_key_after = $DAY[$i] . '_after'; 
+            $weekday_id = $i;  
+            $morning = Input::get($get_key_morn);
+            $afternoon = Input::get($get_key_after);            
+            DB::statement("INSERT INTO doctor_schedule (doc_id, weekday_id, morning, afternoon) VALUES ($doc_id, $weekday_id, $morning, $afternoon ) 
+                            ON DUPLICATE KEY
+                            UPDATE morning = $morning, afternoon = $afternoon");                                          
+        }        
         $schedule = Doctor_Schedule::where('doc_id', '=', $doc_id)
                                     ->orderBy('weekday_id', 'ASC')
                                     ->get();
@@ -28,13 +31,14 @@ class ScheduleController extends Controller{
         $DAY = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
         foreach ($schedule as $index => $day) {
             $day->weekday_id = $DAY[$index];
-        }                                                            
+        }                                         
         return view('doctor.schedule')->with([
-            'schedule' => $schedule
-            ]);   
+            'schedule' => $schedule,
+            'forDoctorID' => $doc_id
+            ]);           
     }
 
-    public function addSchedule()
+    public function getPageAddSchedule()
     {
         return view('officer.addSchedule');
     }
