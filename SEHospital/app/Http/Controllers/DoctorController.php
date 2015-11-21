@@ -74,11 +74,15 @@ class DoctorController extends Controller
             ]
         );
     }
-    public function postShowDoctorSchedule()
+    public function getPageDoctorSchedule()
     {
-        # code...
-        $doc_id = Input::get('doc_id');
-        $doc_id = 11;
+        # code...        
+        $session_info = SessionManager::getSessionInfo();
+        if (!isset($session_info['id'])) {
+            # code...
+            return redirect('/403');
+        }
+        $doc_id = $session_info['id'];
         $schedule = Doctor_Schedule::where('doc_id', '=', $doc_id)
                                     ->orderBy('weekday_id', 'ASC')
                                     ->get();
@@ -86,8 +90,8 @@ class DoctorController extends Controller
         // replace with readable day
         $DAY = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
         foreach ($schedule as $index => $day) {
-            $day->weekday_id = $DAY[$index];
-        }                                                            
+            $day->weekday_id = $DAY[$index];            
+        }                            
         return view('doctor.schedule')->with([
             'schedule' => $schedule
             ]);                                

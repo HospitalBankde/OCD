@@ -43,7 +43,7 @@ class RoleMiddleware
                     ]);
             } elseif($roles[0] == 'pharmacist') {
                 return view('home.loginOfficer')->with([
-                    'warning' => 'กรุณาเข้าระบบเภสัชกรก่อนทำรายการ'
+                    'warning' => 'กรุณาเข้าระบบเภสัชกรก่อนทำรายการ',
                     'selectedRole' => 'pharmacist'
                     ]);
             }

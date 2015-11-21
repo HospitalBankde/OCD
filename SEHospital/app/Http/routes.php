@@ -66,7 +66,7 @@ Route::post('postPatientInfo','DoctorController@postPatientInfo');//->middleware
 Route::get('schedule','DoctorController@index')->middleware('role:doctor');
 Route::get('dashboard/dayoff','DoctorController@getPageDayOff')->middleware('role:doctor');
 Route::post('dashboard/dayoff/postDayOff', 'DoctorController@postDayOff')->middleware('role:doctor');
-Route::post('dashboard/showSchedule', 'DoctorController@postShowDoctorSchedule')->middleware('role:doctor');
+Route::get('dashboard/showSchedule', 'DoctorController@getPageDoctorSchedule')->middleware('role:doctor');
 
 Route::get('addSchedule','ScheduleController@addSchedule');
 

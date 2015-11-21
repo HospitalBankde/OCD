@@ -41,13 +41,8 @@
                     </div>
                 </a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <form method="POST" action="dashboard/showSchedule">
-                        <!-- this is to use <a href> as a <button type=submit> -->
-                        <a href="javascript:;" onclick="parentNode.submit();">
-                            @if(isset($id))
-                                <input type="hidden" name="doc_id" value="{{$id}}">                    
-                            @endif
+                <div class="col-lg-3 col-md-6">                                            
+                        <a href="dashboard/showSchedule">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <div class="row">
@@ -68,8 +63,7 @@
                                     </div>
                                 
                             </div>
-                        </a>
-                    </form>
+                        </a>                    
                 </div>
 
                 <div class="col-lg-3 col-md-6">
