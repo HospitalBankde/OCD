@@ -57,8 +57,8 @@ Route::get('dashboard', function() {
 });
 
 //Patient Info
-Route::get('addPatientInfo','PatientController@getPatientInfo');//->middleware('role:nurse');
-Route::post('showPatientInfo','PatientController@postPatientInfo');//->middleware('role:doctor');
+Route::get('dashboard/addPatientInfo','PatientController@getPatientInfo')->middleware('role:nurse');
+Route::post('dashboard/showPatientInfo','PatientController@postPatientInfo');//->middleware('role:doctor');
 Route::get('getPatientInfo','DoctorController@getPatientInfo');//->middleware('role:doctor');
 Route::post('postPatientInfo','DoctorController@postPatientInfo');//->middleware('role:doctor');
 

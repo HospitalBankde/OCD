@@ -32,7 +32,7 @@ function showResult()
         var search = document.getElementById('typeahead').value;
         $.ajax(
         {
-            url: 'medicineList',
+            url: '/medicineList',
             type: 'GET',
             data: {med_str:search},
             dataType: 'json',
