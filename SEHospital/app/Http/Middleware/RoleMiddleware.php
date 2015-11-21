@@ -23,7 +23,8 @@ class RoleMiddleware
         // Not login yet
         if (is_null($session_info)) {
 
-            // Redirect for primary role (first role specified in roles)
+            // Redirect login page for primary role (first role specified in roles)
+            // and automatically select role required for the user.
             if($roles[0] == 'patient') {                
                 return view('home.login')->with([
                     'warning' => 'กรุณาเข้าสู่ระบบผู้ป่วยก่อนทำรายการ'
@@ -40,7 +41,13 @@ class RoleMiddleware
                     'warning' => 'กรุณาเข้าสู่ระบบพยาบาลก่อนทำรายการ',
                     'selectedRole' => 'nurse'
                     ]);
-            } else {
+            } elseif($roles[0] == 'pharmacist') {
+                return view('home.loginOfficer')->with([
+                    'warning' => 'กรุณาเข้าระบบเภสัชกรก่อนทำรายการ'
+                    'selectedRole' => 'pharmacist'
+                    ]);
+            }
+            else { // Patient
                 return view('errors/errorText')->with([
                     'text' => 'Error: Middleware นี้รับแค่ patient, doctor, nurse'
                     ]);

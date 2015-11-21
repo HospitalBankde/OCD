@@ -10,6 +10,21 @@
     {!! Html::style('font-awesome/css/font-awesome.min.css') !!}
     <!-- Include custom script file for each page -->
     @yield('script')
+    <style type="text/css">
+        .charge {
+            position: relative;
+            bottom: 0.5em;
+            color: red;
+            font-size: 0.5em;
+        }
+
+        .atoms {
+            position: relative;
+            top: 0.3em;
+            color: blue;
+            font-size: 0.5em;
+        }
+    </style>
 
     <!-- Title for each page -->
     @yield('title')
@@ -33,8 +48,12 @@
                     <li role="presentation"><a href="/contact"><span class="fa fa-envelope-o" aria-hidden="true"></span> ติดต่อ</a></li>
                 </ul>
             </nav>
-            <h3 class="text-muted"><a href="/" style="text-underline: none;">iHospital</a></h3>
-
+            
+            @if(isset($_SESSION['id']) && $_SESSION['role'])    
+                <h3 class="text-muted"><a href="/" style="text-decoration: none;">iHospital<span class="atoms">{{$_SESSION['role']}}</span></a></h3>                            
+            @else
+                <h3 class="text-muted"><a href="/" style="text-decoration: none;">iHospital</a></h3>
+            @endif
         
             <?php 
                 session_start(); 

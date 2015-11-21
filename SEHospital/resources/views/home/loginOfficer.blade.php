@@ -46,15 +46,27 @@
                                 <input id="role" type="radio" name="role" value="doctor" checked> แพทย์
                                 <br>
                                 <input id="role" type="radio" name="role" value="nurse"> พยาบาล
-                            @else
+                                <br>
+                                <input id="role" type="radio" name="role" value="pharmacist"> เภสัชกร
+                            @elseif($selectedRole == 'nurse')
                                 <input id="role" type="radio" name="role" value="doctor"> แพทย์
                                 <br>
                                 <input id="role" type="radio" name="role" value="nurse" checked> พยาบาล
+                                <br>
+                                <input id="role" type="radio" name="role" value="pharmacist"> เภสัชกร
+                            @else
+                                <input id="role" type="radio" name="role" value="doctor"> แพทย์
+                                <br>
+                                <input id="role" type="radio" name="role" value="nurse"> พยาบาล
+                                <br>
+                                <input id="role" type="radio" name="role" value="pharmacist" checked> เภสัชกร
                             @endif
                         @else
                             <input id="role" type="radio" name="role" value="doctor" checked> แพทย์
                             <br>
                             <input id="role" type="radio" name="role" value="nurse"> พยาบาล
+                            <br>
+                            <input id="role" type="radio" name="role" value="pharmacist"> เภสัชกร
                         @endif                        
                         <div class="checkbox">
                             <label>

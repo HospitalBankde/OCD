@@ -40,6 +40,11 @@ class LoginController extends Controller{
                         ->where('nurse_password','=', $password )
                         ->select('nurse_id','nurse_name','nurse_surname')
                         ->first();
+        } else if ($role == 'pharmacist') {
+            $user = DB::table('pharmacist')->where('phar_email', '=', $email)
+                                        ->where('phar_password', '=', $password)
+                                        ->select('phar_id', 'phar_name', 'phar_surname')
+                                        ->first();                                        
         } else {
         	return view('home/loginOfficer')->with([
         		'warning' => 'Wrong role (must be patient, doctor or nurse).'
@@ -48,7 +53,7 @@ class LoginController extends Controller{
        
 
         if (!isset($user)) {
-            if ($role=='doctor' || $role=='nurse'){
+            if ($role=='doctor' || $role=='nurse' || $role=='pharmacist'){
                 return view('home/loginOfficer')->with([
                 'warning' => 'email หรือ รหัสผ่านไม่ถูกต้อง'
                 ]);
@@ -72,8 +77,11 @@ class LoginController extends Controller{
         	# code...
         	$_SESSION['id'] = $user->nurse_id;
         	$_SESSION['name'] = $user->nurse_name . " " . $user->nurse_surname;                    
+        } elseif ($role=='pharmacist') {
+            $_SESSION['id'] = $user->phar_id;
+            $_SESSION['name'] = $user->phar_name . " " . $user->phar_surname;
         } else {
-            return 'error';
+            return 'LoginController: error, no selected role.';
         }
         $_SESSION['role'] = $role;   
         session_write_close();

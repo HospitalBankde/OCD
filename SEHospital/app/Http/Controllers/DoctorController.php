@@ -136,7 +136,7 @@ class DoctorController extends Controller
         $id = DB::table('cancel_schedule')->insertGetId([
                             'doc_id' => $doc_id,
                             'cancel_date' => $cancel_date,
-                            'cancel_description' => $cancel_description                                
+                            'cancel_desc' => $cancel_description                                
                         ]);
                         
         return view('doctor.completePostDayOff');

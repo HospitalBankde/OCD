@@ -23,6 +23,8 @@
 			@include('home.dashboardForDoctor', ['id'=>$id, 'name'=>$name, 'role'=>$role])
 		@elseif($role == 'nurse')
 			@include('home.dashboardForNurse', ['id'=>$id, 'name'=>$name, 'role'=>$role])
+		@elseif($role == 'pharmacist')
+			@include('home.dashboardForPharmacist', ['id'=>$id, 'name'=>$name, 'role'=>$role])
 		@endif
 	@else
 		<h2>You are not authorised for this action.</h2>		
