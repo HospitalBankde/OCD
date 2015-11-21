@@ -67,7 +67,7 @@
                     <tr>
                         <th>{{$index}}</th>
                         <th>{{$cancel->cancel_date}}</th>
-                        <th>{{$cancel->cancel_description}}</th>
+                        <th>{{$cancel->cancel_desc}}</th>
                     </tr>
                 @endforeach
                 </tbody>

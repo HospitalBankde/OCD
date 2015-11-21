@@ -135,6 +135,11 @@ class AppointmentController extends Controller {
             foreach ($doctors as $doctor)
             {
                 $doc_availday = $this->getSpecificDoctorDay($doctor->doc_id);
+
+                // Some unknown errors if not skipped, better prevent it!
+                if (count($doc_availday)==0) {                    
+                    continue;
+                }
                 $index = 0;
                 while ($index < 30)
                 {
@@ -347,11 +352,15 @@ class AppointmentController extends Controller {
         } elseif ($session_info['role'] == 'doctor') {
             $role = $session_info['role'];
             $doc_id = $session_info['id'];
-            $appointments = Appointment::where('doc_id','=',$doc_id)
-                            ->where('app_date', '=', date("Y-m-d"))                          
+
+            // get appointments that havn't already diagnosed
+            $appointments = Appointment::where('appointment.doc_id','=',$doc_id)
+                            ->where('appointment.app_date', '=', date("Y-m-d"))     
+                            ->leftJoin('diagnosis', 'diagnosis.app_id', '=', 'appointment.app_id')
+                            ->whereNull('diagnosis_id')              
                             ->orderBy('app_time', 'DESC') 
                             ->join('patient', 'patient.pat_id', '=', 'appointment.pat_id')                                                                                        
-                            ->select('app_time', 'app_date', 'pat_name')
+                            ->select('appointment.app_id', 'app_time', 'app_date', 'patient.pat_id', 'pat_name')
                             ->get(); 
             return view('appointment.appointmentList')->with([
                 'appointments' => $appointments ,

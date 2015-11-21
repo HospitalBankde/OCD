@@ -38,30 +38,40 @@
         <div class="col-md-8 col-md-offset-1">
             <h2>ใบสั่งยา</h2>
             <br>
-        
-                <fieldset>
-                    <div class="control-group">
-                        <label class="control-label" for="pat_id">รหัสผู้ป่วย</label>
-                        <div class="controls">
-                            <input type="text" id="pat_id" name="pat_id" placeholder="" class="form-control input-lg" autocomplete="off" onkeyup="">
+            @if(isset($pat_id) && isset($pat_name) && isset($pat_surname))
+                <div class="row 30">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">ข้อมูลผู้ป่วย</h3>
+                        </div>
+                        <div class="panel-body">
+                            <h4>id: {{$pat_id}} </h4>
+                            <input type="hidden" id="pat_id" value="{{$pat_id}}">
+                            <h4 class="control-label" for="firstname" id="patientname">ชื่อ สกุล: {{$pat_name . ' ' . $pat_surname}}</h4>  
                         </div>
                     </div>
-                
-                </fieldset>
-            
-                    <br>    
-                    <button class="btn btn-primary" onclick="checkPatientID()" >ตรวจสอบ</button><br><br>
+                </div>
+            @else
+                <div class="control-group">
+                    <label class="control-label" for="pat_id">รหัสผู้ป่วย</label>
+                    <div class="controls">
+                        <input type="text" id="pat_id" name="pat_id" placeholder="" class="form-control input-lg" autocomplete="off" onkeyup="">
+                    </div>
+                </div>
+                <br>    
+                <button class="btn btn-primary" onclick="checkPatientID()" >ตรวจสอบ</button><br><br>
 
-                    <div class="row 30">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">ข้อมูลผู้ป่วย</h3>
-                            </div>
-                            <div class="panel-body">
-                                <p class="control-label" for="firstname" id="patientname">ชื่อ สกุล</p>                            
-                            </div>
+                <div class="row 30">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">ข้อมูลผู้ป่วย</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p class="control-label" for="firstname" id="patientname">ชื่อ สกุล</p>                            
                         </div>
                     </div>
+                </div>
+            @endif
                 
                    <!--  <div class="control-group">
                         <label class="control-label" for="firstname">ชื่อผู้ป่วย</label>
@@ -76,16 +86,12 @@
                             <input type="text" id="lastname" name="lastname" placeholder="" class="form-control input-lg" autocomplete="off">
                         </div>
                     </div> -->
-
-                    <div class="control-group">
-                        <label class="control-label" for="symtom">อาการ</label>
-                        <div class="controls">
-                            <input type="text" id="symtom" name="symtom" placeholder="" class="form-control input-lg" autocomplete="off">
-                        </div>
+                <div class="control-group">
+                    <label class="control-label" for="symtom">อาการ</label>
+                    <div class="controls">
+                        <input type="text" id="symtom" name="symtom" placeholder="" class="form-control input-lg" autocomplete="off">
                     </div>
-                
-            
-
+                </div>
             <div class="row top30">
                 <!-- <form class="form-horizontal top10" > -->
                     <div class="panel panel-success">
@@ -143,8 +149,9 @@
             </div>
 
 
-            <form id="sendform" class="form-horizontal" action="/postPrescription" method="POST" onsubmit="return createPrescription()" >
+            <form id="sendform" class="form-horizontal" action="/dashboard/postPrescription" method="POST" onsubmit="return createPrescription()" >
             <div class="row">
+                <input type="hidden" name="app_id" id="app_id" value="{{$app_id}}">
                 <input type="hidden" name="senddata" id="senddata" value="">
                 <!-- Button -->
                 <div class="controls">

@@ -14,9 +14,16 @@
 @endsection
 
 @section('script')
+    {!! Html::script('js/currentPrescription.js') !!}
     <script>
         $('#showPrescriptions').on('shown.bs.modal', function () {
             $('#myInput').focus()
+        })
+        
+        $(document).ready(function() {
+            // updatePrescription(), and delay 3s then call again.
+            timedRefresh();
+
         })
     </script>
 @endsection
@@ -24,155 +31,92 @@
 @section('content')
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <h2>รายการใบสั่งยาปัจจุบัน</h2>
+            <h2>รายการใบสั่งยาปัจจุบัน</h2>                   
+            <h4 style="color:orange"><span id="spanDate"></span></h4>
             <br>
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="#current" data-toggle="tab">ใบสั่งยาปัจจุบัน</a></li>
+                <li><a href="#finished" data-toggle="tab">เสร็จสิ้น</a></li>
+                <li><a href="#cancelled" data-toggle="tab">ยกเลิก</a></li>
+            </ul>
 
-            <div class="row top30">
+            <!-- <div class="row top30" id="all_content">
                 <form class="form-inline">
 
                     <label class="control-label" for="tel">ค้นหารายการยา</label>
                     <input id="typeahead" type="text" data-provide="typeahead" placeholder="ชื่อผู้ป่วย หรือ id">
                 </form>
+            </div> -->
+            <div class="panel panel-default">
+            <div class="panel-body">
+            <section class="tab-content">
+                <article class="tab-pane active" id="current">
+                    <div class="row top30">
+                        <table class="table" id='current_table' name='current_table'>
+                            <br>
+                            <!-- <caption>Prescription</caption> -->
+                            <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>id</th>
+                                <th>ชื่อผู้ป่วย</th>
+                                <th>เพิ่มที่เวลา</th>
+                                <th>หมายเหตุ</th>
+                                <th>action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>                  
+                    </div>
+                </article>
+
+                <article class="tab-pane" id="finished">
+                    <div class="row top30">
+                        <!-- <h3 style="color: gray">รายการใบสั่งยาเสร็จสิ้น</h3> -->
+                        <table class="table" id='finished_table' name='finished_table'>
+                            <br>
+                            <!-- <caption>Prescription</caption> -->
+                            <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>id</th>
+                                <th>ชื่อผู้ป่วย</th>
+                                <th>เพิ่มที่เวลา</th>
+                                <th>หมายเหตุ</th>
+                                <th>action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>                        
+                    </div>
+                 </article>
+
+                 <article class="tab-pane" id="cancelled">
+                    <div class="row top30">
+                        <!-- <h3 style="color: gray">รายการใบสั่งยาถูกยกเลิก</h3> -->
+                        <table class="table" id='cancelled_table' name='cancelled_table'>
+                            <br>
+                            <!-- <caption>Prescription</caption> -->
+                            <thead>
+                            <tr>
+                                <th>ลำดับ</th>
+                                <th>id</th>
+                                <th>ชื่อผู้ป่วย</th>
+                                <th>เพิ่มที่เวลา</th>
+                                <th>หมายเหตุ</th>
+                                <th>action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>   
             </div>
-
-            <div class="row top30">
-                <table class="table">
-                    <br>
-                    <!-- <caption>Prescription</caption> -->
-                    <thead>
-                    <tr>
-                        <th>ลำดับ</th>
-                        <th>id</th>
-                        <th>ชื่อผู้ป่วย</th>
-                        <th>เพิ่มที่เวลา</th>
-                        <th>หมายเหตุ</th>
-                        <th>action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>12</td>
-                        <td>John Smith</td>
-                        <td>1:30 PM</td>
-                        <td></td>
-                        <td><a type="button" data-toggle="modal" data-target="#showPrescriptions">แสดง</a> <a href="#">เสร็จสิ้น</a> <a>ยกเลิก</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>26</td>
-                        <td>Albert Einstein</td>
-                        <td>9:12 AM</td>
-                        <td></td>
-                        <td><a>แสดง</a> <a href="#">เสร็จสิ้น</a> <a>ยกเลิก</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>233</td>
-                        <td>John Doe</td>
-                        <td>8:55 AM</td>
-                        <td>แนะนำวิธีการใช้อีกครั้ง</td>
-                        <td><a>แสดง</a> <a href="#">เสร็จสิ้น</a> <a>ยกเลิก</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>31</td>
-                        <td>Bobby Joey</td>
-                        <td>8:32 AM</td>
-                        <td></td>
-                        <td><a>แสดง</a> <a href="#">เสร็จสิ้น</a> <a>ยกเลิก</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>123</td>
-                        <td>Mary Bobby</td>
-                        <td>8:15 AM</td>
-                        <td>ถามจำนวนยาที่เหลือในครั้งที่แล้ว</td>
-                        <td><a>แสดง</a> <a href="#">เสร็จสิ้น</a> <a>ยกเลิก</a></td>
-                    </tr>
-                    </tbody>
-                </table>
-                </form>
-            </div>
-
-
-            <hr>
-
-            <div class="row top30">
-                <h3 style="color: gray">รายการใบสั่งยาเสร็จสิ้น</h3>
-                <table class="table">
-                    <br>
-                    <!-- <caption>Prescription</caption> -->
-                    <thead>
-                    <tr>
-                        <th>ลำดับ</th>
-                        <th>id</th>
-                        <th>ชื่อผู้ป่วย</th>
-                        <th>เพิ่มที่เวลา</th>
-                        <th>หมายเหตุ</th>
-                        <th>action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>12</td>
-                        <td>John Smith</td>
-                        <td>1:30 PM</td>
-                        <td></td>
-                        <td><a href="#">Undo</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>26</td>
-                        <td>Albert Einstein</td>
-                        <td>9:12 AM</td>
-                        <td></td>
-                        <td><a href="#">Undo</a></td>
-                    </tr>
-                    </tbody>
-                </table>
-                </form>
-            </div>
-
-
-            <div class="row top30">
-                <h3 style="color: gray">รายการใบสั่งยาถูกยกเลิก</h3>
-                <table class="table">
-                    <br>
-                    <!-- <caption>Prescription</caption> -->
-                    <thead>
-                    <tr>
-                        <th>ลำดับ</th>
-                        <th>id</th>
-                        <th>ชื่อผู้ป่วย</th>
-                        <th>เพิ่มที่เวลา</th>
-                        <th>หมายเหตุ</th>
-                        <th>action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>13</td>
-                        <td>Adam Smith</td>
-                        <td>1:30 PM</td>
-                        <td></td>
-                        <td><a href="#">Undo</a></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>236</td>
-                        <td>Albert Smith</td>
-                        <td>9:12 AM</td>
-                        <td></td>
-                        <td><a href="#">Undo</a></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
+            </div>              
 
         <!-- Modal -->
         <div class="modal fade" id="showPrescriptions" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -180,12 +124,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">12 : John Smith</h4>
+                        <h4 class="modal-title" id="myModalLabel">ID : NAME</h4>
                     </div>
                     <div class="modal-body">
                         <div class="col-md-offset-1">
                             <div class="row">
-                                <table class="table">
+                                <table class="table" id="med_List_Table"name="med_List_Table">
                                     <br>
                                     <label class="lead">รายการยา</label>
                                     <!-- <caption>Prescription</caption> -->
@@ -199,27 +143,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>12</td>
-                                        <td>med1</td>
-                                        <td>2</td>
-                                        <td>ทานหลังอาหารทุกมื้อ</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>26</td>
-                                        <td>medimedi</td>
-                                        <td>20</td>
-                                        <td>ทานทุก 1 ชั่วโมง</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>233</td>
-                                        <td>abcdemedicine</td>
-                                        <td>8</td>
-                                        <td>ทานก่อนนอนจนกว่าจะหาย</td>
-                                    </tr>
+
+
                                     </tbody>
                                 </table>
                             </div>
@@ -231,6 +156,17 @@
             </div>
         </div>
     </div>
+    </div>
+@endsection
+
+@section('bottom-script')
+    <script type="text/javascript">
+        var months = ['January','February','March','April','May','June','July',
+            'August','September','October','November','December'];       
+        var tomorrow = new Date();
+        tomorrow.setTime(tomorrow.getTime() + (1000*3600*24));       
+        document.getElementById("spanDate").innerHTML = months[tomorrow.getMonth()] + " " + tomorrow.getDate()+ ", " + tomorrow.getFullYear();
+    </script>
 @endsection
 
 @stop

@@ -4,6 +4,14 @@
 	<title>รายการนัดแพทย์</title>
 @endsection
 
+@section('script')
+	<script type="text/javascript">
+		function clickHello(pat_id) {
+			alert(pat_id);
+		}
+	</script>
+@endsection
+
 @section('content')
 	
 	<div class="container">
@@ -23,7 +31,7 @@
 				@if($role == 'patient')
 					<table class="table table-bordered table-hover" id="appointments">
 						<thead>
-							<tr>
+							<tr bgcolor="#4879CC">
 								<th>#</th>		
 								<th>วัน</th>						
 								<th>เวลา</th>
@@ -49,7 +57,7 @@
 					@if(isset($today))
 						<table class="table table-bordered table-hover" id="appointments">
 						<thead>
-							<tr>
+							<tr bgcolor="#4879CC">
 								<th>#</th>								
 								<th>เวลา</th>
 								<th>ชื่อผู้ป่วย</th>
@@ -58,7 +66,7 @@
 						<tbody>
 							
 							@foreach($appointments as $index => $app)
-							<tr>
+							<tr onclick="window.location = 'todayAppointmentList/patientDiagnosis/{{$app->pat_id}}/{{$app->app_id}}' " style="cursor: pointer;">
 								<td>{{$index+1}}.</td>																							
 								<td>{{$app->app_time}}</td>
 								<td>{{$app->pat_name}}</td>								
@@ -70,7 +78,7 @@
 					@else
 						<table class="table table-bordered table-hover" id="appointments">
 						<thead>
-							<tr>
+							<tr bgcolor="#4879CC">
 								<th>#</th>
 								<th>วัน</th>
 								<th>เวลา</th>

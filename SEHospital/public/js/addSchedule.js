@@ -1,5 +1,6 @@
 function checkDoctorID(){
-  var doc_id = document.getElementById('doc_id').value;
+  var doc_id = document.getElementById('search_doc_id').value;
+  document.getElementById('doc_id').value = doc_id;
   var firstname = "";
   var lastname = "";
     $.ajax(

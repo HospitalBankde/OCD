@@ -1,23 +1,21 @@
 function showResult()
-{
-        var search = document.getElementById('typeahead').value;
-        $.ajax(
+{  
+    $.ajax(
+    {
+        url: '/medicineList',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data)
         {
-            url: 'medicineList',
-            type: 'GET',
-            data: {med_str:search},
-            dataType: 'json',
-            success: function(data)
-            {
-                var med_result = new Array();
-                $.each(data.medicine_list, function(index, med_info) {
-                    var fullmedname = med_info.med_id + '. ' + med_info.med_name;
-                    med_result.push(fullmedname);
-                });
-                //$('#typeahead').data('typeahead').source = med_result;
-                $('#typeahead').typeahead({ source:med_result });
-            }
-        });
+            var med_result = new Array();
+            $.each(data.medicine_list, function(index, med_info) {            
+                var fullmedname = med_info.med_id + '. ' + med_info.med_name;
+                med_result.push(fullmedname);
+            });
+            //$('#typeahead').data('typeahead').source = med_result;
+            $('#typeahead').typeahead({ source:med_result });
+        }
+    });
 }
 row_id_by_far = 0;
 function add_med()
@@ -51,16 +49,6 @@ function add_med()
   var row = table.insertRow(number_of_row);
   row.id = "row" + row_id_by_far;
   row_id_by_far++;
-  // var cell1 = row.insertCell(0);
-  // var cell2 = row.insertCell(1);
-  // var cell3 = row.insertCell(2);
-  // var cell4 = row.insertCell(3);
-  // var cell5 = row.insertCell(4);
-  // cell1.innerHTML = number_of_row+"";
-  // cell2.innerHTML = med_id;
-  // cell3.innerHTML = med_name;
-  // cell4.innerHTML = med_amount;
-  // cell5.innerHTML = description;
   var cell1 = row.insertCell(0);
   var cell2 = row.insertCell(1);
   var cell3 = row.insertCell(2);
@@ -81,7 +69,11 @@ function add_med()
   return true;
 }
 
-
+function deleteRow(row_id){
+    var row = document.getElementById(row_id);
+    row.parentNode.removeChild(row);
+    
+}
 
 function validateNonEmpty(text) {
   if(text.length == 0) {
@@ -89,12 +81,6 @@ function validateNonEmpty(text) {
   } else {
     return true;
   }
-}
-
-function deleteRow(row_id){
-    var row = document.getElementById(row_id);
-    row.parentNode.removeChild(row);
-    
 }
 
 function validateAmoutOfMedicine(amount){
@@ -120,12 +106,17 @@ function checkPatientID(){
                 });
                 var name=0;
                 var surname = 1;
+                // document.getElementById("patientname").innerHTML + pat_array[name] +" "+ pat_array[surname];
                 document.getElementById('patientname').innerHTML = "ชื่อ สกุล " +": "+ pat_array[name] +" " +pat_array[surname] ; 
+                //Change label to firstname and last name
             }
         });
 }
 
 function createPrescription(){
+
+  // prepare all data in JSON and send to server
+
   var pat_id = document.getElementById('pat_id').value;
   var table = document.getElementById("prescription_table");
   var symtom = document.getElementById('symtom').value;
@@ -142,8 +133,6 @@ function createPrescription(){
   }
   var info = [];
     for (var i = 1; i < table.rows.length; i++) {
-        //iterate through rows
-        //rows would be accessed using the "row" variable assigned in the for loop
         var row = table.rows[i];
         var dict = {"id":row.cells.item(0).innerHTML, "name":row.cells.item(1).innerHTML, "num":row.cells.item(2).innerHTML,"description":row.cells.item(3).innerHTML};
         info.push(dict);

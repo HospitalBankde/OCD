@@ -23,7 +23,12 @@
 use App\Http\Controllers\SessionManager;
 
 Route::get('/','HomeController@getIndex');
-
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//==================BEGIN PATIENT==================
 //Appointment
 Route::get('appointment','AppointmentController@getIndex');
 Route::get('appointment/time','AppointmentController@getPageTime')->middleware('role:patient');
@@ -32,16 +37,10 @@ Route::get('doctorList', 'AppointmentController@getDoctorList');
 Route::get('doctorDay', 'AppointmentController@getDoctorDay');//->middleware('role:patient');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime')->middleware('role:patient');
 
-Route::get('dashboard/appointmentList', 'AppointmentController@getPageAppointmentList')->middleware('role:patient,doctor');
-Route::get('dashboard/todayAppointmentList', 'AppointmentController@getPageAppointmentListForToday')->middleware('role:doctor');
 // Register
 Route::get('register','HomeController@getPageRegister');
 Route::post('/actionRegister','HomeController@postRegister');
 
-// Login (All users login via LoginController@postLogin )
-	// page	
-	// Bug: who's already login, when manually enter /login url,
-	// the sessions are gone, and he can enter this page, which shouldn't.
 Route::get('login','HomeController@getPageLogin')->middleware('guest');
 Route::get('loginOfficer','HomeController@getPageLoginOfficer');
 	// action
@@ -55,42 +54,82 @@ Route::get('dashboard', function() {
 	}
 	return view('home.dashboard')->with(SessionManager::getSessionInfo());
 });
+//==================END PATIENT==================
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//==================BEGIN Patient Info==================
+// For nurse to add and show result.
+Route::get('dashboard/addPatientInfo','PatientController@getPageAddPatientInfo')->middleware('role:nurse');
+Route::post('dashboard/postPatientInfo','PatientController@postPatientInfo')->middleware('role:nurse');
 
-//Patient Info
-Route::get('dashboard/addPatientInfo','PatientController@getPatientInfo')->middleware('role:nurse');
-Route::post('dashboard/showPatientInfo','PatientController@postPatientInfo');//->middleware('role:doctor');
-Route::get('getPatientInfo','DoctorController@getPatientInfo');//->middleware('role:doctor');
-Route::post('postPatientInfo','DoctorController@postPatientInfo');//->middleware('role:doctor');
+// For doctor to query and show?
+Route::get('getPatientInfo','DoctorController@getPatientInfo')->middleware('role:doctor');
+Route::post('postPatientInfo','DoctorController@postPatientInfo')->middleware('role:doctor');
 
-//Schedule
-//Route::get('schedule','DoctorController@index')->middleware('role:doctor');
+//==================END Patient Info==================
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//==================BEGIN Doctor==================
+
+ //Diagnosis
+Route::get('dashboard/appointmentList', 'AppointmentController@getPageAppointmentList')->middleware('role:patient,doctor');
+Route::get('dashboard/todayAppointmentList', 'AppointmentController@getPageAppointmentListForToday')->middleware('role:doctor');
+Route::get('dashboard/todayAppointmentList/patientDiagnosis/{pat_id}/{app_id}', 'DoctorController@getPagePatientDiagnosis')->middleware('role:doctor');
+ //Create Prescription
+Route::get('dashboard/createPrescription/{pat_id}/{app_id}', 'DoctorController@getCreatePrescription')->middleware('role:doctor');
+Route::post('dashboard/postPrescription','PrescriptionController@postCreatePrescription')->middleware('role:doctor');
+Route::get('medicineList','PrescriptionController@getMedicineList');
+ //Show Schedule
+Route::get('dashboard/showSchedule', 'DoctorController@getPageDoctorSchedule')->middleware('role:doctor,nurse');
+
+ //Day Off
 Route::get('dashboard/dayoff','DoctorController@getPageDayOff')->middleware('role:doctor');
 Route::post('dashboard/dayoff/postDayOff', 'DoctorController@postDayOff')->middleware('role:doctor');
+//==================END Doctor==================
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//==================BEGIN Nurse==================
 
-
-Route::get('dashboard/showSchedule', 'DoctorController@getPageDoctorSchedule')->middleware('role:doctor,nurse');
+ //Add Schedule
 Route::post('dashboard/actionAddSchedule', 'ScheduleController@postAddSchedule')->middleware('role:nurse');
 Route::get('dashboard/addSchedule','ScheduleController@getPageAddSchedule')->middleware('role:nurse');
-Route::get('getDoctorInformation','ScheduleController@getDoctorInformation');
+Route::get('getDoctorInformation','ScheduleController@getDoctorInformation')->middleware('role:nurse');
+//==================END Nurse==================
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//==================BEGIN Pharmacist==================
 
-//Prescription
-Route::get('createPrescription', 'DoctorController@getCreatePrescription')->middleware('role:doctor');
-Route::get('currentPrescription', 'DoctorController@getCurrentPrescription');
-
+//Current Prescription
+Route::get('dashboard/currentPrescription', 'DoctorController@getCurrentPrescription')->middleware('role:pharmacist');
+Route::get('dashboard/getPrescriptionDetail','PrescriptionController@getPrescriptionDetail')->middleware('role:pharmacist');
+Route::get('dashboard/updatedPrescription','PrescriptionController@getUpdatedPrescription')->middleware('role:pharmacist');
 Route::get('getPatientInformation', 'PrescriptionController@getPatientInformation');
-Route::get('medicineList','PrescriptionController@getMedicineList');
-Route::post('postPrescription','PrescriptionController@postCreatePrescription');
-//Error
-// Route::get('503', function() {
-// 	return view('errors/503');
-// });
+Route::get('dashboard/getChangeStatus','PrescriptionController@getChangeStatus');
+//==================END Pharmacist==================
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//XXXXXXXXX
+//==================BEGIN OTHERS==================
 Route::get('403', function() {
 	return view('errors.errorText')->with([
 		'text' => 'ท่านไม่มีสิทธิ์ทำรายการนี้'
 		]);
 });
-
-//Test-----------------------------------------------------------------------------------------
+//Test
 Route::get('test','TestSomethingController@getIndex');
 Route::get('testdata', 'TestSomethingController@getTestData');
 Route::post('justposttest','TestSomethingController@postTest');

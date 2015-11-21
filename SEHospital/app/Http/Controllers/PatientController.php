@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\App;
 class PatientController extends Controller
 {
 
-    public function getPatientInfo()
+    public function getPageAddPatientInfo()
     {
-        return view('officer.patientInfo');
+        return view('officer.addPatientInfo');
     }
 
     public function postPatientInfo()

@@ -51,7 +51,7 @@
             @if(isset($schedule) && !empty($schedule))
             <table class="table table-bordered table-hover">
                 <thead>
-                <tr>
+                <tr bgcolor="#4879CC">
                     <th>วัน</th>
                     <th>เช้า</th>
                     <th>บ่าย</th>

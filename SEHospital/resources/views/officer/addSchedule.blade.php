@@ -16,11 +16,10 @@
             <form class="form-horizontal" action="actionAddSchedule" method="POST";>
                 <fieldset>
                     <div class="control-group">
-                        <label class="control-label" for="doc_id">ค้นหาจากรหัสแพทย์:  
-                            <button id="edit-button" class="btn btn-link">บันทึก</button>
-                        </label>
+                        <label class="control-label" for="doc_id">ค้นหาจากรหัสแพทย์:</label>
                         <div class="controls">
-                            <input type="text" id="doc_id" name="doc_id" placeholder="Doctor ID" class="form-control input-lg" autocomplete="off" onkeyup="">
+                            <input type="text" id="search_doc_id" name="search_doc_id" placeholder="Doctor ID" class="form-control input-lg" autocomplete="off" onkeyup="">
+                            <input type="hidden" id="doc_id" name="doc_id" value="">
                         </div>
                     </div>    
                 </fieldset><br>  
@@ -128,6 +127,9 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="row" align="center">
+                    <button id="edit-button" class="btn btn-warning">บันทึกตารางออกตรวจแพทย์</button>
+                </div>
             </form>
         </div>
     </div>

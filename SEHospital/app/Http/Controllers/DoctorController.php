@@ -19,18 +19,79 @@ class DoctorController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function getCreatePrescription()
+    public function getCreatePrescription($pat_id, $app_id)
     {
-        return view('doctor.createPrescription');
+        $patient = DB::table('patient')->where('pat_id', '=', $pat_id)
+                                        ->select('pat_id', 'pat_name', 'pat_surname')                                        
+                                        ->first();     
+        if (is_null($patient)) {
+            return 'Error: no patient with id = ' . $pat_id;
+        }   
+        return view('doctor.createPrescription')->with([
+                'pat_id' => $patient->pat_id,
+                'pat_name' => $patient->pat_name,
+                'pat_surname' => $patient->pat_surname,
+                'app_id' => $app_id
+            ]);
     }
     public function getCurrentPrescription()
     {
         return view('doctor.currentPrescription');
     }
+
+    // For nurse to search and edit?
+    // Doctor doesn't have to use this.
     public function getPatientInfo()
     {
-        return view('doctor.getPatientInfo');
+        return view('doctor.searchPatientInfo');
     }
+
+    // Doctor diagnoses patient
+    public function getPagePatientDiagnosis($pat_id, $app_id) {
+
+        $patient = DB::table('patient')->where('pat_id', '=', $pat_id)
+                                        ->select('pat_id', 'pat_name', 'pat_surname')                                        
+                                        ->first();     
+        if (is_null($patient)) {
+               return 'Error: no patient with id = ' . $pat_id;
+           }   
+        $firstname = $patient->pat_name;
+        $lastname = $patient->pat_surname;
+        $patientInfo = DB::table('patient_Info')->where('pat_id', $pat_id)
+                                                ->where('date_of_record', date("Y-m-d"))
+                                                ->first();
+        if (is_null($patientInfo)) {
+               return view('doctor.patientDiagnosis')->with([
+                'firstname' => $firstname,
+                'lastname' => $lastname
+                ]);
+           }   
+        $allergys_id = DB::table('medicine_allergy')->where('pat_id', $pat_id)
+                                                    ->select('med_id','allergy_desc')->get();
+        $allergys = array();        
+
+        foreach($allergys_id as $allergy) {
+            $allergy_med = DB::table('medicine')->where('med_id',$allergy->med_id)->first();
+            $dict = array("id" => $allergy->med_id,
+                          "name" => $allergy_med->med_name,
+                          "description" => $allergy->allergy_desc);
+            array_push($allergys, $dict);
+        }
+        return view('doctor.patientDiagnosis')->with([
+                'pat_id' => $pat_id,
+                'app_id' => $app_id,
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'weight' => $patientInfo->pat_weight,
+                'height' => $patientInfo->pat_height,
+                'temperature' => $patientInfo->pat_temperature,
+                'bloodpressure' => $patientInfo->pat_bloodPressure,
+                'heartrate' => $patientInfo->pat_heartRate,
+                'allergys' => $allergys
+            ]
+        );
+    }
+
     public function postPatientInfo()
     {
         $firstname = Input::get('firstname');
@@ -39,7 +100,7 @@ class DoctorController extends Controller
                                      ->where('pat_surname', $lastname)
                                      ->pluck('pat_id');
         if (is_null($patID)) {
-            return view('doctor.getPatientInfo')->with([
+            return view('doctor.searchPatientInfo')->with([
                     'warning' => "ไม่มีผู้ป่วย $firstname $lastname ในระบบ"
                 ]);
         }
@@ -48,7 +109,7 @@ class DoctorController extends Controller
                                                 ->first();
         $allergys_id = DB::table('medicine_allergy')->where('pat_id', $patID)
                                                     ->select('med_id','allergy_desc')->get();
-        $allergys = array();
+        $allergys = array();        
 
         foreach($allergys_id as $allergy) {
             $allergy_med = DB::table('medicine')->where('med_id',$allergy->med_id)->first();
@@ -133,6 +194,17 @@ class DoctorController extends Controller
         $doc_id = Input::get('doc_id');
         $cancel_date = Input::get('date');
         $cancel_description = Input::get('description');
+
+        $check = DB::table('cancel_schedule')
+                        ->where('doc_id', '=', $doc_id)
+                        ->where('cancel_date', '=', $cancel_date)
+                        ->first();
+        if (!is_null($check)) {
+            # code...
+            return view('errors.errorText')->with([
+                'text' => 'ท่านได้ลาพักในวันที่ ' . $cancel_date . ' ไปแล้ว'
+                ]);
+        }
         $id = DB::table('cancel_schedule')->insertGetId([
                             'doc_id' => $doc_id,
                             'cancel_date' => $cancel_date,

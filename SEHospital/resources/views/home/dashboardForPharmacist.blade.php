@@ -6,7 +6,7 @@
                         <input type="hidden" name="phar_id" value="{{$id}}">                    
                     @endif
 
-                    <a href="#">
+                    <a href="dashboard/currentPrescription">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
