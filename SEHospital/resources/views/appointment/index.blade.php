@@ -33,19 +33,19 @@
             <br>
             <form  action="appointment/time" id="doc_select_form" onsubmit="return validate_doctor_search()" method="get">
                 <h3 style="color: #666666">1.เลือกจากสาขาวิชาที่เชี่ยวชาญ</h3>
-                <select class="selectpicker" name="select_dept" id="select_dept">
+                <select class="selectpicker" name="select_dep" id="select_dep">
                     <option value="-1">Select Department</option>
-                    @foreach($depts as $dept)
-                        <option value="{{$dept->dep_id}}">{{$dept->dep_name}}</option>
+                    @foreach($deps as $dep)
+                        <option value="{{$dep->dep_id}}">{{$dep->dep_name}}</option>
                     @endforeach
                 </select>
 
                 <br><br><br>
 
-                <h3 style="color: #666666">2.เลือกรายชื่อแพทย์ในสาขา <h4 id="dept_label" style="color: #31b0d5"></h4></h3>
+                <h3 style="color: #666666">2.เลือกรายชื่อแพทย์ในสาขา <h4 id="dep_label" style="color: #31b0d5"></h4></h3>
 
                 <select class="selectpicker" name="select_doc" id="select_doc" disabled="true" >
-                    <option value="">Any Doctor</option>
+                    <option value="-1">Any Doctor</option>
 
                 </select>
                 <br>
