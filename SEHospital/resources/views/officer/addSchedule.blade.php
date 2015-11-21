@@ -1,76 +1,134 @@
-/**
-* Created by PhpStorm.
-* User: AunN
-* Date: 11/3/15 AD
-* Time: 12:15 PM
-*/
-
-
 @extends('layout.default')
 
 @section('title')
-    <title>Register</title>
+    <title>Schedule</title>
 @endsection
 
 @section('script')
-    <script>
-        function editSchedule() {
-
-        }
-    </script>
-    <?php
-    $value = rand(0,1) == 1;
-    $days = ["อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์"];
-    ?>
+    {!! Html::script('js/addSchedule.js') !!}
 @endsection
 
 @section('content')
     <div class="row">
-    <a href="/dashboard"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> กลับ dashboard </a>
         <div class="col-md-11 col-md-offset-1">
-            <h2>ตารางออกตรวจ</h2>
+            <h2>ลงตารางออกตรวจ</h2>
             <br>
+            <form class="form-horizontal" action="showSchedule" method="get";>
+                <fieldset>
+                    <div class="control-group">
+                        <label class="control-label" for="doc_id">ค้นหาจากรหัสแพทย์:  
+                            <button id="edit-button" class="btn btn-link">บันทึก</button>
+                        </label>
+                        <div class="controls">
+                            <input type="text" id="doc_id" name="doc_id" placeholder="Doctor ID" class="form-control input-lg" autocomplete="off" onkeyup="">
+                        </div>
+                    </div>    
+                </fieldset><br>  
+                <button class="btn btn-primary" onclick="checkDoctorID()" form="">ตรวจสอบ</button><br><br>
 
-            <div class="row">
-                <div class="form-group col-md-8">
-                    <label for="doc_name">ค้นหาชื่อแพทย์ : John Doe
-                        <button id="edit-button" class="btn btn-link" onclick="editSchedule()">บันทึก</button>
-                    </label>
-                    <div class="form-group">
-                        <input class="form-control" id="doc_name" type="text" placeholder="ชื่อแพทย์">
+                <div class="row 30">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">ชื่อแพทย์</h3>
+                        </div>
+                        <div class="panel-body">
+                            <p class="form-label" for="firstname" id="doctorname" >ชื่อ-สกุล</p>                    
+                        </div>
                     </div>
                 </div>
-            </div>           
-            {{--<button class="btn btn-warning" style="float:right">แจ้งวันลางาน</button>--}}
-            {{--<div class="clearfix">--}}
-            <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>วัน</th>
-                    <th>เช้า</th>
-                    <th>บ่าย</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($schedule as $day)
+               
+
+
+
+                <table class="table ">
+                    <thead>
                     <tr>
-                        <td>{{$day->weekday_id}}</td>
-                        <td>
-                            @if($day->morning)
-                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>                            
-                            @endif
-                            <input type="checkbox" >
-                        </td>
-                        <td>
-                            @if($day->afternoon)
-                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                            @endif
-                            <input type="checkbox" >
-                        </td>
+                        <th>วัน</th>
+                        <th>เช้า</th>
+                        <th>บ่าย</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>อาทิตย์</td>
+                            <td>
+                                <input type="hidden" name="sun_morn" value="0" />
+                                <input type="checkbox" name="sun_morn" value="1">
+                            </td>
+                            <td>
+                                <input type="hidden" name="sun_after" value="0" />
+                                <input type="checkbox" name="sun_after" value="1">
+                            </td>                     
+                        </tr>
+                        <tr>
+                            <td>จันทร์</td>
+                            <td>
+                                <input type="hidden" name="mon_morn" value="0" />
+                                <input type="checkbox" name="mon_morn" value="1">
+                            </td>
+                            <td>
+                                <input type="hidden" name="mon_after" value="0" />
+                                <input type="checkbox" name="mon_after" value="1">
+                            </td>  
+                        </tr>
+                        <tr>
+                            <td>อังคาร</td>
+                            <td>
+                                <input type="hidden" name="tue_morn" value="0" />
+                                <input type="checkbox" name="tue_morn" value="1">
+                            </td>
+                            <td>
+                                <input type="hidden" name="tue_after" value="0" />
+                                <input type="checkbox" name="tue_after" value="1">
+                            </td>  
+                        </tr>
+                        <tr>
+                            <td>พุธ</td>
+                            <td>
+                                <input type="hidden" name="wed_morn" value="0" />
+                                <input type="checkbox" name="wed_morn" value="1">
+                            </td>
+                            <td>
+                                <input type="hidden" name="wed_after" value="0" />
+                                <input type="checkbox" name="wed_after" value="1">
+                            </td>  
+                        </tr>
+                        <tr>
+                            <td>พฤหัสบดี</td>
+                            <td>
+                                <input type="hidden" name="thu_morn" value="0" />
+                                <input type="checkbox" name="thu_morn" value="1">
+                            </td>
+                            <td>
+                                <input type="hidden" name="thu_after" value="0" />
+                                <input type="checkbox" name="thu_after" value="1">
+                            </td>  
+                        </tr>
+                        <tr>
+                            <td>ศุกร์</td>
+                            <td>
+                                <input type="hidden" name="fri_morn" value="0" />
+                                <input type="checkbox" name="fri_morn" value="1">
+                            </td>
+                            <td>
+                                <input type="hidden" name="fri_after" value="0" />
+                                <input type="checkbox" name="fri_after" value="1">
+                            </td>  
+                        </tr>
+                        <tr>
+                            <td>เสาร์</td>
+                            <td>
+                                <input type="hidden" name="sat_morn" value="0" />
+                                <input type="checkbox" name="sat_morn" value="1">
+                            </td>
+                            <td>
+                                <input type="hidden" name="sat_after" value="0" />
+                                <input type="checkbox" name="sat_after" value="1">
+                            </td>  
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
         </div>
     </div>
     </div>
