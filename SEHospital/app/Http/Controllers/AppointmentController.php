@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\SessionManager;
-class AppointmentController extends Controller{
+
+class AppointmentController extends Controller {
 
     public function getIndex() {                
         $deps = DB::select('SELECT dep_name, dep_id FROM department');
@@ -78,7 +79,7 @@ class AppointmentController extends Controller{
                         ->where('app_date','<', $nextMonth)
                         ->select(DB::raw('count(*) as count, app_date'))
                         ->groupBy('app_date')
-                        ->having('count', '>=', 30)
+                        ->having('count', '>=', 15)
                         ->get();
 
         for ($i = 0; $i < 31; $i++) {
@@ -96,9 +97,12 @@ class AppointmentController extends Controller{
             foreach ($appointmentFull as $eachFull) {
                 $tempDate2 = explode("-", $eachFull->app_date);
                 if ($tempDate2[2] == $tempDate) {
-                    array_push($availday, 0);
-                    $availcheck = 0;
-                    break;
+                    if ($eachFull->count >= ($doc_schedule[$tempWeekday]->morning + $doc_schedule[$tempWeekday]->afternoon)*15)
+                    {
+                        array_push($availday, 0);
+                        $availcheck = 0;
+                        break;
+                    }
                 }
             }
 
@@ -162,6 +166,7 @@ class AppointmentController extends Controller{
                 ->groupBy('app_date', 'app_time')
                 ->having('count', '>=', 15)
                 ->get();
+        //$appointment will only have 2 length -> one morning and one afternoon
         foreach ($appointment as $eachApp) {
             if ($eachApp->app_time == "morning") $doc_schedule->morning = 0;
             if ($eachApp->app_time == "afternoon") $doc_schedule->afternoon = 0;
@@ -217,6 +222,7 @@ class AppointmentController extends Controller{
     public function postApp() {
         //Assume that client is innocent and never inject the post request/javascript file
         //Security here is beyond worst, you know what I mean
+        //Performance on "any doctor" is really bad, just ignore it plz :D
         $select_doc = Input::get('select_doc');
         $select_dep = Input::get('select_dep');
         $select_date = Input::get('select_date');
@@ -233,13 +239,55 @@ class AppointmentController extends Controller{
             if ($_SESSION['role'] == "patient")
             {
                 $pat_id = $_SESSION['id'];
-                $id = DB::table('appointment')->insertGetId([
-                    'doc_id' => $select_doc,
-                    'pat_id' => $pat_id,
-                    'app_time' => $time,
-                    'app_date' => $dateSQL,
-                    'date_of_record' => date("Y-m-d")
-                ]);
+                if ($select_doc >= 0)
+                {
+                    $id = DB::table('appointment')->insertGetId([
+                        'doc_id' => $select_doc,
+                        'pat_id' => $pat_id,
+                        'app_time' => $time,
+                        'app_date' => $dateSQL,
+                        'date_of_record' => date("Y-m-d")
+                    ]);
+                }
+                else if ($select_doc == -1)
+                {
+                    $tempDate = date("j-m-Y", strtotime($select_date)); 
+                    $weekday = date("w", strtotime($tempDate));
+
+                    $appointments = Appointment::where('app_date','=', $dateSQL)
+                                    ->where('app_time', '=', $time)
+                                    ->select(DB::raw('count(*) as count, doc_id'))
+                                    ->groupBy('doc_id')
+                                    ->having('count', '>=', 15)
+                                    ->get();
+
+                    $fulldoc = array();
+                    foreach ($appointments as $appointment)
+                    {
+                        array_push($fulldoc, $appointment->doc_id);
+                    }
+
+                    $doctors = Doctor_Schedule::whereNotIn('doctor_schedule.doc_id',$fulldoc)
+                                    ->where('weekday_id','=',$weekday)
+                                    ->where($time, '=', 1)
+                                    ->join('doctor','doctor_schedule.doc_id','=','doctor.doc_id')
+                                    ->where('doctor.dep_id','=',$select_dep)
+                                    ->select('doctor.doc_id')
+                                    ->get();
+
+                    if (count($doctors) == 0) return "All doctors are full, sry";
+
+                    //Select random doctor and put in database
+                    $select_doc = $doctors[rand(0,count($doctors)-1)]->doc_id;
+                    $id = DB::table('appointment')->insertGetId([
+                        'doc_id' => $select_doc,
+                        'pat_id' => $pat_id,
+                        'app_time' => $time,
+                        'app_date' => $dateSQL,
+                        'date_of_record' => date("Y-m-d")
+                    ]);
+
+                }
                 session_write_close();
                 return view('appointment.complete');
             }
