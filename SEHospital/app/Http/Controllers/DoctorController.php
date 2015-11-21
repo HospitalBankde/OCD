@@ -18,11 +18,7 @@ class DoctorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-        return view('doctor.schedule');
-    }
+
     public function getCreatePrescription()
     {
         return view('doctor.createPrescription');

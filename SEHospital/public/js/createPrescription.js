@@ -120,9 +120,7 @@ function checkPatientID(){
                 });
                 var name=0;
                 var surname = 1;
-                // document.getElementById("patientname").innerHTML + pat_array[name] +" "+ pat_array[surname];
                 document.getElementById('patientname').innerHTML = "ชื่อ สกุล " +": "+ pat_array[name] +" " +pat_array[surname] ; 
-                //Change label to firstname and last name
             }
         });
 }
