@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\SessionManager;
+use App\Models\Doctor_Schedule;
 class ScheduleController extends Controller{
 
 	public function showSchedule()
@@ -19,7 +20,18 @@ class ScheduleController extends Controller{
 		DB::table('doctor_schedule')->insert(['doc_id' => $doc_id,'weekday_id' => '5', 'morning' => Input::get('fri_morn'), 'afternoon' => Input::get('fri_after')]);
 		DB::table('doctor_schedule')->insert(['doc_id' => $doc_id,'weekday_id' => '6', 'morning' => Input::get('sat_morn'), 'afternoon' => Input::get('sat_after')]);
 
-        return view('doctor.schedule');
+        $schedule = Doctor_Schedule::where('doc_id', '=', $doc_id)
+                                    ->orderBy('weekday_id', 'ASC')
+                                    ->get();
+
+        // replace with readable day
+        $DAY = ['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์'];
+        foreach ($schedule as $index => $day) {
+            $day->weekday_id = $DAY[$index];
+        }                                                            
+        return view('doctor.schedule')->with([
+            'schedule' => $schedule
+            ]);   
     }
 
     public function addSchedule()

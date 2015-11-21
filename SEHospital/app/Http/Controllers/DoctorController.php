@@ -74,7 +74,7 @@ class DoctorController extends Controller
     {
         # code...
         $doc_id = Input::get('doc_id');
-        $doc_id = 11;
+        //$doc_id = 11;
         $schedule = Doctor_Schedule::where('doc_id', '=', $doc_id)
                                     ->orderBy('weekday_id', 'ASC')
                                     ->get();
