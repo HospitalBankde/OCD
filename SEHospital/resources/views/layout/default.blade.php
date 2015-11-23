@@ -24,8 +24,7 @@
             color: blue;
             font-size: 0.5em;
         }
-    </style>
-
+    </style>    
     <!-- Title for each page -->
     @yield('title')
 
@@ -50,11 +49,17 @@
                     <li role="presentation"><a href="/contact"><span class="fa fa-envelope-o" aria-hidden="true"></span> ติดต่อ</a></li>
                 </ul>
             </nav>
-            
-            @if(isset($_SESSION['id']) && $_SESSION['role'] != 'patient')    
-                <h3 class="text-muted"><a href="/" style="text-decoration: none;">iHospital<span class="atoms">{{$_SESSION['role']}}</span></a></h3>                            
+
+            @if(isset($_SESSION['id']))
+                <input type="hidden" value="has_session" id="session_check">
             @else
-                <h3 class="text-muted"><a href="/" style="text-decoration: none;">iHospital</a></h3>
+                <input type="hidden" value="no_session" id="session_check">
+            @endif
+
+            @if(isset($_SESSION['id']) && $_SESSION['role'] != 'patient')    
+                <h3 class="text-muted"><a href="/" style="text-decoration: none;" id="logo">iHospital<span class="atoms">{{$_SESSION['role']}}</span></a></h3>                            
+            @else
+                <h3 class="text-muted"><a href="/" style="text-decoration: none;" id="logo">iHospital</a></h3>
             @endif
         
             <?php 
@@ -79,6 +84,23 @@
     </div>
 
     {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--}}
+    <script type="text/javascript">
+        var pressTimer
+
+        $("#logo").mouseup(function(){
+          clearTimeout(pressTimer)
+          // Clear timeout          
+          return false;
+        }).mousedown(function(){
+          // Set timeout
+          if(document.getElementById("session_check").value == 'no_session'){
+            pressTimer = window.setTimeout(function() {             
+                window.location.href = '/loginOfficer';            
+          },1000)
+          }          
+          return false; 
+        });
+    </script>
     @yield('bottom-script')
 </body>
 </html>
