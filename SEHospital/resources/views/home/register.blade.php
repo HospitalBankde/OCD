@@ -60,7 +60,7 @@
                             <label class="control-label" for="password">Password</label>
                             <div class="controls">
                                 <input type="password" id="password" name="password" placeholder="" class="form-control input-lg">
-                                <p class="help-block">Password should be at least 8 characters</p>
+                                <p class="help-block">Password should be at least 8 characters with uppercase, lowercase and number</p>
                             </div>
                         </div>
 

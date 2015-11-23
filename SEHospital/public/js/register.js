@@ -52,7 +52,9 @@ function validate_register_form(form) {
 }
 
 
-
+function validateNonEmpty(input) {
+   return !(input.length == 0);
+}
 function validateSSN(ssn) {
 	var re = /^\d{13}/;
 	return re.test(ssn);
