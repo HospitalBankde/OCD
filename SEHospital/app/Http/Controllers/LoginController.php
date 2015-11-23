@@ -132,7 +132,7 @@ class LoginController extends Controller{
                 'email' => $user->doc_email                
             ];
         } elseif ($info['role'] == 'nurse') {
-            $user = DB::table('patient')->where('nurse_id', '=', $info['id'])->first();
+            $user = DB::table('nurse')->where('nurse_id', '=', $info['id'])->first();
             $user_info = [
                 'name' => $user->nurse_name,
                 'surname' => $user->nurse_surname,

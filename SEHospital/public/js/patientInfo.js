@@ -134,9 +134,7 @@ function validate_patientInfo_form(form) {
     alert('กรุณากรอกอัตราการเต้นของหัวใจหรือเป็นตัวเลขเท่านั้น');
     form.heartrate.focus();
     return false;
-  }
-  alert('ลงข้อมูลของผู้ป่วยเรียบร้อย');
-
+  }  
   var table = document.getElementById("allergy_table");
   var info = [];
 

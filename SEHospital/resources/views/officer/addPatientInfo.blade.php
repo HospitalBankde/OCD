@@ -15,7 +15,19 @@
 @endsection
 
 @section('content')
-        <div class="row">        
+<div class="container">
+    @if(isset($errorText))
+        <div class="row">
+            <div class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>                        
+                        {{$errorText}}                        
+            </div>
+        </div>
+    @endif
+        <div class="row">                    
+        <a href="/dashboard"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> กลับ dashboard </a>
+            <div class="header-clearfix"></div>
             <div class="col-md-8 col-md-offset-1">
                 <h2>ข้อมูลเบื้องต้นของผู้ป่วย</h2>
                 <br>
@@ -120,6 +132,7 @@
 
             </div>
         </div>
+</div>
 @endsection
 
 @stop
