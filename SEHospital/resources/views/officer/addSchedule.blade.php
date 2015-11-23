@@ -13,7 +13,7 @@
         <div class="col-md-11 col-md-offset-1">
             <h2>ลงตารางออกตรวจ</h2>
             <br>
-            <form class="form-horizontal" action="actionAddSchedule" method="POST";>
+            <form class="form-horizontal" action="actionAddSchedule" method="POST" onsubmit="return checkValidDoctorID();" ;>
                 <fieldset>
                     <div class="control-group">
                         <label class="control-label" for="doc_id">ค้นหาจากรหัสแพทย์:</label>

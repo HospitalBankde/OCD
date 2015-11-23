@@ -45,13 +45,11 @@ class ScheduleController extends Controller{
 
     public function getDoctorInformation() {
         $doc_id = Input::get('doc_id');
-        $firstname = Input::get('firstname');
-        $lastname = Input::get('lastname');
 
         if(isset($doc_id)){
             $information = DB::select("SELECT doc_name, doc_surname  FROM doctor WHERE doc_id = $doc_id");
-            if(empty($information)){
-                return 'doc_id';
+            if(is_null($information)){
+                return 'doc_ids';
             }
             $information = $information[0];
             return  response()->json(['doc_info' => $information ]);
