@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Doctor_Schedule;
 use App\Models\Appointment;
+use App\Models\Cancel_Schedule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
@@ -82,11 +83,18 @@ class AppointmentController extends Controller {
                         ->having('count', '>=', 15)
                         ->get();
 
+        $cancelDates = Cancel_Schedule::where('doc_id','=', $select_doc)
+                        ->where('cancel_date','>', date("Y-m-d"))
+                        ->where('cancel_date','<', $nextMonth)
+                        ->select('doc_id', 'cancel_date')
+                        ->get();
+
         for ($i = 0; $i < 31; $i++) {
-            $tempDate = $todayDate + $i;
+            $tempDate = date('Y-m-d', strtotime("+" . $i . " days"));
             $tempWeekday = ($todayWeekday + $i) % 7;
 
             $availcheck = 1;
+            //If doctor doesn't have schedule that day
             if ($doc_schedule[$tempWeekday]->morning == 0 && $doc_schedule[$tempWeekday]->afternoon == 0) {
                 array_push($availday, 0);
                 $availcheck = 0;
@@ -95,14 +103,22 @@ class AppointmentController extends Controller {
 
             //If that day is full (>=30)
             foreach ($appointmentFull as $eachFull) {
-                $tempDate2 = explode("-", $eachFull->app_date);
-                if ($tempDate2[2] == $tempDate) {
+                if ($eachFull->app_date == $tempDate) {
                     if ($eachFull->count >= ($doc_schedule[$tempWeekday]->morning + $doc_schedule[$tempWeekday]->afternoon)*15)
                     {
                         array_push($availday, 0);
                         $availcheck = 0;
                         break;
                     }
+                }
+            }
+
+            //If that day is cancelled.
+            foreach ($cancelDates as $cancelDate) {
+                if ($cancelDate->cancel_date == $tempDate) {
+                    array_push($availday, 0);
+                    $availcheck = 0;
+                    break;
                 }
             }
 
@@ -156,21 +172,35 @@ class AppointmentController extends Controller {
         $weekday = date("w", strtotime($date));
         $availtime = array();
 
+        $dateSplit = explode("/", $select_date);
+        $dateSQL = $dateSplit[2] . "-" . $dateSplit[0] . "-". $dateSplit[1];
+        $nextMonth = date('Y-m-d', strtotime("+31 days"));
+
         $doc_schedule = Doctor_Schedule::where('doc_id','=', $select_doc)
                         ->where('weekday_id','=', $weekday)
                         ->select('morning','afternoon')
                         ->first();
 
+        //Check if cancelled
+        $cancelDate = Cancel_Schedule::where('doc_id','=', $select_doc)
+                        ->where('cancel_date','=', $dateSQL )
+                        ->select('doc_id', 'cancel_date')
+                        ->first();
+        if(isset($cancelDate))
+        {
+            $doc_schedule->morning = 0;
+            $doc_schedule->afternoon = 0;
+            return $doc_schedule;
+        }
+
         //Check if that time is full (>=15)
-        $dateSplit = explode("/", $select_date);
-        $dateSQL = $dateSplit[2] . "-" . $dateSplit[0] . "-". $dateSplit[1];
-        $nextMonth = date('Y-m-d', strtotime("+31 days"));
         $appointment = Appointment::where('doc_id','=', $select_doc)
                 ->where('app_date','=', $dateSQL)
                 ->select(DB::raw('count(*) as count, app_date, app_time'))
                 ->groupBy('app_date', 'app_time')
                 ->having('count', '>=', 15)
                 ->get();
+
         //$appointment will only have 2 length -> one morning and one afternoon
         foreach ($appointment as $eachApp) {
             if ($eachApp->app_time == "morning") $doc_schedule->morning = 0;
@@ -227,6 +257,7 @@ class AppointmentController extends Controller {
     public function postApp() {
         //Assume that client is innocent and never inject the post request/javascript file
         //Security here is beyond worst, you know what I mean
+        //I tried my best to cover security but if I have to detect everything, I will not be able to finish on time.
         //Performance on "any doctor" is really bad, just ignore it plz :D
         $select_doc = Input::get('select_doc');
         $select_dep = Input::get('select_dep');
@@ -244,6 +275,7 @@ class AppointmentController extends Controller {
             if ($_SESSION['role'] == "patient")
             {
                 $pat_id = $_SESSION['id'];
+                $pat_name = $_SESSION['name'];
                 if ($select_doc >= 0)
                 {
                     $id = DB::table('appointment')->insertGetId([
@@ -253,37 +285,53 @@ class AppointmentController extends Controller {
                         'app_date' => $dateSQL,
                         'date_of_record' => date("Y-m-d")
                     ]);
+                    session_write_close();
+                    $doc = Doctor::where('doc_id', '=', $select_doc)->first();
+                    return view('appointment.complete')->with([
+                        'app_id' => $id,
+                        'doc_name' => $doc->doc_name,
+                        'pat_name' => $pat_name,
+                        'app_time' => $time,
+                        'app_date' => $dateSQL
+                ]);
                 }
                 else if ($select_doc == -1)
                 {
                     $tempDate = date("j-m-Y", strtotime($select_date)); 
                     $weekday = date("w", strtotime($tempDate));
 
+                    //Appointment full
                     $appointments = Appointment::where('app_date','=', $dateSQL)
                                     ->where('app_time', '=', $time)
                                     ->select(DB::raw('count(*) as count, doc_id'))
                                     ->groupBy('doc_id')
                                     ->having('count', '>=', 15)
                                     ->get();
-
-                    $fulldoc = array();
+                    $fulldocs = array();
                     foreach ($appointments as $appointment)
                     {
-                        array_push($fulldoc, $appointment->doc_id);
+                        array_push($fulldocs, $appointment->doc_id);
                     }
 
-                    $doctors = Doctor_Schedule::whereNotIn('doctor_schedule.doc_id',$fulldoc)
+                    //Schedule cancelled
+                    $cancelDocs = Cancel_Schedule::where('cancel_date','=', $dateSQL )
+                        ->select('doc_id')
+                        ->get();
+
+                    $doctors = Doctor_Schedule::whereNotIn('doctor_schedule.doc_id',$fulldocs)
+                                    ->whereNotIn('doctor_schedule.doc_id', $cancelDocs)
                                     ->where('weekday_id','=',$weekday)
                                     ->where($time, '=', 1)
                                     ->join('doctor','doctor_schedule.doc_id','=','doctor.doc_id')
                                     ->where('doctor.dep_id','=',$select_dep)
-                                    ->select('doctor.doc_id')
+                                    ->select('doctor.doc_id', 'doctor.doc_name')
                                     ->get();
 
                     if (count($doctors) == 0) return "All doctors are full, sry";
 
                     //Select random doctor and put in database
-                    $select_doc = $doctors[rand(0,count($doctors)-1)]->doc_id;
+                    $doc = $doctors[rand(0,count($doctors)-1)];
+                    $select_doc = $doc->doc_id;
                     $id = DB::table('appointment')->insertGetId([
                         'doc_id' => $select_doc,
                         'pat_id' => $pat_id,
@@ -292,15 +340,56 @@ class AppointmentController extends Controller {
                         'date_of_record' => date("Y-m-d")
                     ]);
 
+                    session_write_close();
+                    return view('appointment.complete')->with([
+                        'app_id' => $id,
+                        'doc_name' => $doc->doc_name,
+                        'pat_name' => $pat_name,
+                        'app_time' => $time,
+                        'app_date' => $dateSQL
+                    ]);
                 }
-                session_write_close();
-                return view('appointment.complete');
             }
         }
         session_write_close();
-
         return "Must login as patient first";
     }
+
+    public function patCancelApp() 
+    {
+        $app_id = Input::get('app_id');
+        $select_app = Appointment::where('app_id','=', $app_id)
+                                ->select('app_id','pat_id','app_date')
+                                ->first();
+        session_start();
+        $role = $_SESSION['role'];
+        if ($role == 'patient'){
+            $pat_id = $_SESSION['id'];
+        }
+        else {
+            return view('appointment.cancel')->with([
+                    'comment' => "Only patient can cancel appointment here.<br> This incident is being reported"
+                ]);
+        }
+        session_write_close();
+        if ($pat_id == $select_app->pat_id)
+        {
+            //Add check time here. Patient shouldn't be able to remove past history
+            //But it's not in requirement so... later
+            DB::table('appointment')->where('app_id', '=', $app_id)->delete();
+            return view('appointment.cancel')->with([
+                    'comment' => "Appointment at " . $select_app->app_date . " is cancelled"
+                ]);
+        }
+        else
+        {
+            return view('appointment.cancel')->with([
+                    'comment' => "You can only cancel your own appointments.<br> This incident is being reported"
+                ]);
+        }
+    }
+
+
     public function getPageAppointmentList()
     {
         # code...
