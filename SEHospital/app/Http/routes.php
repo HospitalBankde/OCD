@@ -37,6 +37,7 @@ Route::post('appointment/cancel', 'AppointmentController@patCancelApp')->middlew
 Route::get('doctorList', 'AppointmentController@getDoctorList');
 Route::get('doctorDay', 'AppointmentController@getDoctorDay');//->middleware('role:patient');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime')->middleware('role:patient');
+Route::get('doctorScheduleDay', 'AppointmentController@getDoctorScheduleDay');
 
 // Register
 Route::get('register','HomeController@getPageRegister');

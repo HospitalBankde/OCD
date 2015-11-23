@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
 use App\Models\Doctor_Schedule;
+use App\Models\Appointment;
 use App\Http\Controllers\SessionManager;
 
 class DoctorController extends Controller
@@ -205,12 +206,28 @@ class DoctorController extends Controller
                 'text' => 'ท่านได้ลาพักในวันที่ ' . $cancel_date . ' ไปแล้ว'
                 ]);
         }
+
         $id = DB::table('cancel_schedule')->insertGetId([
                             'doc_id' => $doc_id,
                             'cancel_date' => $cancel_date,
                             'cancel_desc' => $cancel_description                                
                         ]);
+        $cancelList = Appointment::where('appointment.app_date', '=', $cancel_date)
+                                ->where('appointment.doc_id', '=', $doc_id)
+                                ->join('patient','patient.pat_id','=','appointment.pat_id')
+                                ->orderBy('appointment.date_of_record', 'ASC')
+                                ->orderBy('appointment.app_time', 'DESC') //because morning vs afternoon
+                                ->orderBy('patient.pat_name', 'ASC')
+                                ->select('patient.pat_id','patient.pat_name','patient.pat_surname','appointment.app_time','appointment.date_of_record','patient.pat_tel')
+                                ->get();
+
+        DB::table('appointment')->where('app_date', '=', $cancel_date)
+                                ->where('doc_id', '=', $doc_id)
+                                ->delete();
                         
-        return view('doctor.completePostDayOff');
+        return view('doctor.completePostDayOff')->with([
+                'cancel_date' => $cancel_date,
+                'cancelList' => $cancelList
+            ]);
     }
 }

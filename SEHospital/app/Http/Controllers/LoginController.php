@@ -19,6 +19,7 @@ class LoginController extends Controller{
 	public function postLogin() {
 		$email = Input::get('email');
         $password = Input::get('password');
+        //$password = bcrypt($password);
         $role = Input::get('role');
 
 

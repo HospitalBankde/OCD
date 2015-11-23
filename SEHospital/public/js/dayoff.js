@@ -12,7 +12,7 @@ $(document).ready(function()
 {        
     $.ajax(
     {
-        url: '/doctorDay',
+        url: '/doctorScheduleDay',
         type: 'GET',
         data: {select_doc:$('#select_doc').val()},
         dataType: 'json',

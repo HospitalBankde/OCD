@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Patient;
+use App\Models\Medicine_Allergy;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -56,6 +57,10 @@ class PatientController extends Controller
 
                 foreach ($allergys as $allergy) {
                  # code...
+                    //delete previous one (update allergy_desc and date_of_record)
+                    DB::table('medicine_allergy')->where('pat_id', '=', $id)
+                                            ->where('med_id', '=', $allergy['id'])
+                                            ->delete();
                     DB::table('medicine_allergy')->insert([
                     'pat_id' => $id,
                     'med_id' => $allergy['id'],

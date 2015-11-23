@@ -69,20 +69,6 @@
                   </div>
                 </div>
             </div>
-
-<!--             <table class="table">
-                <tr>
-                    <th> <a href="/dashboard" class="btn btn-info" role="button">กลับไปยัง Dashboard</a> </th>
-                    <th>
-                        <form  action="/appointment/cancel" id="pat_cancel_form" method="post">
-                            <input name="app_id" id="app_id" type="hidden" value="{{$app_id}}"/>
-                            <button type="submit" class="btn btn-default" style="background-color: #265a88; color: lightgray">
-                                ยกเลิกการนัด
-                            </button>
-                        </form>
-                    </th>
-                </tr>
-            </table> -->
         </div>
     </div>
 @endsection

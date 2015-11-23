@@ -9,11 +9,11 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
-class MedicalRecord extends Model {
+class Medicine_Allergy extends Model {
 
-    protected $table = 'medical_record';
+    protected $table = 'medicine_allergy';
     public $timestamps = false;
     protected $fillable = [
-        'med_id', 'doc_id','pat_id','sym_id'
+        'pat_id', 'med_id','date_of_record','allergy_desc'
     ];
 }

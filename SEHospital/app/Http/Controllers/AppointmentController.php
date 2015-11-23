@@ -56,6 +56,54 @@ class AppointmentController extends Controller {
         );
     }
 
+    public function getDoctorScheduleDay() {
+        $select_doc = Input::get('select_doc');
+        $availday = array();
+        $today = getdate();
+        $todayDate = $today['mday'];
+        $todayWeekday = date('N', strtotime($today['weekday']) ) % 7;
+        $nextMonth = date('Y-m-d', strtotime("+31 days"));
+        $doctor = Doctor::where('doc_id','=',$select_doc)
+                        ->select('doc_name','doc_surname')->first();
+        $doc_schedule = Doctor_Schedule::where('doc_id','=', $select_doc)
+                        ->select('weekday_id','morning','afternoon')
+                        ->orderBy('weekday_id', 'asc')
+                        ->get();
+
+        $cancelDates = Cancel_Schedule::where('doc_id','=', $select_doc)
+                        ->where('cancel_date','>', date("Y-m-d"))
+                        ->where('cancel_date','<', $nextMonth)
+                        ->select('doc_id', 'cancel_date')
+                        ->get();
+
+        for ($i = 0; $i < 31; $i++) {
+            $tempDate = date('Y-m-d', strtotime("+" . $i . " days"));
+            $tempWeekday = ($todayWeekday + $i) % 7;
+
+            $availcheck = 1;
+            //If doctor doesn't have schedule that day
+            if ($doc_schedule[$tempWeekday]->morning == 0 && $doc_schedule[$tempWeekday]->afternoon == 0) {
+                array_push($availday, 0);
+                $availcheck = 0;
+                continue;
+            }
+
+            //If that day is cancelled.
+            foreach ($cancelDates as $cancelDate) {
+                if ($cancelDate->cancel_date == $tempDate) {
+                    array_push($availday, 0);
+                    $availcheck = 0;
+                    break;
+                }
+            }
+
+            if ($availcheck == 1) {
+                array_push($availday, 1);
+            }
+        }
+        return response()->json(['availday' => $availday]);
+    }
+
     function getSpecificDoctorDay($select_doc) {
         $availday = array();
         $today = getdate();
