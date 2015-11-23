@@ -44,6 +44,10 @@ class PatientController extends Controller
             if ($_SESSION['role'] == "nurse")
             {
                 $nurse_id = $_SESSION['id'];
+                //delete previous one (update patient_info)
+                DB::table('patient_info')->where('pat_id', '=', $id)
+                                        ->where('date_of_record', '=', date("Y-m-d"))
+                                        ->delete();
                 DB::table('patient_info')->insert([
                     'pat_id' => $id,
                     'pat_height' => $height,
