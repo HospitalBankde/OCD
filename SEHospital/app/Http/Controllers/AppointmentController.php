@@ -63,7 +63,7 @@ class AppointmentController extends Controller {
         $availday = array();
         $today = getdate();
         $todayDate = $today['mday'];
-        $todayWeekday = date('N', strtotime($today['weekday']) ) % 7;
+        $todayWeekday = (date('N', strtotime($today['weekday'])) +1) % 7;
         $nextMonth = date('Y-m-d', strtotime("+31 days"));
         $doctor = Doctor::where('doc_id','=',$select_doc)
                         ->select('doc_name','doc_surname')->first();
@@ -110,7 +110,8 @@ class AppointmentController extends Controller {
         $availday = array();
         $today = getdate();
         $todayDate = $today['mday'];
-        $todayWeekday = date('N', strtotime($today['weekday']) ) % 7;
+        //I can't believe this function gives Monday as 0 //We need to add 1 to make Sunday 0
+        $todayWeekday = (date('N', strtotime($today['weekday']) ) + 1) % 7;
         $nextMonth = date('Y-m-d', strtotime("+31 days"));
         $doctor = Doctor::where('doc_id','=',$select_doc)
                         ->select('doc_name','doc_surname')->first();
@@ -351,6 +352,7 @@ class AppointmentController extends Controller {
                 else if ($select_doc == -1)
                 {
                     $tempDate = date("j-m-Y", strtotime($select_date)); 
+                    //Here date("w") gives sunday as 0 //correct already
                     $weekday = date("w", strtotime($tempDate));
 
                     //Appointment full
@@ -419,9 +421,12 @@ class AppointmentController extends Controller {
         //Actually need to check for role*** 
         //Add check time here. Patient shouldn't be able to remove past history
         //But it's not in requirement so... later
+        MailController::appointmentCancelMail($app_id);
+
         DB::table('appointment')->where('app_id', '=', $app_id)->delete();
         $doc = Doctor::where('doc_id', '=', $select_app->doc_id)->first();
         $pat = Patient::where('pat_id', '=', $select_app->pat_id)->first();
+
         return view('appointment.cancel')->with([
                         'app_id' => $app_id,
                         'doc_name' => $doc->doc_name,

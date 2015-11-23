@@ -36,8 +36,8 @@ class MailController extends Controller {
                 . "Doctor: " . $doc->doc_name . "\r\n"
                 . "Appointment Date: " . $app->app_date . "\r\n"
                 . "Time of Day: " . $app->app_time;
-        // MailController::sendEmail($pat->pat_email,"Appointment Alert",$text);
-        MailController::sendEmail("bankde@hotmail.com","iHospital Appointment",$text);
+
+        MailController::sendEmail($pat->pat_email,"Appointment made",$text);
     }
 
     public static function appointmentCancelMail($app_id) {
@@ -58,9 +58,9 @@ class MailController extends Controller {
                 . "Doctor: " . $doc->doc_name . "\r\n"
                 . "Appointment Date: " . $app->app_date . "\r\n"
                 . "Time of Day: " . $app->app_time . "\r\n\n"
-                . "Please go to iHospital website or make a call to make new appointment."
-        // MailController::sendEmail($pat->pat_email,"Appointment Alert",$text);
-        MailController::sendEmail("bankde@hotmail.com","iHospital Appointment",$text);
+                . "Please contact us or make new appointment.";
+
+        MailController::sendEmail($pat->pat_email,"Appointment cancelled",$text);
     }
 
     public static function sendEmail($to, $subject, $msg) {        
