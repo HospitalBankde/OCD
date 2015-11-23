@@ -25,8 +25,9 @@ class LoginController extends Controller{
 
         // redirect to correct table
         if($role=='patient'){
+            $in_password = md5($password);                        
             $user = Patient::where('pat_email','=', $email)
-                        ->where('pat_password','=', $password )
+                        ->where('pat_password','=', $in_password )
                         ->select('pat_id','pat_name','pat_surname')
                         ->first();
         } elseif ($role=='doctor') {
