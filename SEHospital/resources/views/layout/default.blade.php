@@ -43,13 +43,15 @@
         <div class="header clearfix">
             <nav>
                 <ul class="nav nav-pills pull-right">
+                @if(!isset($_SESSION['id']) || $_SESSION['role'] == 'patient')
                     <li role="presentation"><a href="/appointment"><span class="fa fa-user-md" aria-hidden="true"></span> นัดแพทย์</a></li>
+                @endif
                     <li role="presentation"><a href="/about"><span class="fa fa-info" aria-hidden="true"></span> เกี่ยวกับเรา</a></li>
                     <li role="presentation"><a href="/contact"><span class="fa fa-envelope-o" aria-hidden="true"></span> ติดต่อ</a></li>
                 </ul>
             </nav>
             
-            @if(isset($_SESSION['id']) && $_SESSION['role'])    
+            @if(isset($_SESSION['id']) && $_SESSION['role'] != 'patient')    
                 <h3 class="text-muted"><a href="/" style="text-decoration: none;">iHospital<span class="atoms">{{$_SESSION['role']}}</span></a></h3>                            
             @else
                 <h3 class="text-muted"><a href="/" style="text-decoration: none;">iHospital</a></h3>

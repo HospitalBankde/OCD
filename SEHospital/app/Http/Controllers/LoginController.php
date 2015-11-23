@@ -103,6 +103,63 @@ class LoginController extends Controller{
             return view('home.loginOfficer');
         }
     }
+    public function getPageProfile() {
+        $info = SessionManager::getSessionInfo();
+        if (is_null($info)) {
+            # code...
+            return redirect('503');
+        }
+        if ($info['role'] == 'patient') {
+            $user = DB::table('patient')->where('pat_id', '=', $info['id'])->first();
+            $user_info = [
+                'name' => $user->pat_name,
+                'surname' => $user->pat_surname,
+                'ssn' => $user->pat_SSN,
+                'tel' => $user->pat_tel,
+                'email' => $user->pat_email                
+            ];
+        } elseif ($info['role'] == 'doctor') {
+            $user = DB::table('doctor')->where('doc_id', '=', $info['id'])
+                                        ->join('department', 'doctor.dep_id', '=', 'department.dep_id')
+                                        ->first();
+            $user_info = [
+                'name' => $user->doc_name,
+                'surname' => $user->doc_surname,
+                'ssn' => $user->doc_SSN,
+                'dep' => $user->dep_name,
+                'tel' => $user->doc_tel,
+                'email' => $user->doc_email                
+            ];
+        } elseif ($info['role'] == 'nurse') {
+            $user = DB::table('patient')->where('nurse_id', '=', $info['id'])->first();
+            $user_info = [
+                'name' => $user->nurse_name,
+                'surname' => $user->nurse_surname,
+                'ssn' => $user->nurse_SSN,            
+                'tel' => $user->nurse_tel,
+                'email' => $user->nurse_email                
+            ];
+        } elseif ($info['role'] == 'pharmacist') {
+            $user = DB::table('pharmacist')->where('phar_id', '=', $info['id'])->first();
+            $user_info = [
+                'name' => $user->phar_name,
+                'surname' => $user->phar_surname,
+                'ssn' => $user->phar_SSN,                
+                'tel' => $user->phar_tel,
+                'email' => $user->phar_email                
+            ];
+        } else {
+            return view('errors.errorText')->with([
+                'text' => 'ไม่มี role '. $info['role'] . 'นี้ในระบบ '
+                ]);
+        }        
+        if (is_null($user_info)) {
+            return view('errors.errorText')->with([
+                'text' => 'ไม่มีข้อมูลในระบบ :' . $info['id']
+                ]) ;
+        }
+    return view('home/profile')->with($user_info);
+    }
 
 
 
