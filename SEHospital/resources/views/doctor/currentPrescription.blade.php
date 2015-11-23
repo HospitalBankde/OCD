@@ -30,6 +30,7 @@
 
 @section('content')
     <div class="row">
+        <a href="/dashboard"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> กลับ dashboard </a>
         <div class="col-md-10 col-md-offset-1">
             <h2>รายการใบสั่งยาปัจจุบัน</h2>                   
             <h4 style="color:orange"><span id="spanDate"></span></h4>
