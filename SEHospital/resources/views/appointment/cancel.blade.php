@@ -27,15 +27,32 @@
 @endsection
 
 @section('content')
-<meta http-equiv="refresh" content="5;url=/dashboard" />
+<!-- <meta http-equiv="refresh" content="5;url=/dashboard" /> -->
     <div class="row">
-        <div class="col-md-8 col-md-offset-1">       
-            @if(!isset($comment))
-                <div class="alert alert-success" role="alert"><h3 class="lead"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  คุณได้ทำการยกเลิกนัดแพทย์เรียบร้อย</h3></div>
-                <h4>กำลังนำท่านไปหน้า Dashboard...</h4> 
-            @else
-               <h4>{{$comment}}</h4> 
-            @endif
+        <div class="col-md-8 col-md-offset-1">            
+            <div class="alert alert-success" role="alert"><h3 class="lead"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  คุณได้ทำการยกเลิกนัดหมายเรียบร้อย</h3></div>
+            <!-- <h4>กำลังนำท่านไปหน้า Dashboard...</h4> --> 
+            <table class="table" id="app_complete_table">
+                <tr>
+                    <th>Patient Name</th>
+                    <th>{{$pat_name}}</th>
+                </tr>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>{{$doc_name}}</th>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <th>{{$app_date}}</th>
+                </tr>
+                <tr>
+                    <th>Time</th>
+                    <th>{{$app_time}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection

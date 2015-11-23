@@ -37,6 +37,7 @@
 								<th>เวลา</th>
 								<th>แพทย์</th>
 								<th>สาขา</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -48,6 +49,12 @@
 								<td>{{$app->app_time}}</td>
 								<td>{{$app->doc_name}}</td>
 								<td>{{$app->dep_name}}</td>
+								<td>
+									<form  action="/appointment/cancel" id="doc_cancel_form" method="post">
+									    <input name="app_id" id="app_id" type="hidden" value="{{$app->app_id}}"/>
+									    <a href="javascript:;" onclick="parentNode.submit();">ยกเลิก</a>
+									</form>
+								</td>
 							</tr>
 							@endforeach
 							
@@ -83,6 +90,7 @@
 								<th>วัน</th>
 								<th>เวลา</th>
 								<th>ชื่อผู้ป่วย</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -92,7 +100,13 @@
 								<td>{{$index+1}}.</td>															
 								<td>{{$app->app_date}}</td>
 								<td>{{$app->app_time}}</td>
-								<td>{{$app->pat_name}}</td>								
+								<td>{{$app->pat_name}}</td>	
+								<td>
+									<form  action="/appointment/cancel" id="doc_cancel_form" method="post">
+									    <input name="app_id" id="app_id" type="hidden" value="{{$app->app_id}}"/>
+									    <a href="javascript:;" onclick="parentNode.submit();">ยกเลิก</a>
+									</form>
+								</td>							
 							</tr>
 							@endforeach
 							
