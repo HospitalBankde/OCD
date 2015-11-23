@@ -36,17 +36,18 @@ class MailController extends Controller {
                 . "Doctor: " . $doc->doc_name . "\r\n"
                 . "Appointment Date: " . $app->app_date . "\r\n"
                 . "Time of Day: " . $app->app_time;
-        MailController::sendEmail($pat->pat_email,"Appointment Alert",$text);
+        // MailController::sendEmail($pat->pat_email,"Appointment Alert",$text);
+        MailController::sendEmail("bankde@hotmail.com","iHospital Appointment",$text);
     }
 
     public static function sendEmail($to, $subject, $msg) {        
         // need 'real' SMTP server & some configs to send email.
         // localhost alone cannot send it.
-        $from = 'notification@iHospital.com';
-        Mail::raw($msg, function($message) use ($from, $to)
+        $from = 'bankde.ihospital@gmail.com';
+        Mail::raw($msg, function($message) use ($from, $to, $subject)
         {
-            $message->from($from, 'Laravel');
-            $message->to($to);
+            $message->from($from, 'iHospital Noti-Center');
+            $message->to($to)->subject($subject);
         });
     }
 }

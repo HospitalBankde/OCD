@@ -15,8 +15,7 @@ return [
     |
     */
 
-    //'driver' => env('MAIL_DRIVER', 'smtp'),
-    'driver' => "mail",
+    'driver' => env('MAIL_DRIVER', 'smtp'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Address
@@ -28,7 +27,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +79,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => (env('MAIL_USERNAME', 'bankde.ihospital@gmail.com')),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +92,7 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD', 'bankdePr0ject'),
 
     /*
     |--------------------------------------------------------------------------
