@@ -26,6 +26,9 @@ Route::get('/','HomeController@getIndex');
 //XXXXXXXXX
 //XXXXXXXXX
 //XXXXXXXXX
+// Profile
+
+Route::get('dashboard/profile', 'LoginController@getPageProfile')->middleware('role:patient,doctor,nurse,pharmacist');
 //XXXXXXXXX
 //XXXXXXXXX
 //==================BEGIN PATIENT==================
