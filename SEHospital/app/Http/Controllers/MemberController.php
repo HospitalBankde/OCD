@@ -14,7 +14,44 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\SessionManager;
-class LoginController extends Controller{
+
+class MemberController extends Controller{
+
+    public function postRegister() {
+    
+        $firstname = Input::get('firstname');
+        $lastname = Input::get('lastname');
+        $ssn = Input::get('ssn');
+        $tel = Input::get('tel');
+        $email = Input::get('email');
+        $password = Input::get('password');
+
+        $id = DB::table('patient')->insertGetId([
+            'pat_name' => $firstname,
+            'pat_surname' => $lastname,
+            'pat_SSN' => $ssn,
+            'pat_tel' => $tel,
+            'pat_email' => $email,            
+            'pat_password' => bcrypt($password)
+        ]);
+
+        session_start();
+        $_SESSION['id'] = $id;
+        $_SESSION['name'] = $firstname . " " . $lastname;
+        $_SESSION['role'] = "patient";
+        session_write_close();
+        
+        return view('home.showRegister')->with([
+                'id' => $id,
+                'firstname' => $firstname,
+                'surname' => $lastname,
+                'ssn' => $ssn,
+                'tel' => $tel,
+                'email' => $email,
+                'password' => $password
+            ]
+        );
+    }
 
 	public function postLogin() {
 		$email = Input::get('email');
@@ -82,7 +119,7 @@ class LoginController extends Controller{
             $_SESSION['id'] = $user->phar_id;
             $_SESSION['name'] = $user->phar_name . " " . $user->phar_surname;
         } else {
-            return 'LoginController: error, no selected role.';
+            return 'MemberController: error, no selected role.';
         }
         $_SESSION['role'] = $role;   
         session_write_close();

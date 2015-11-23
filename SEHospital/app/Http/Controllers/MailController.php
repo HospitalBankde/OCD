@@ -40,6 +40,29 @@ class MailController extends Controller {
         MailController::sendEmail("bankde@hotmail.com","iHospital Appointment",$text);
     }
 
+    public static function appointmentCancelMail($app_id) {
+        $app = Appointment::where('app_id','=', $app_id)
+                ->select('doc_id','pat_id','app_date','app_time')
+                ->first();
+
+        $doc = Doctor::where('doc_id','=', $app->doc_id)
+                ->select('doc_name')
+                ->first();
+
+        $pat = Patient::where('pat_id','=', $app->pat_id)
+                ->select('pat_name','pat_surname','pat_email')
+                ->first();
+
+        $text = "Dear " . $pat->pat_name . " " . $pat->pat_surname . "\r\n\n"
+                . "Your appointment has been cancelled:\r\n"
+                . "Doctor: " . $doc->doc_name . "\r\n"
+                . "Appointment Date: " . $app->app_date . "\r\n"
+                . "Time of Day: " . $app->app_time . "\r\n\n"
+                . "Please go to iHospital website or make a call to make new appointment."
+        // MailController::sendEmail($pat->pat_email,"Appointment Alert",$text);
+        MailController::sendEmail("bankde@hotmail.com","iHospital Appointment",$text);
+    }
+
     public static function sendEmail($to, $subject, $msg) {        
         // need 'real' SMTP server & some configs to send email.
         // localhost alone cannot send it.

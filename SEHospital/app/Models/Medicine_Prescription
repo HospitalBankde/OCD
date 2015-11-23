@@ -1,0 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: AunN
+ * Date: 9/20/15 AD
+ * Time: 12:52 AM
+ */
+
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+
+class Medicine_Prescription extends Model {
+
+    protected $table = 'medicine_prescription';
+    public $timestamps = false;
+    protected $fillable = [
+        'diagnosis_id', 'med_id', 'use_description', 'med_num'
+    ];
+}

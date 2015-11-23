@@ -28,7 +28,7 @@ Route::get('/','HomeController@getIndex');
 //XXXXXXXXX
 // Profile
 
-Route::get('dashboard/profile', 'LoginController@getPageProfile')->middleware('role:patient,doctor,nurse,pharmacist');
+Route::get('dashboard/profile', 'MemberController@getPageProfile')->middleware('role:patient,doctor,nurse,pharmacist');
 //XXXXXXXXX
 //XXXXXXXXX
 //==================BEGIN PATIENT==================
@@ -44,13 +44,13 @@ Route::get('doctorScheduleDay', 'AppointmentController@getDoctorScheduleDay');
 
 // Register
 Route::get('register','HomeController@getPageRegister');
-Route::post('/actionRegister','HomeController@postRegister');
+Route::post('/actionRegister','MemberController@postRegister');
 
 Route::get('login','HomeController@getPageLogin')->middleware('guest');
 Route::get('loginOfficer','HomeController@getPageLoginOfficer');
 	// action
-Route::post('actionLogin','LoginController@postLogin');
-Route::get('logout','LoginController@logout');
+Route::post('actionLogin','MemberController@postLogin');
+Route::get('logout','MemberController@logout');
 
 Route::get('dashboard', function() {
 	$info = SessionManager::getSessionInfo();

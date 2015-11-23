@@ -1,0 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: AunN
+ * Date: 9/20/15 AD
+ * Time: 12:52 AM
+ */
+
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+
+class Pharmacist extends Model {
+
+    protected $table = 'pharmacist';
+    public $timestamps = false;
+    protected $fillable = [
+        'phar_id', 'phar_name', 'phar_surname', 'phar_password', 'phar_SSN', 'phar_email', 'phar_tel'
+    ];
+}
