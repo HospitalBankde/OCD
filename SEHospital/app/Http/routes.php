@@ -36,7 +36,7 @@ Route::get('dashboard/profile', 'LoginController@getPageProfile')->middleware('r
 Route::get('appointment','AppointmentController@getIndex');
 Route::get('appointment/time','AppointmentController@getPageTime')->middleware('role:patient');
 Route::post('appointment/complete','AppointmentController@postApp')->middleware('role:patient');
-Route::post('appointment/cancel', 'AppointmentController@patCancelApp')->middleware('role:patient');
+Route::post('appointment/cancel', 'AppointmentController@patCancelApp');
 Route::get('doctorList', 'AppointmentController@getDoctorList');
 Route::get('doctorDay', 'AppointmentController@getDoctorDay');//->middleware('role:patient');
 Route::get('doctorTime', 'AppointmentController@getDoctorTime')->middleware('role:patient');

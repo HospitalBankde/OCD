@@ -10,12 +10,14 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Doctor_Schedule;
 use App\Models\Appointment;
+use App\Models\Patient;
 use App\Models\Cancel_Schedule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\SessionManager;
+use App\Http\Controllers\MailController;
 
 class AppointmentController extends Controller {
 
@@ -200,7 +202,7 @@ class AppointmentController extends Controller {
             {
                 $doc_availday = $this->getSpecificDoctorDay($doctor->doc_id);
 
-                // Some unknown errors if not skipped, better prevent it!
+                //if doc_availday is null
                 if (count($doc_availday)==0) {                    
                     continue;
                 }
@@ -334,6 +336,9 @@ class AppointmentController extends Controller {
                         'date_of_record' => date("Y-m-d")
                     ]);
                     session_write_close();
+
+                    MailController::appointmentMail($id);
+
                     $doc = Doctor::where('doc_id', '=', $select_doc)->first();
                     return view('appointment.complete')->with([
                         'app_id' => $id,
@@ -341,7 +346,7 @@ class AppointmentController extends Controller {
                         'pat_name' => $pat_name,
                         'app_time' => $time,
                         'app_date' => $dateSQL
-                ]);
+                    ]);
                 }
                 else if ($select_doc == -1)
                 {
@@ -387,8 +392,10 @@ class AppointmentController extends Controller {
                         'app_date' => $dateSQL,
                         'date_of_record' => date("Y-m-d")
                     ]);
-
                     session_write_close();
+
+                    MailController::appointmentMail($id);
+                    
                     return view('appointment.complete')->with([
                         'app_id' => $id,
                         'doc_name' => $doc->doc_name,
@@ -407,34 +414,21 @@ class AppointmentController extends Controller {
     {
         $app_id = Input::get('app_id');
         $select_app = Appointment::where('app_id','=', $app_id)
-                                ->select('app_id','pat_id','app_date')
+                                ->select('app_id','pat_id','doc_id','app_date','app_time')
                                 ->first();
-        session_start();
-        $role = $_SESSION['role'];
-        if ($role == 'patient'){
-            $pat_id = $_SESSION['id'];
-        }
-        else {
-            return view('appointment.cancel')->with([
-                    'comment' => "Only patient can cancel appointment here.<br> This incident is being reported"
-                ]);
-        }
-        session_write_close();
-        if ($pat_id == $select_app->pat_id)
-        {
-            //Add check time here. Patient shouldn't be able to remove past history
-            //But it's not in requirement so... later
-            DB::table('appointment')->where('app_id', '=', $app_id)->delete();
-            return view('appointment.cancel')->with([
-                    'comment' => "Appointment at " . $select_app->app_date . " is cancelled"
-                ]);
-        }
-        else
-        {
-            return view('appointment.cancel')->with([
-                    'comment' => "You can only cancel your own appointments.<br> This incident is being reported"
-                ]);
-        }
+        //Actually need to check for role*** 
+        //Add check time here. Patient shouldn't be able to remove past history
+        //But it's not in requirement so... later
+        DB::table('appointment')->where('app_id', '=', $app_id)->delete();
+        $doc = Doctor::where('doc_id', '=', $select_app->doc_id)->first();
+        $pat = Patient::where('pat_id', '=', $select_app->pat_id)->first();
+        return view('appointment.cancel')->with([
+                        'app_id' => $app_id,
+                        'doc_name' => $doc->doc_name,
+                        'pat_name' => $pat->pat_name,
+                        'app_time' => $select_app->app_date,
+                        'app_date' => $select_app->app_time
+        ]);
     }
 
 
@@ -452,7 +446,7 @@ class AppointmentController extends Controller {
                             ->orderBy('app_date', 'ASC')
                             ->join('doctor', 'doctor.doc_id', '=', 'appointment.doc_id')                                                                
                             ->join('department', 'department.dep_id', '=', 'doctor.dep_id')
-                            ->select('app_time', 'app_date', 'doc_name', 'dep_name')
+                            ->select('app_time', 'app_date', 'doc_name', 'dep_name', 'app_id')
                             ->get();                    
 
             return view('appointment.appointmentList')->with([
@@ -468,8 +462,8 @@ class AppointmentController extends Controller {
                             ->orderBy('app_date', 'ASC')
                             ->orderBy('app_time', 'DESC')
                             ->join('patient', 'patient.pat_id', '=', 'appointment.pat_id')                                                                                        
-                            ->select('app_time', 'app_date', 'pat_name')
-                            ->get();                   
+                            ->select('app_time', 'app_date', 'pat_name', 'app_id')
+                            ->get();
             return view('appointment.appointmentList')->with([
                     'appointments' => $appointments,
                     'role' => $session_info['role']
@@ -505,16 +499,5 @@ class AppointmentController extends Controller {
                 'today' => date("Y-m-d")               
                 ]);
         }
-    }
-    public function sendEmail($to, $subject, $msg) {        
-        // need 'real' SMTP server & some configs to send email.
-        // localhost alone cannot send it.
-        $from = 'aunkung_only@hotmail.com';
-        Mail::raw($msg, function($message) use ($from, $to)
-        {
-            $message->from($from, 'Laravel');
-
-            $message->to($to);
-        });
     }
 }
