@@ -23,6 +23,8 @@
 use App\Http\Controllers\SessionManager;
 
 Route::get('/','HomeController@getIndex');
+Route::get('/about','HomeController@getPageAbout');
+Route::get('/contact','HomeController@getPageContact');
 //XXXXXXXXX
 //XXXXXXXXX
 //XXXXXXXXX

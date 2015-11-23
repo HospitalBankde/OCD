@@ -30,4 +30,10 @@ class HomeController extends Controller{
     public function getPageDashboard() {
         return view('home.dashboard')->with(Session::getSessionInfo());
     }
+    public function getPageContact() {
+        return view('home.contact');
+    }
+    public function getPageAbout() {
+        return view('home.about');
+    }
 }
