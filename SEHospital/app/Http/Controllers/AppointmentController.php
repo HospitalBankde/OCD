@@ -430,8 +430,88 @@ class AppointmentController extends Controller {
                         'app_date' => $select_app->app_time
         ]);
     }
+    public function postSearchAppointmentForCancel()
+    {  
+        $pat_search_name = Input::get('pat_search_name');
+        $doc_search_name = Input::get('doc_search_name');
 
+        // Any Doctor.
+        if ($pat_search_name != "" && $doc_search_name == "") {
+            $apps = DB::table('appointment')
+                        ->join('patient', 'appointment.pat_id', '=', 'patient.pat_id')
+                        ->join('doctor', 'appointment.doc_id', '=', 'doctor.doc_id')      
+                        ->join('department', 'department.dep_id', '=', 'doctor.dep_id')                  
+                        ->select('app_id', 'pat_name', 'app_time', 'doc_name', 'dep_name', 'app_date')
+                        ->where('app_date', '>', date("Y-m-d"))
+                        ->where('pat_name', 'like', '%' . $pat_search_name . '%')                        
+                        ->orderBy('pat_name', 'ASC')
+                        ->orderBy('app_date', 'ASC')
+                        ->orderBy('app_time', 'DESC')                    
+                        ->get();
+            return view('appointment.appointmentList')->with([
+                'appointments' => $apps,
+                'role' => 'nurse',
+                'pat_search_name' => $pat_search_name
+                ]);
 
+        } elseif ($pat_search_name != "" && $doc_search_name != "" ){
+            $apps = DB::table('appointment')
+                        ->join('patient', 'appointment.pat_id', '=', 'patient.pat_id')
+                        ->join('doctor', 'appointment.doc_id', '=', 'doctor.doc_id')
+                        ->join('department', 'department.dep_id', '=', 'doctor.dep_id')   
+                        ->select('app_id', 'pat_name', 'app_time', 'doc_name', 'dep_name', 'app_date')
+                        ->where('app_date', '>', date("Y-m-d"))
+                        ->where('pat_name', 'like', '%' .  $pat_search_name . '%')                        
+                        ->where('doc_name', 'like', '%' .  $doc_search_name . '%')
+                        ->orderBy('pat_name', 'ASC')
+                        ->orderBy('app_date', 'ASC')
+                        ->orderBy('app_time', 'DESC') 
+                        ->get();  
+            return view('appointment.appointmentList')->with([
+                'appointments' => $apps,
+                'role' => 'nurse',
+                'pat_search_name' => $pat_search_name,
+                'doc_search_name' => $doc_search_name
+                ]);
+        } elseif ($pat_search_name == "" && $doc_search_name != "") {
+            $apps = DB::table('appointment')
+                        ->join('patient', 'appointment.pat_id', '=', 'patient.pat_id')
+                        ->join('doctor', 'appointment.doc_id', '=', 'doctor.doc_id')
+                        ->join('department', 'department.dep_id', '=', 'doctor.dep_id')   
+                        ->select('app_id', 'pat_name', 'app_time', 'doc_name', 'dep_name', 'app_date')
+                        ->where('app_date', '>', date("Y-m-d"))                                            
+                        ->where('doc_name', 'like', '%' . $doc_search_name . '%')
+                        ->orderBy('pat_name', 'ASC')
+                        ->orderBy('app_date', 'ASC')
+                        ->orderBy('app_time', 'DESC') 
+                        ->get();  
+            return view('appointment.appointmentList')->with([
+                'appointments' => $apps,
+                'role' => 'nurse',                
+                'doc_search_name' => $doc_search_name
+                ]);
+        } else {
+            // All appointment from today
+            $apps = DB::table('appointment')
+                        ->join('patient', 'appointment.pat_id', '=', 'patient.pat_id')
+                        ->join('doctor', 'appointment.doc_id', '=', 'doctor.doc_id')
+                        ->join('department', 'department.dep_id', '=', 'doctor.dep_id')   
+                        ->select('app_id', 'pat_name', 'app_time', 'doc_name', 'dep_name', 'app_date')
+                        ->where('app_date', '>', date("Y-m-d"))                                                                    
+                        ->orderBy('pat_name', 'ASC')
+                        ->orderBy('app_date', 'ASC')
+                        ->orderBy('app_time', 'DESC') 
+                        ->get();  
+            return view('appointment.appointmentList')->with([
+                'appointments' => $apps,
+                'role' => 'nurse',                                
+                ]);
+        }
+    }
+    public function getPageSearchAppointmentForCancel()
+    {
+        return view('officer.searchAppointmentPatDoc');
+    }
     public function getPageAppointmentList()
     {
         # code...

@@ -108,6 +108,8 @@ Route::post('dashboard/dayoff/postDayOff', 'DoctorController@postDayOff')->middl
 Route::post('dashboard/actionAddSchedule', 'ScheduleController@postAddSchedule')->middleware('role:nurse');
 Route::get('dashboard/addSchedule','ScheduleController@getPageAddSchedule')->middleware('role:nurse');
 Route::get('getDoctorInformation','ScheduleController@getDoctorInformation')->middleware('role:nurse');
+Route::get('dashboard/searchAppointment', 'AppointmentController@getPageSearchAppointmentForCancel')->middleware('role:nurse');
+Route::post('dashboard/postSearchAppointment', 'AppointmentController@postSearchAppointmentForCancel')->middleware('role:nurse');
 //==================END Nurse==================
 //XXXXXXXXX
 //XXXXXXXXX
