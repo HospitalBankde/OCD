@@ -29,6 +29,8 @@
 @section('content')
 <!-- <meta http-equiv="refresh" content="5;url=/dashboard" /> -->
     <div class="row">
+    <a href="/dashboard"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> กลับ dashboard </a>
+    <div class="header-clearfix"></div>
         <div class="col-md-8 col-md-offset-1">            
             <div class="alert alert-success" role="alert"><h3 class="lead"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  คุณได้ทำการยกเลิกนัดหมายเรียบร้อย</h3></div>
             <!-- <h4>กำลังนำท่านไปหน้า Dashboard...</h4> --> 

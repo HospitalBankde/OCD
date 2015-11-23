@@ -1,6 +1,7 @@
 function checkDoctorID(){
   var doc_id = document.getElementById('search_doc_id').value;
-  document.getElementById('doc_id').value = doc_id;
+  document.getElementById('doc_id').value = "";
+  document.getElementById('doctorname').innerHTML = "";
   var firstname = "";
   var lastname = "";
     $.ajax(
@@ -17,7 +18,17 @@ function checkDoctorID(){
             });
             var name=0;
             var surname = 1;
+            document.getElementById('doc_id').value = doc_id;
+
             document.getElementById('doctorname').innerHTML = "ชื่อ สกุล " +": "+ doc_array[name] +" " +doc_array[surname] ; 
         }
     });
+}
+
+function checkValidDoctorID() {
+    if(document.getElementById('doc_id').value != "") {
+        return true;
+    }
+    alert('Invalid Doctor ID');
+    return false;
 }

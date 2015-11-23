@@ -29,6 +29,12 @@ class PatientController extends Controller
         $id = DB::table('patient')->where('pat_name', $firstname)
                                   ->where('pat_surname', $lastname) 
                                   ->pluck('pat_id');
+
+        if(is_null($id)) {
+            return view('officer.addPatientInfo')->with([
+                'errorText' => 'ไม่พบชื่อ และ นามสกุลของผู้ป่วย: ' . $firstname . ' '. $lastname
+                ]);
+        }
         $weight = Input::get('weight');
         $height = Input::get('height');
         $temperature = Input::get('temperature');

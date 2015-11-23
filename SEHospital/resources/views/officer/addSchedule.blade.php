@@ -10,10 +10,11 @@
 
 @section('content')
     <div class="row">
+    <a href="/dashboard"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> กลับ dashboard </a>
         <div class="col-md-11 col-md-offset-1">
             <h2>ลงตารางออกตรวจ</h2>
             <br>
-            <form class="form-horizontal" action="actionAddSchedule" method="POST";>
+            <form class="form-horizontal" action="actionAddSchedule" method="POST" onsubmit="return checkValidDoctorID();" ;>
                 <fieldset>
                     <div class="control-group">
                         <label class="control-label" for="doc_id">ค้นหาจากรหัสแพทย์:</label>

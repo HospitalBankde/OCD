@@ -13,6 +13,17 @@ class ScheduleController extends Controller{
     	$doc_id = Input::get('doc_id');
 
         $DAY = ['sun' ,'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+        $sum = 0;
+        for ($i=0; $i < 7; $i++) { 
+            $get_key_morn = $DAY[$i] . '_morn';   
+            $get_key_after = $DAY[$i] . '_after';   
+            $morning = Input::get($get_key_morn);
+            $afternoon = Input::get($get_key_after);
+            $sum += $morning + $afternoon;                                   
+        }        
+        if($sum == 0) {
+            return view('officer.addSchedule');
+        }
         for ($i=0; $i < 7; $i++) { 
             $get_key_morn = $DAY[$i] . '_morn';   
             $get_key_after = $DAY[$i] . '_after'; 
@@ -45,13 +56,11 @@ class ScheduleController extends Controller{
 
     public function getDoctorInformation() {
         $doc_id = Input::get('doc_id');
-        $firstname = Input::get('firstname');
-        $lastname = Input::get('lastname');
 
         if(isset($doc_id)){
             $information = DB::select("SELECT doc_name, doc_surname  FROM doctor WHERE doc_id = $doc_id");
-            if(empty($information)){
-                return 'doc_id';
+            if(is_null($information)){
+                return 'doc_ids';
             }
             $information = $information[0];
             return  response()->json(['doc_info' => $information ]);

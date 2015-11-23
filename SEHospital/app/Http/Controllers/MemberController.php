@@ -48,7 +48,7 @@ class MemberController extends Controller{
                 'ssn' => $ssn,
                 'tel' => $tel,
                 'email' => $email,
-                'password' => $password
+                'password' => md5($password)
             ]
         );
     }
@@ -62,8 +62,9 @@ class MemberController extends Controller{
 
         // redirect to correct table
         if($role=='patient'){
+            $in_password = md5($password);                        
             $user = Patient::where('pat_email','=', $email)
-                        ->where('pat_password','=', $password )
+                        ->where('pat_password','=', $in_password )
                         ->select('pat_id','pat_name','pat_surname')
                         ->first();
         } elseif ($role=='doctor') {
@@ -168,7 +169,7 @@ class MemberController extends Controller{
                 'email' => $user->doc_email                
             ];
         } elseif ($info['role'] == 'nurse') {
-            $user = DB::table('patient')->where('nurse_id', '=', $info['id'])->first();
+            $user = DB::table('nurse')->where('nurse_id', '=', $info['id'])->first();
             $user_info = [
                 'name' => $user->nurse_name,
                 'surname' => $user->nurse_surname,
