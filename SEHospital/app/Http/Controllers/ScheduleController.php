@@ -13,6 +13,17 @@ class ScheduleController extends Controller{
     	$doc_id = Input::get('doc_id');
 
         $DAY = ['sun' ,'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+        $sum = 0;
+        for ($i=0; $i < 7; $i++) { 
+            $get_key_morn = $DAY[$i] . '_morn';   
+            $get_key_after = $DAY[$i] . '_after';   
+            $morning = Input::get($get_key_morn);
+            $afternoon = Input::get($get_key_after);
+            $sum += $morning + $afternoon;                                   
+        }        
+        if($sum == 0) {
+            return view('officer.addSchedule');
+        }
         for ($i=0; $i < 7; $i++) { 
             $get_key_morn = $DAY[$i] . '_morn';   
             $get_key_after = $DAY[$i] . '_after'; 
