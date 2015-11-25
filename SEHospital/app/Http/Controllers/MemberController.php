@@ -32,7 +32,7 @@ class MemberController extends Controller{
             'pat_SSN' => $ssn,
             'pat_tel' => $tel,
             'pat_email' => $email,            
-            'pat_password' => bcrypt($password)
+            'pat_password' => md5($password)
         ]);
 
         session_start();
