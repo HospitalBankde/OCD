@@ -26,6 +26,19 @@ class MemberController extends Controller{
         $email = Input::get('email');
         $password = Input::get('password');
 
+        $dupe = Patient::where('pat_email','=', $email)
+                        ->first();
+
+        if (!is_null($dupe))
+        {
+            return view('home.showRegister')->with([
+                'errmsg' => "This email has already been used.",
+                'email' => $email
+            ]);
+        }
+
+        $tel = str_replace("-", "", $tel);
+
         $id = DB::table('patient')->insertGetId([
             'pat_name' => $firstname,
             'pat_surname' => $lastname,

@@ -47,7 +47,7 @@ function validate_register_form(form) {
     	form.password_confirm.focus();
     	return false;
     }
-    alert(firstname + ' ได้ทำการสมัครสมาชิกเรียบร้อย');
+    // alert(firstname + ' ได้ทำการสมัครสมาชิกเรียบร้อย');
     return true;
 }
 
