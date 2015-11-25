@@ -262,8 +262,7 @@ class AppointmentController extends Controller {
 
     public function getDoctorTime() {
         $select_doc = Input::get('select_doc');
-        $select_date = Input::get('select_date');
-        
+        $select_date = Input::get('select_date');        
         if ($select_doc >= 0)
         {
             return response()->json(['doc_schedule' => $this->getSpecificDoctorTime($select_doc,$select_date)]);
@@ -398,6 +397,32 @@ class AppointmentController extends Controller {
 
                     MailController::appointmentMail($id);
                     
+                    return view('appointment.complete')->with([
+                        'app_id' => $id,
+                        'doc_name' => $doc->doc_name,
+                        'pat_name' => $pat_name,
+                        'app_time' => $time,
+                        'app_date' => $dateSQL
+                    ]);
+                }
+            } elseif ($_SESSION['role'] == 'doctor') {
+                # Doctor create next apointment
+                $pat_id = Input::get('pat_id');
+                $pat_name = Input::get('pat_name');
+                if ($select_doc >= 0)
+                {
+                    $id = DB::table('appointment')->insertGetId([
+                        'doc_id' => $select_doc,
+                        'pat_id' => $pat_id,
+                        'app_time' => $time,
+                        'app_date' => $dateSQL,
+                        'date_of_record' => date("Y-m-d")
+                    ]);
+                    session_write_close();
+
+                    MailController::appointmentMail($id);
+
+                    $doc = Doctor::where('doc_id', '=', $select_doc)->first();
                     return view('appointment.complete')->with([
                         'app_id' => $id,
                         'doc_name' => $doc->doc_name,
@@ -577,7 +602,7 @@ class AppointmentController extends Controller {
                             ->orderBy('app_time', 'DESC') 
                             ->join('patient', 'patient.pat_id', '=', 'appointment.pat_id')                                                                                        
                             ->select('appointment.app_id', 'app_time', 'app_date', 'patient.pat_id', 'pat_name')
-                            ->get(); 
+                            ->get();     
             return view('appointment.appointmentList')->with([
                 'appointments' => $appointments ,
                 'role' => $role ,

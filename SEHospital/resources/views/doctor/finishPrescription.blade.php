@@ -12,11 +12,15 @@
         <div class="alert alert-success" role="alert">
             <h3 class="lead">
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>  
-                คุณได้ทำการออกใบสั่งยาเรียบร้อย                
+                คุณได้ทำการออกใบสั่งยาเรียบร้อย         
+                @if(isset($pat_id))       
+                    <a href="/dashboard/postPrescription/nextAppointment/{{$pat_id}}">นัดผู้ป่วยในครั้งถัดไป ?</a>                
+                @endif
             </h3>
+            
             <h5>
-                <a href="/dashboard/todayAppointmentList">กลับหน้ารายการนัดแพทย์วันนี้</a>                
-            </h5>
+                <a href="/dashboard/todayAppointmentList">กลับหน้ารายการนัดแพทย์วันนี้</a>                                
+            </h5>            
         </div>
         <div class="col-md-8 col-md-offset-1" align='center'>
             <div class="panel panel-default">

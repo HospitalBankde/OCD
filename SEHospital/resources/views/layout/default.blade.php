@@ -43,7 +43,7 @@
             <nav>
                 <ul class="nav nav-pills pull-right">
                 @if(!isset($_SESSION['id']) || $_SESSION['role'] == 'patient')
-                    <li role="presentation"><a href="/appointment"><span class="fa fa-user-md" aria-hidden="true"></span> นัดแพทย์</a></li>
+                    <li role="presentation"><a href="/appointment"><span class="fa fa-user-md" aria-hidden="true"></span> ค้นหาแพทย์</a></li>
                 @endif
                     <li role="presentation"><a href="/about"><span class="fa fa-info" aria-hidden="true"></span> เกี่ยวกับเรา</a></li>
                     <li role="presentation"><a href="/contact"><span class="fa fa-envelope-o" aria-hidden="true"></span> ติดต่อ</a></li>

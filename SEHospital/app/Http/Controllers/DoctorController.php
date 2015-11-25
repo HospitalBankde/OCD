@@ -230,4 +230,22 @@ class DoctorController extends Controller
                 'cancelList' => $cancelList
             ]);
     }
+    public function getPageCreateNextAppointment($pat_id) {
+        $session_info = SessionManager::getSessionInfo();
+        $patient = DB::table('patient')->where('pat_id', '=', $pat_id)->first();
+        if (is_null($patient)) {
+            return view('errors.errorText')->with([
+                'text' => 'ไม่มีผู้ป่วยนี้ในระบบ'
+                ]);
+        }
+        $doctor = DB::table('doctor')->where('doc_id', '=',$session_info['id'])->first();
+        return view('doctor.createNextAppointment')->with([
+            'pat_id' => $pat_id,
+            'doc_id' => $session_info['id'],
+            'pat_name' => $patient->pat_name,
+            'pat_surname' => $patient->pat_surname,
+            'doc_name' => $doctor->doc_name,
+            'doc_surname' => $doctor->doc_surname
+            ]);
+    }
 }

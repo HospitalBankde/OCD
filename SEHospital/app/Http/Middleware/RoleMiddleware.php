@@ -55,7 +55,21 @@ class RoleMiddleware
         } 
         // login but not correct role        
         $user_role = $session_info['role'];
-        if (!in_array($user_role, $roles)) {
+
+        // check if user_role exists in valid roles
+        $contain = 0;            
+        foreach ($roles as $role) {    
+            //echo "The role $role $user_role\n";                              
+            // echo strcmp($role, $user_role);     
+            //WTF , == cannot use to compare string!!!!       
+            if (strcmp($role, $user_role) == 0 ){
+                $contain = 1;
+            
+            }
+        }            
+        // echo $contain;    
+        if ($contain == 0) {
+
             //return view('errors.503');
             return view('errors.errorText')->with([
                     'text' => 'ท่านไม่สามารถทำรายการนี้ได้'

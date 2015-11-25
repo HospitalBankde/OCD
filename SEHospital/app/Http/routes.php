@@ -36,12 +36,12 @@ Route::get('dashboard/profile', 'MemberController@getPageProfile')->middleware('
 //==================BEGIN PATIENT==================
 //Appointment
 Route::get('appointment','AppointmentController@getIndex');
-Route::get('appointment/time','AppointmentController@getPageTime')->middleware('role:patient');
-Route::post('appointment/complete','AppointmentController@postApp')->middleware('role:patient');
+Route::get('appointment/time','AppointmentController@getPageTime')->middleware('role:patient,doctor');
+Route::post('appointment/complete','AppointmentController@postApp')->middleware('role:patient,doctor');
 Route::post('appointment/cancel', 'AppointmentController@patCancelApp');
 Route::get('doctorList', 'AppointmentController@getDoctorList');
 Route::get('doctorDay', 'AppointmentController@getDoctorDay');//->middleware('role:patient');
-Route::get('doctorTime', 'AppointmentController@getDoctorTime')->middleware('role:patient');
+Route::get('doctorTime', 'AppointmentController@getDoctorTime');//->middleware('role:patient, doctor'); //<= space between , can cause error!!!
 Route::get('doctorScheduleDay', 'AppointmentController@getDoctorScheduleDay');
 
 // Register
@@ -92,6 +92,7 @@ Route::get('dashboard/todayAppointmentList/patientDiagnosis/{pat_id}/{app_id}', 
 Route::get('dashboard/createPrescription/{pat_id}/{app_id}', 'DoctorController@getCreatePrescription')->middleware('role:doctor');
 Route::post('dashboard/postPrescription','PrescriptionController@postCreatePrescription')->middleware('role:doctor');
 Route::get('medicineList','PrescriptionController@getMedicineList');
+Route::get('dashboard/postPrescription/nextAppointment/{pat_id}', 'DoctorController@getPageCreateNextAppointment')->middleware('role:doctor');
  //Show Schedule
 Route::get('dashboard/showSchedule', 'DoctorController@getPageDoctorSchedule')->middleware('role:doctor,nurse');
 

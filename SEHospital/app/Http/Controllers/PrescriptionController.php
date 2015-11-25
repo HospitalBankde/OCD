@@ -76,6 +76,7 @@ class PrescriptionController extends Controller{
                 }
                 session_write_close();
                 return view('doctor.finishPrescription')->with([
+                        'pat_id' => $pat_id,
                         'pat_name' => $pat_name,
                         'pat_surname' => $pat_surname,
                         'symptom' => $data['symtom'],
