@@ -39,6 +39,7 @@
             <br>
             <label class="lead"><b>รายการนัดที่ถูกยกเลิกในวันที่ {{$cancel_date}}</b></label>
             <thead>
+            @if (!$cancelList->isEmpty())
             <tr>
                 <th>ลำดับที่</th>
                 <th>ชื่อผู้ป่วย</th>
@@ -58,6 +59,9 @@
                     </tr>
                 @endforeach
             </tbody>
+            @else
+                <br><h4> ไม่พบผู้ป่วยที่ถูกยกเลิกรายการนัด </h4>
+            @endif
         </table>
     </div>
 @endsection

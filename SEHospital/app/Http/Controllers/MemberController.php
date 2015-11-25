@@ -29,7 +29,7 @@ class MemberController extends Controller{
         $dupe = Patient::where('pat_email','=', $email)
                         ->first();
 
-        if (!is_null($dupe))
+        if (!empty($dupe))
         {
             return view('home.showRegister')->with([
                 'errmsg' => "This email has already been used.",

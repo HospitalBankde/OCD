@@ -218,8 +218,12 @@ class DoctorController extends Controller
                                 ->orderBy('appointment.date_of_record', 'ASC')
                                 ->orderBy('appointment.app_time', 'DESC') //because morning vs afternoon
                                 ->orderBy('patient.pat_name', 'ASC')
-                                ->select('patient.pat_id','patient.pat_name','patient.pat_surname','appointment.app_time','appointment.date_of_record','patient.pat_tel')
+                                ->select('appointment.app_id','patient.pat_id','patient.pat_name','patient.pat_surname','appointment.app_time','appointment.date_of_record','patient.pat_tel')
                                 ->get();
+
+        foreach ($cancelList as $cancelPat) {
+            MailController::appointmentCancelMail($cancelPat->app_id);
+        }
 
         DB::table('appointment')->where('app_date', '=', $cancel_date)
                                 ->where('doc_id', '=', $doc_id)
