@@ -63,7 +63,8 @@ class AppointmentController extends Controller {
         $availday = array();
         $today = getdate();
         $todayDate = $today['mday'];
-        $todayWeekday = (date('N', strtotime($today['weekday'])) +1) % 7;
+        //Read comment on getSpecificDoctorDay
+        $todayWeekday = (date('N', strtotime($today['weekday'])) +0) % 7;
         $nextMonth = date('Y-m-d', strtotime("+31 days"));
         $doctor = Doctor::where('doc_id','=',$select_doc)
                         ->select('doc_name','doc_surname')->first();
@@ -110,8 +111,8 @@ class AppointmentController extends Controller {
         $availday = array();
         $today = getdate();
         $todayDate = $today['mday'];
-        //I can't believe this function gives Monday as 0 //We need to add 1 to make Sunday 0
-        $todayWeekday = (date('N', strtotime($today['weekday']) ) + 1) % 7;
+        //I think something strange is going on here. Sometimes I need to add 1 !!?
+        $todayWeekday = (date('N', strtotime($today['weekday']) ) + 0) % 7;
         $nextMonth = date('Y-m-d', strtotime("+31 days"));
         $doctor = Doctor::where('doc_id','=',$select_doc)
                         ->select('doc_name','doc_surname')->first();
